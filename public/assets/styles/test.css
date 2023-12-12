@@ -1,16 +1,19 @@
 body{
+    margin: 0;
+    padding: 0;
     height: 100vh;
     width: 100vw;
-    border: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    flex-wrap: nowrap;
     background-image: url("../ressources/background1.jpeg");
-    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    border: none;
+}
+
+.conteneur1{
+    display: grid;
+    grid-template-columns: 100vh;
 }
 
 .logo{
@@ -23,16 +26,11 @@ body{
 
 .titre{
     font-family: 'Legend M54';
-    font-size: 20vw;
-    text-align: center;
+    font-size: 70px;
     color: #FFF2E3;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-}
-
-.titre div:nth-child(2) {
-    color: #0CF;
+    text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
 .boutton-jouer
@@ -47,7 +45,6 @@ body{
     border-radius: 100px;
     padding: 20px;
     width: 50vw;
-    margin-top: 10%;
 }
 
 .boutton-jouer:hover
