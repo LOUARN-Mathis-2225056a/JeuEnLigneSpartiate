@@ -11,6 +11,6 @@ class Exemple
         ob_start();
         ?>
 <?php
-        (new ModelePage('Exemple page', ob_get_clean(), 'exemple.css')) ->$this->show();
+        (new ModelePage('Exemple page', ob_get_clean(), 'exemple'))->show();
     }
 }
