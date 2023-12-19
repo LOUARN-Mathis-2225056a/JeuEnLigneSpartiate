@@ -1,42 +1,58 @@
-const questions = [
-    {
-        question: 'Combien y a-t-il de joueurs dans une équipe de hockey sur glace ?',
-        bonneReponse: '6',
-    },
-    {
-        question: 'Quelle est la durée d\'un match de hockey sur glace ?',
-        bonneReponse: 'trois périodes de 20 minutes chacune, avec une pause de 15 minutes entre chaque période.',
-    },
-];
+document.addEventListener('DOMContentLoaded', function() {
+    const questions = [
+        {
+            question: 'Combien y a-t-il de joueurs dans une équipe de hockey sur glace ?',
+            options: ['10', '20', '30'],
+            answer: '20'
+        },
+        {
+            options: ['trois périodes de 15 minutes chacune, avec une pause de 20 minutes entre chaque période.','trois périodes de 20 minutes chacune, avec une pause de 15 minutes entre chaque période.','deux périodes de 20 minutes chacune, avec une pause de 15 minutes entre chaque période.'],
+            answer: 'trois périodes de 20 minutes chacune, avec une pause de 15 minutes entre chaque période.'
+        },
+    ];
 
-let reponseCorrecte = questions[questionCourante].bonneReponse;
+    const quizForm = document.getElementById('quiz-form');
+    const questionContainer = document.getElementById('question-container');
+    let questionIndex = 0;
 
-let score = 0;
-function valider() {
-    const reponse = document.querySelector('input[name="reponse"]:checked').value;
-
-    if (reponse === '') {
-        alert('Veuillez sélectionner une réponse.');
-        return;
+    function displayQuestion() {
+        const currentQuestion = questions[questionIndex];
+        const questionMarkup = `
+            <h2>Question ${questionIndex + 1}</h2>
+            <p>${currentQuestion.question}</p>
+            <ul>
+                ${currentQuestion.options.map(option => `<li><input type="radio" name="reponse" value="${option}"> ${option}</li>`).join('')}
+            </ul>
+        `;
+        questionContainer.innerHTML = questionMarkup;
     }
 
-    if (reponse === reponseCorrecte) {
-        score++;
-    }
+    displayQuestion();
 
-    questionCourante++;
+    quizForm.addEventListener('submit', function(event) {
+        event.preventDefault();
 
-    if (questionCourante === questions.length) {
-        alert('Le quiz est terminé. Votre score est de ' + score + '.');
-        return;
-    }
+        const selectedAnswer = document.querySelector('input[name="reponse"]:checked');
 
-    // Pour afficher la deuxième question
-    questionCourante = 1;
+        if (selectedAnswer) {
+            const userAnswer = selectedAnswer.value;
 
-    document.querySelector('.score').textContent = score;
-}
+            // Vérification de la réponse
+            if (userAnswer === questions[questionIndex].answer) {
+                alert('Bonne réponse !');
+            } else {
+                alert('Mauvaise réponse.');
+            }
 
-let questionCourante = 1;
+            questionIndex++;
 
-document.querySelector('button[type="submit"]').addEventListener('click', valider);
+            if (questionIndex < questions.length) {
+                displayQuestion();
+            } else {
+                alert('Vous avez terminé le quiz !');
+            }
+        } else {
+            alert('Veuillez sélectionner une réponse.');
+        }
+    });
+});
