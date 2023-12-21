@@ -2,8 +2,8 @@
     <button onclick="window.location.href='../accueil/Accueil.php'" class="headerButton">Accueil</button>
     <button onclick="window.location.href='./ReglesGenerales.php'" class="headerButton">Regles generales</button>
     <button onclick="window.location.href='./ReglesMaterielles.php'" class="headerButton currentPageButton">Regles materielles</button>
-    <button class="headerButton">Regles de jeu</button>
-    <button class="headerButton">Penalites</button>
+    <button onclick="window.location.href='./ReglesJeu.php'" class="headerButton">Regles de jeu</button>
+    <button onclick="window.location.href='./ReglesPenalites.php'" class="headerButton">Penalites</button>
 </header>
 
 <nav>
@@ -33,7 +33,7 @@
         </label>
     </div>
     <a id="ancreCrosse"></a>
-    <div class="contentBloc">
+    <div class="contentBloc lastContentBloc">
         <label class="contentTitle">
             la crosse
         </label>
