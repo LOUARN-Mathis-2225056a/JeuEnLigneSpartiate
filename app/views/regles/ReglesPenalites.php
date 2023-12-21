@@ -24,33 +24,30 @@
             Fautes
         </label>
         <label class="contentText">
-            Vous pouvez être expulsé pour un grand nombre de violations de règles différentes, qui concernent par exemple :
+            Vous pouvez être expulsé pour un grand nombre de <label class="importantWord">violations de règles</label> différentes, qui concernent par exemple :
             <br> <br> <br>
-            - Slashing : frapper un joueur avec une crosse <br><br>
-            - Crosse haute : crosse tenue au-dessus de la hauteur normale des épaules<br><br>
-            - Charge avec la crosse : plaquage avec les deux mains sur la crosse<br><br>
-            - Piquage : poignarder comme une lance<br><br>
-            - Harponner : frapper avec le bout du manche de son bâton<br><br>
-            - Retenir : Retenir avec la main/la crosse son adversaire<br><br>
-            - Accrocher : Attraper l'adversaire avec sa crosse<br><br>
-            - Obstruction : entraver le mouvement de l'adversaire<br><br>
-            - Retard de jeu<br><br>
-            - Continuer à jouer avec la crosse cassée<br><br>
-            - Attraper le palet sans le lancer immédiatement<br><br>
-            - Trop de joueurs sur la glace (mauvaise procédure de remplacement)<br><br>
-            - Sortir trop tôt de la surface de réparation<br><br>
-            - Charge incorrecte : plaquage avec violence<br><br>
-            - Charge contre la tête/nuque/dos : Coup à la tête, au cou ou au dos<br><br>
-            - Projection contre la bande : plaquage sur la ligne<br><br>
-            - Coude : plaquage avec le coude<br><br>
-            - Faire trébucher : croche pied<br><br>
-            - Coup de genou : tacle avec le genou<br><br>
-            - Coups de poing : Fighting<br><br>
-            - Coup de pied<br><br>
-            - Faucher les patins : faire trébucher l'adversaire avec une jambe arrière<br><br>
-            - Si l'équipe en avantage numérique marque pendant une pénalité de 2 minutes, la pénalité est annulée et l'équipe adverse doit remettre le joueur en jeu. Ceci ne s'applique pas aux pénalités de 5 et 10 minutes<br><br>
-            - Une pénalité en prolongation ou immédiatement avant la prolongation entraîne une situation de 4 contre 3 dès le début de la prolongation,
-            car le jeu est normalement à 4 contre 4 (joueurs de champ)
+            - <label class="importantWord">Slashing</label> : frapper un joueur avec une crosse <br><br>
+            - <label class="importantWord">Crosse haute</label> : crosse tenue au-dessus de la hauteur normale des épaules<br><br>
+            - <label class="importantWord">Charge avec la crosse</label> : plaquage avec les deux mains sur la crosse<br><br>
+            - <label class="importantWord">Piquage</label> : poignarder comme une lance<br><br>
+            - <label class="importantWord">Harponner</label> : frapper avec le bout du manche de son bâton<br><br>
+            - <label class="importantWord">Retenir</label> : Retenir avec la main/la crosse son adversaire<br><br>
+            - <label class="importantWord">Accrocher</label> : Attraper l'adversaire avec sa crosse<br><br>
+            - <label class="importantWord">Obstruction</label> : entraver le mouvement de l'adversaire<br><br>
+            - <label class="importantWord">Retard de jeu</label><br><br>
+            - <label class="importantWord">Continuer à jouer avec la crosse cassée</label><br><br>
+            - <label class="importantWord">Attraper le palet</label> sans le lancer immédiatement<br><br>
+            - <label class="importantWord">Trop de joueurs</label> sur la glace (mauvaise procédure de remplacement)<br><br>
+            - <label class="importantWord">Sortir trop tôt de la surface de réparation</label><br><br>
+            - <label class="importantWord">Charge incorrecte</label> : plaquage avec violence<br><br>
+            - <label class="importantWord">Charge</label> contre la tête/nuque/dos : Coup à la tête, au cou ou au dos<br><br>
+            - <label class="importantWord">Projection contre la bande</label> : plaquage sur la ligne<br><br>
+            - <label class="importantWord">Coude</label> : plaquage avec le coude<br><br>
+            - <label class="importantWord">Faire trébucher</label> : croche pied<br><br>
+            - <label class="importantWord">Coups de genou</label> : tacle avec le genou<br><br>
+            - <label class="importantWord">Coups de poing</label> : fighting<br><br>
+            - <label class="importantWord">Coups de pieds</label><br><br>
+            - <label class="importantWord">Faucher les patins</label> : faire trébucher l'adversaire avec une jambe arrière
         </label>
     </div>
     <a id="ancrePenalites"></a>
@@ -59,59 +56,45 @@
             Penalites
         </label>
         <label class="contentText">
-            Afin de rendre le jeu le plus fluide possible, le jeu n'est jamais arrêté pour un simple avertissement
+            Afin de rendre le jeu le plus fluide possible, le jeu n'est <u>jamais arrêté pour un simple avertissement</u>
             <br> <br> <br>
-            Si une faute est commise, elle donne lieu à un pénalité. La durée peut varier de 2, 5 ou 10 minutes, voire le match entier,
-            et l'arbitre signale le type de pénalité à donner. Lorsqu'une pénalité est donnée, le joueur doit prendre place dans le banc des pénalités,
+            Si une faute est commise, elle donne lieu à une <label class="importantWord">pénalité</label>
+            <br> <br> <br>
+            La durée peut varier de <label class="importantWord">2</label>, <label class="importantWord">5</label> ou <label class="importantWord">10 minutes</label>, voire le <label class="importantWord">match entier</label>,
+            et l'arbitre signale le type de pénalité à donner
+            <br> <br> <br>
+            Lorsqu'une pénalité est donnée, le joueur doit prendre place dans le <label class="importantWord">banc des pénalisés</label>,
             du côté opposé aux bancs des remplaçants
             <br> <br> <br>
-            Une pénalité est accordée dès que l'équipe fautive prend possession du palet après que la faute a été commise
+            Une pénalité est accordée dès que l'équipe fautive prend possession du palet <u>après que la faute ait été commise</u> : L'arbitre signale alors une pénalité retardée
             <br> <br> <br>
-            L'arbitre signale alors une pénalité retardée. Si l'équipe adverse conserve le palet, elle a donc la possibilité d'éliminer le gardien,
-            d'insérer un marqueur supplémentaire et de jouer ainsi la prolongation jusqu'à ce qu'elle perde le contrôle du palet et que la véritable période de jeu commence
+            Si l'équipe adverse conserve le palet, elle a donc la possibilité d'<label class="importantWord">éliminer</label> le gardien,
+            d'<label class="importantWord">insérer</label> un marqueur supplémentaire et de jouer ainsi la prolongation jusqu'à ce qu'elle perde le contrôle du palet et que la véritable période de jeu commence
             <br> <br> <br>
-            Une pénalité peut être donnée à des joueurs à la fois sur la glace et sur le banc des remplaçants, dans ce dernier cas, il s'agit d'une pénalité d'équipe
+            Une pénalité peut être donnée à des joueurs à la fois <label class="importantWord">sur la glace</label> et <label class="importantWord">sur le banc des remplaçants</label>, dans ce dernier cas, il s'agit d'une <label class="importantWord">pénalité d'équipe</label>
             <br> <br> <br>
-            Si un but est marqué pendant l'attente d'une pénalité, celui-ci est annulé. Si un double avertissement est commis, la première faute est annulée
+            Si un but est marqué pendant l'attente d'une pénalité, celui-ci est <label class="importantWord">annulé</label>
             <br> <br> <br>
-            Cependant, cette règle ne s'applique qu'aux pénalités habituelles de 2 minutes, une pénalité de 5 minutes, une pénalité pour comportement antisportif
-            et une pénalité de match doivent s'appliquer même si un but est marqué pendant que la pénalité est en cours
+            Si un <label class="importantWord">double avertissement</label> est commis, la première faute est <label class="importantWord">annulée</label>
+            Cependant, cette règle ne s'applique qu'aux pénalités habituelles de 2 minutes
             <br> <br> <br>
-            Une pénalité de match, outre le fait qu'elle oblige le joueur à regarder le reste du match depuis les tribunes, entraîne également une interdiction d'un jour de match au minimum pour le joueur
+            une pénalité de 5 minutes, une pénalité pour comportement antisportif
+            et une pénalité de match doivent s'appliquer <u>même si un but est marqué pendant que la pénalité est en cours</u>
             <br> <br> <br>
-            La durée d'une exclusion est déterminée à la fois par le type de faute et par la gravité/l'imprudence avec laquelle elle a été commise
+            Une pénalité de match, outre le fait qu'elle oblige le joueur à regarder le reste du match depuis les tribunes, entraîne également une <label class="importantWord">interdiction d'un jour de match au <u>minimum</u></label> pour le joueur
             <br> <br> <br>
-            Si une équipe reçoit 2 pénalités en prolongation, les adversaires doivent remettre le 5ème marqueur sur le terrain,
+            La durée d'une exclusion est déterminée à la fois par le <label class="importantWord">type de faute</label> et par la <label class="importantWord">gravité</label>/<label class="importantWord">l'imprudence</label> avec laquelle elle a été commise
+            <br> <br> <br>
+            Si une équipe reçoit <label class="importantWord">2 pénalités</label> en prolongation, les adversaires doivent <u>remettre</u> le <label class="importantWord">5ème marqueur</label> sur le terrain,
             car il n'est pas possible de jouer avec moins de 3 marqueurs dans une équipe, même en temps normal
             <br> <br> <br>
             S'il n'y a que 3 joueurs sur la glace,
-            mais 3 pénalités en même temps, la dernière pénalité n'est pas prise avant l'expiration de la première
-
-            Vous pouvez être expulsé pour un grand nombre de violations de règles différentes, qui concernent par exemple :
-            Slashing : frapper un joueur avec une crosse
-            Crosse haute : crosse tenue au-dessus de la hauteur normale des épaules
-            Charge avec la crosse : plaquage avec les deux mains sur la crosse
-            Piquage : poignarder comme une lance
-            Harponner : frapper avec le bout du manche de son bâton
-            Retenir : Retenir avec la main/la crosse son adversaire
-            Accrocher : Attraper l'adversaire avec sa crosse
-            Obstruction : entraver le mouvement de l'adversaire
-            Retard de jeu
-            Continuer à jouer avec la crosse cassée
-            Attraper le palet sans le lancer immédiatement
-            Trop de joueurs sur la glace (mauvaise procédure de remplacement)
-            Sortir trop tôt de la surface de réparation
-            Charge incorrecte : plaquage avec violence
-            Charge contre la tête/nuque/dos : Coup à la tête, au cou ou au dos
-            Projection contre la bande : plaquage sur la ligne
-            Coude : plaquage avec le coude
-            Faire trébucher : croche pied
-            Coup de genou : tacle avec le genou
-            Coups de poing : Fighting
-            Coup de pied
-            Faucher les patins : faire trébucher l'adversaire avec une jambe arrière
-            Si l'équipe en avantage numérique marque pendant une pénalité de 2 minutes, la pénalité est annulée et l'équipe adverse doit remettre le joueur en jeu. Ceci ne s'applique pas aux pénalités de 5 et 10 minutes
-            Une pénalité en prolongation ou immédiatement avant la prolongation entraîne une situation de 4 contre 3 dès le début de la prolongation,
+            mais 3 pénalités en même temps, la dernière pénalité <u>n'est pas prise avant l'expiration</u> de la première
+            <br> <br> <br>
+            Si l'équipe en avantage numérique marque pendant une pénalité de 2 minutes, la pénalité est <label class="importantWord">annulée</label> et l'équipe adverse doit remettre le
+            joueur en jeu : ceci <u>ne s'applique pas</u> aux <label class="importantWord">pénalités de 5 et 10 minutes</label>
+            <br> <br> <br>
+            Une pénalité en prolongation ou immédiatement avant la prolongation entraîne une situation de <label class="importantWord">4 contre 3</label> dès le début de la prolongation,
             car le jeu est normalement à 4 contre 4 (joueurs de champ)
         </label>
     </div>
