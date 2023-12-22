@@ -36,7 +36,9 @@
             Les règles sont les suivantes : le joueur en défense doit être <label class="importantWord">le premier à placer sa crosse</label> lors d'une mise en jeu dans sa propre
             zone défensive, <u>alors que</u> c'est l'équipe en déplacement qui est tenue de le faire lors d'une <label class="importantWord">mise en jeu dans la zone neutre</label>
             <br> <br> <br>
-            L'arbitre (noir/blanc) laisse le palet tomber entre les deux joueurs qui utilisent la crosse pour prendre le palet
+            <img class="illustration" src="../../../public/assets/ressources/illustrationsRegles/miseEnJeu.png">
+            <br> <br>
+            L'arbitre (<label class="blackWord">noir</label>/<label class="whiteWord">blanc</label>) laisse le palet tomber entre les deux joueurs qui utilisent la crosse pour prendre le palet
             <br> <br> <br>
             En général, le palet est libéré à partir du <label class="importantWord">cercle de mise en jeu</label> <u>le plus proche</u> sur la patinoire où il se trouvait
             avant qu'il ne passe par-dessus la bande ou qu'une faute ne soit commise par un joueur
@@ -45,8 +47,7 @@
             doit être remis en jeu : cela dépend de son emplacement au <label class="importantWord">moment de l'arrêt de jeu</label> et de l'équipe qui était en
             possession du palet, et non de l'endroit où le joueur a été blessé sur la glace.
             <br> <br> <br>
-            Si l'équipe du joueur blessé était en possession du palet dans sa zone d'attaque, la mise au jeu a lieu dans l'un des <label class="importantWord">cercles situés à l'extérieur de la
-                ligne bleue</label> dans cette même zone d'attaque
+            Si l'équipe du joueur blessé était en possession du palet dans sa zone d'attaque, la mise au jeu a lieu dans l'un des <label class="importantWord">cercles situés à l'extérieur de la ligne bleue</label> dans cette même zone d'attaque
             <br> <br> <br>
             Toutefois, s'ils l'ont dans la <label class="importantWord">zone neutre</label>, la mise-en-jeu est effectuée
             au cercle de la zone neutre <label class="importantWord">la plus proche de l'arrêt de jeu</label>
@@ -71,9 +72,11 @@
             Cependant, il est toujours permis de tirer le palet <label class="importantWord">derrière la ligne de but de l'adversaire</label> à partir d'une position dans votre propre moitié de patinoire dans une situation
             d'impuissance sans causer d'icing, car cela <u>n'est pas considéré</u> comme un temps mort, mais comme une tentative de défendre coûte que coûte
             <br> <br> <br>
-            La situation ici est de prétendre que le joueur attaquant (orange) tire le palet <label class="importantWord">derrière la ligne de but</label>
-            <br> <br> <br>
-            Comme le défenseur (vert) atteint le palet en premier, l'icing est décidé
+            <img class="illustration" src="../../../public/assets/ressources/illustrationsRegles/icing.png">
+            <br> <br>
+            La situation ici est de prétendre que le <label class="orangeWord">joueur attaquant</label> tire le palet derrière la ligne de but
+            <br> <br>
+            Comme le <label class="greenWord">défenseur</label> atteint le palet en premier, l'icing est décidé
             <br> <br> <br>
             Alors qu'un <label class="importantWord">icing</label> est toujours en cours, l'arbitre de ligne doit maintenant faire <label class="importantWord">deux jugements</label> en une fraction de seconde : le
             palet a-t-il suffisamment de <label class="importantWord">vitesse</label> pour franchir la ligne de but ? Et si c'est le cas, le joueur qui défend ou
@@ -103,7 +106,9 @@
             On mesure la <label class="importantWord">position des patins</label>,
             si <label class="importantWord">un seul patin</label> se trouve en <label class="importantWord">zone neutre</label>, aucun hors-jeu n'est prononcé, même si l'autre se trouve en <label class="importantWord">zone d'attaque</label>
             <br> <br> <br>
-            Lorsque le <label class="importantWord">meneur du palet</label> entre dans la zone avant son coéquipier, aucun hors-jeu n'est signalé et l'attaque peut se <label class="importantWord">poursuivre</label>
+            <img src="../../../public/assets/ressources/illustrationsRegles/notHorsJeu.gif" class="illustration">
+            <br> <br>
+            Lorsque le <label class="orangeWord">meneur du palet</label> entre dans la zone avant son <label class="orangeWord">coéquipier</label>, aucun hors-jeu n'est signalé et l'attaque peut se <label class="importantWord">poursuivre</label>
             <br> <br> <br>
             La règle du <label class="importantWord">hors-jeu</label> a été inventée pour <label class="importantWord">éliminer la possibilité de placer un joueur au milieu</label>, qui est censé attendre le palet
             <br> <br> <br>
@@ -111,7 +116,9 @@
             un joueur peut être <label class="importantWord">en attente de hors-jeu dans la zone offensive lorsqu'il y gagne le palet</label> : le hors-jeu est alors jugé d'abord
             si le joueur <label class="importantWord">zigzague vers l'arrière en zone neutre et vers l'avant à nouveau avec le palet</label> si ses coéquipiers sont déjà en zone offensive
             <br> <br> <br>
-            Décision de hors-jeu car le coéquipier entre en zone offensive avant le joueur meneur du palet (orange)
+            <img class="illustration" src="../../../public/assets/ressources/illustrationsRegles/horsJeu.gif">
+            <br> <br>
+            Décision de hors-jeu car le <label class="orangeWord">coéquipier</label> entre en zone offensive avant le joueur <label class="orangeWord">meneur du palet</label>
             <br> <br> <br>
             Un hors-jeu entraîne généralement une <label class="importantWord">mise en jeu en zone médiane</label>
         </label>

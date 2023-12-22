@@ -134,7 +134,7 @@ nav a {
 
 .contentText {
     color: white;
-    text-align: left;
+    text-align: center;
     padding: 5vw;
     font-family: 'Roboto Condensed', sans-serif;
     text-transform: uppercase;
@@ -143,4 +143,25 @@ nav a {
 
 .importantWord {
     color: #00CCFF;
+}
+
+.illustration {
+    border: solid dodgerblue 1vw;
+    width: 50vw;
+}
+
+.blackWord {
+    color: dimgrey;
+}
+
+.whiteWord {
+    color: antiquewhite;
+}
+
+.orangeWord {
+    color: orange;
+}
+
+.greenWord {
+    color: forestgreen;
 }
