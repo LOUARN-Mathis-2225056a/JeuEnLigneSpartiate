@@ -10,7 +10,6 @@ class Login
 {
     public function execute():void
     {
-        echo "feur controlleuer";
         (new loginView())->show();
     }
 
@@ -24,13 +23,13 @@ class Login
     public function login(array $postData): void
     {
         if (isset($_SESSION['password'])) {
-            header('Location: /home');
+            header('Location: /tableau-de-bord');
             exit();
         }
         $email = htmlspecialchars($postData['email']);
         $mdp = htmlspecialchars($postData['mdp']);
         $admin = new Administrateur($this->PDO);
-        if (!empty($username) && !empty($mdp))
+        if (!empty($email) && !empty($mdp))
         {
             $adminData = $admin->getAdministrateur($email);
             if ($adminData !== null)
@@ -39,12 +38,15 @@ class Login
                 {
                     $_SESSION['email'] = $adminData['email'];
                     $_SESSION['mdp'] = $adminData['mdp'];
-                    header('Location: /accueil');
+                    $_SESSION['login'] = true;
+                    header('Location: /tableau-de-bord');
                     exit();
                 } else {
                     $errorMessage = 'Votre mot de passe est incorrect...';
                     $_SESSION['errorMessage'] = $errorMessage;
-                    header('Location: /admin');
+                    echo $mdp;
+                    echo '\n' . password_hash($mdp, PASSWORD_BCRYPT);
+//                    header('Location: /login');
                     exit();
                 }
             } else {

@@ -22,14 +22,14 @@ class Login
 
             <label>User Name</label>
 
-            <input type="text" name="email" placeholder="Email"><br>
+            <input type="text" id="email" name="email" placeholder="Email"><br>
 
             <label>Password</label>
 
-            <input type="password" name="mdp" placeholder="Mot De Passe"><br>
+            <input type="password" id="mdp" name="mdp" placeholder="Mot De Passe"><br>
 
             <button type="submit" name="login" value="Login">Login</button>
-
+            <?= $_SESSION['errorMessage']?>
         </form>
         <?php
         (new ModelePage('Login', ob_get_clean(), 'login'))->show();
