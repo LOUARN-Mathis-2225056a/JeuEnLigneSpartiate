@@ -46,7 +46,7 @@ class Login
                     $_SESSION['errorMessage'] = $errorMessage;
                     echo $mdp;
                     echo '\n' . password_hash($mdp, PASSWORD_BCRYPT);
-//                    header('Location: /login');
+                    header('Location: /login');
                     exit();
                 }
             } else {

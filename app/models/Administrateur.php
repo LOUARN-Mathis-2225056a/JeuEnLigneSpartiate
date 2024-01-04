@@ -11,7 +11,7 @@ class Administrateur
         $requete = 'SELECT * FROM admin WHERE email = ?';
         $statement = $this->connection->prepare($requete);
         if (!$statement) {
-            error_log('Impossible de faire le statement');
+            error_log('Impossible d\'obtenir les infos sur l\'administrateurs');
             return null;
         }
 

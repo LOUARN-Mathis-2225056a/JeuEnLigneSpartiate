@@ -1,6 +1,7 @@
 <?php
 
 namespace config;
+
 error_reporting(E_ERROR | E_PARSE);
 use PDO;
 
@@ -41,5 +42,52 @@ class BaseDeDonnee
             return null;
         }
         $statement->execute([$_SESSION['pseudoJoueur']]);
+    }
+    public static function resetScore()
+    {
+        self::getConnection();
+        $requete = 'DELETE FROM tablejeu';
+        $statement = self::$connection->prepare($requete);
+        if (!$statement) {
+            error_log('Impossible de supprimer le contenu de la table');
+            return null;
+        }
+        $statement->execute();
+    }
+    public static function getTableauDesScores(): ?array
+    {
+        $requete = 'SELECT * FROM tablejeu ORDER BY score DESC ';
+        $statement = self::$connection->prepare($requete);
+        if (!$statement) {
+            error_log('Impossible d\'effectuer la requête pour le tableau des scores');
+            return null;
+        }
+        $statement->execute();
+        $reponseServeur = $statement->fetch(PDO::FETCH_ASSOC);
+        $tableauDesScores = [$reponseServeur['pseudo'],$reponseServeur['score']];
+        return $tableauDesScores;
+    }
+    public static function getCodeJeuActuel()
+    {
+        self::getConnection();
+        $requete = 'SELECT * FROM CodeJeu';
+        $statement = self::$connection->prepare($requete);
+        if (!$statement) {
+            error_log('Impossible d\'effectuer la requête pour avoir le code de session');
+            return null;
+        }
+        $statement->execute();
+        $reponseServeur = $statement->fetch(PDO::FETCH_ASSOC);
+        $_SESSION['codeJeu'] = $reponseServeur['codeJeuActuel'];
+    }
+    public static function miseAJourDuCodeJeu(string $code)
+    {
+        $requete = 'UPDATE CodeJeu SET codeJeuActuel = ? ';
+        $statement = self::$connection->prepare($requete);
+        if (!$statement) {
+            error_log('Impossible d\'effectuer l\'update du code de Jeu');
+            return null;
+        }
+        $statement->execute([$code]);
     }
 }
