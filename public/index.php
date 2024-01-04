@@ -41,5 +41,3 @@ try {
 }catch (Exception){
 
 }
-
-echo 'APP_PATH value : ' .  APP_PATH ;

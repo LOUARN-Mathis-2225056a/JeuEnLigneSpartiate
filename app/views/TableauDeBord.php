@@ -36,6 +36,7 @@ class TableauDeBord {
                         // location.reload();
                         const resultEl = document.querySelector('.codeJeu');
                         resultEl.textContent = 'code de jeu actuel : ' + json.value;
+                        button.disabled = false;
                         console.log(json); // Here you can process the JSON response
                     })
                     .catch(error => {
