@@ -10,7 +10,7 @@ class Login
     {
         ob_start();
         ?>
-        <form action="" method="post">
+        <form method="post">
 
             <label class="title">LOGIN ADMIN</label>
 
