@@ -21,6 +21,17 @@ class BaseDeDonnee
         }
         return self::$connection;
     }
+    public static function ajouterQuestion($question,$vrai,$faux,$faux2)
+    {
+        self::getConnection();
+        $requete = 'INSERT INTO questions (question, vrai, faux, faux2) VALUES ( ?, ? , ? , ? )';
+        $statement = self::$connection->prepare($requete);
+        if (!$statement) {
+            error_log('Impossible d\'insérer la question');
+            return null;
+        }
+        $statement->execute([$question,$vrai,$faux,$faux2]);
+    }
     public static function getQuestion(int $id): ?array
     {
         $requete = 'SELECT * FROM questions WHERE id = ? ';

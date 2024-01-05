@@ -1,15 +1,17 @@
 <?php
 
-namespace app\views;
+namespace app\views\TableauDeBord;
 use app\models\ModelePage;
+
 class TableauDeBord {
 
     public function show(): void {
         ob_start();
         ?>
 
-        <button type="submit" name="creerSalle" value="TableauDeBord" onclick="doAjaxRequest(this)">CLick creerSalle BTN</button>
+        <button type="submit" name="creerSalle" value="TableauDeBord" onclick="doAjaxRequest(this)">Créer une salle</button>
         <p class="codeJeu">code de jeu actuel : <?php echo $_SESSION['codeJeu']; ?></p>
+        <button onclick="location.href = '/tableau-de-bord/ajout-questions'">Ajouter des questions</button>
 
         <script>
             function doAjaxRequest(button) {
@@ -17,7 +19,7 @@ class TableauDeBord {
                 button.disabled = true;
                 const buttonValue = button.value; // We get the value of the button
                 const data = new URLSearchParams();
-                data.append("createSomthing", buttonValue);
+                data.append("changerCodeJeu", buttonValue);
 
                 fetch("/ajax.php", {
                     method: "POST",
@@ -41,6 +43,7 @@ class TableauDeBord {
                     })
                     .catch(error => {
                         console.error('Error in execution of the request:', error);
+
                     });
             }
         </script>

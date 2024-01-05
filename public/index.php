@@ -4,7 +4,8 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use app\controllers\Login as loginController;
 use app\controllers\PageIntrouvable as pageIntrouvableController;
-use app\controllers\TableauDeBord as tableauDeBordController;
+use app\controllers\TableauDeBord\TableauDeBord as tableauDeBordController;
+use app\controllers\TableauDeBord\AjoutQuestion as ajoutQuestionsController;
 
 //use app\controllers\Quizz as quizzController;
 session_start();
@@ -14,9 +15,6 @@ try {
     if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_POST['login'])) {
             (new LoginController())->login($_POST);
-        }
-        if(isset($_POST['creerSalle']) && $_POST['creerSalle']=='TableauDeBord'){
-            (new tableauDeBordController())->creerSalle();
         }
     }
 
@@ -28,10 +26,19 @@ try {
                 (new loginController())->execute();
                 break;
             case 'tableau-de-bord':
-                (new tableauDeBordController())->execute();
+                switch($route[1]){
+                    case '':
+                        (new tableauDeBordController())->execute();
+                        break;
+                    case 'ajout-questions':
+                        (new ajoutQuestionsController())->execute();
+                        break;
+                }
                 break;
+
             case $_SESSION['codeJeu']:
                 //(new quizzController())->execute();
+                echo 'cest la page jeu prime';
                 break;
             default:
                 (new pageIntrouvableController())->execute();

@@ -1,10 +1,11 @@
 <?php
 
-namespace app\controllers;
-use app\views\TableauDeBord as tableauDeBordView;
+namespace app\controllers\TableauDeBord;
+use app\views\TableauDeBord\TableauDeBord as tableauDeBordView;
 use config\BaseDeDonnee as BDD;
-require __DIR__ . '/../../vendor/autoload.php';
 
+require_once __DIR__ . '/../../../vendor/autoload.php';
+//include 'app/dependences/phpqrcode/qrlib.php';
 class TableauDeBord
 {
     public function execute(): void {
@@ -29,6 +30,15 @@ class TableauDeBord
     {
         BDD::resetScore();
         BDD::miseAJourDuCodeJeu(self::generateurNomAleatoire(4));
+    }
+
+    public static function ajoutQuestion($donneePOST):void
+    {
+        BDD::ajouterQuestion(
+            htmlspecialchars($donneePOST['question']),
+            htmlspecialchars($donneePOST['vrai']),
+            htmlspecialchars($donneePOST['faux']),
+            htmlspecialchars($donneePOST['faux2']));
     }
 
 }
