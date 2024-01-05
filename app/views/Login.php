@@ -12,7 +12,7 @@ class Login
         ?>
         <form action="" method="post">
 
-            <h2>LOGIN</h2>
+            <label class="title">LOGIN ADMIN</label>
 
             <?php if (isset($_GET['error'])) { ?>
 
@@ -20,13 +20,18 @@ class Login
 
             <?php } ?>
 
-            <label>User Name</label>
+            <div>
+                <label>E-mail</label>
 
-            <input type="text" id="email" name="email" placeholder="Email"><br>
+                <input type="text" id="email" name="email" placeholder="E-mail">
+            </div>
 
-            <label>Password</label>
+            <div>
+                <label>Mot de passe</label>
 
-            <input type="password" id="mdp" name="mdp" placeholder="Mot De Passe"><br>
+                <input type="password" id="mdp" name="mdp" placeholder="Mot de passe">
+            </div>
+
 
             <button type="submit" name="login" value="Login">Login</button>
             <?= $_SESSION['errorMessage']?>
