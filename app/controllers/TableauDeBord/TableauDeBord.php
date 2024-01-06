@@ -9,12 +9,9 @@ require_once __DIR__ . '/../../../vendor/autoload.php';
 class TableauDeBord
 {
     public function execute(): void {
-        if ( isset( $_SESSION['login'] ) ) {
-            $_SESSION['creerSalleReponse'] = '';
-            ( new tableauDeBordView() )->show();
-        } else {
-            header( 'Location: /login' );
-        }
+
+        $_SESSION['creerSalleReponse'] = '';
+        ( new tableauDeBordView() )->show();
     }
     public static function generateurNomAleatoire(int $longueur):string
     {

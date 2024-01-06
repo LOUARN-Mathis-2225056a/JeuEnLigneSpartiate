@@ -13,6 +13,7 @@ class TableauDeBord {
         <p class="codeJeu">code de jeu actuel<br><label class="code"><?php echo $_SESSION['codeJeu']; ?></label></p>
         <button onclick="location.href = '/tableau-de-bord/ajout-questions'">Ajouter des questions</button>
         <button onclick="location.href = '/tableau-de-bord/liste-questions'">Liste des questions</button>
+        <button onclick="location.href = '/tableau-de-bord/modifier-questions'">Modifier des questions</button>
 
         <script>
             function doAjaxRequest(button) {

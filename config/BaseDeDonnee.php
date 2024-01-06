@@ -34,6 +34,7 @@ class BaseDeDonnee
     }
     public static function getQuestion(int $id): ?array
     {
+        self::getConnection();
         $requete = 'SELECT * FROM questions WHERE id = ? ';
         $statement = self::$connection->prepare($requete);
         if (!$statement) {
@@ -43,6 +44,19 @@ class BaseDeDonnee
         $statement->execute([$id]);
         $reponseServeur = $statement->fetch(PDO::FETCH_ASSOC);
         return [$reponseServeur['question'],[$reponseServeur['vrai'],$reponseServeur['faux'],$reponseServeur['faux2']]];
+    }
+    public static function getTousLesID():?array
+    {
+        self::getConnection();
+        $requete = 'SELECT id FROM questions';
+        $statement = self::$connection->prepare($requete);
+        if (!$statement) {
+            error_log('Impossible de récuperer tous les ID');
+            return null;
+        }
+        $statement->execute();
+        $reponseServeur = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
+        return $reponseServeur;
     }
     public static function updateScore()
     {

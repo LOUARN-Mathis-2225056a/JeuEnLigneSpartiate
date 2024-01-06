@@ -38,7 +38,7 @@ class Login
                 {
                     $_SESSION['email'] = $adminData['email'];
                     $_SESSION['mdp'] = $adminData['mdp'];
-                    $_SESSION['login'] = true;
+                    $_SESSION['connecte'] = true;
                     header('Location: /tableau-de-bord');
                     exit();
                 } else {

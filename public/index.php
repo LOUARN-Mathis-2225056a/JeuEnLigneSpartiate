@@ -5,9 +5,9 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use app\controllers\Login as loginController;
 use app\controllers\PageIntrouvable as pageIntrouvableController;
 use app\controllers\TableauDeBord\TableauDeBord as tableauDeBordController;
-use app\controllers\TableauDeBord\AjoutQuestion as ajoutQuestionsController;
+use app\controllers\TableauDeBord\AjoutQuestions as ajoutQuestionsController;
 use app\controllers\TableauDeBord\ListeDesQuestions as listeDesQuestionsController;
-use app\controllers\TableauDeBord\ModifierQuestion as modifierQuestionController;
+use app\controllers\TableauDeBord\ModifierQuestions as modifierQuestionsController;
 
 //use app\controllers\Quizz as quizzController;
 session_start();
@@ -28,6 +28,7 @@ try {
                 (new loginController())->execute();
                 break;
             case 'tableau-de-bord':
+                if(!isset($_SESSION['connecte'])) header('Location: /login');
                 switch($route[1]){
                     case '':
                         (new tableauDeBordController())->execute();
@@ -38,8 +39,8 @@ try {
                     case 'liste-questions':
                         (new listeDesQuestionsController())->execute();
                         break;
-                    case 'modifier-question':
-                        (new modifierQuestionController())->execute();
+                    case 'modifier-questions':
+                        (new modifierQuestionsController())->execute();
                 }
                 break;
 

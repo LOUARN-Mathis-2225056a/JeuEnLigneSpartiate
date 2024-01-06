@@ -4,7 +4,7 @@ namespace app\views\TableauDeBord;
 
 use app\models\ModelePage;
 
-class ModifierQuestion
+class ModifierQuestions
 {
     public function show():void
     {
