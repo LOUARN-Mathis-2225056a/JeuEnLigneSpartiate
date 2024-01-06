@@ -6,6 +6,7 @@ use app\controllers\Login as loginController;
 use app\controllers\PageIntrouvable as pageIntrouvableController;
 use app\controllers\TableauDeBord\TableauDeBord as tableauDeBordController;
 use app\controllers\TableauDeBord\AjoutQuestion as ajoutQuestionsController;
+use app\controllers\TableauDeBord\ListeDesQuestions as listeDesQuestionsController;
 
 //use app\controllers\Quizz as quizzController;
 session_start();
@@ -32,6 +33,9 @@ try {
                         break;
                     case 'ajout-questions':
                         (new ajoutQuestionsController())->execute();
+                        break;
+                    case 'liste-questions':
+                        (new listeDesQuestionsController())->execute();
                         break;
                 }
                 break;

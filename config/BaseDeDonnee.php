@@ -101,4 +101,22 @@ class BaseDeDonnee
         }
         $statement->execute([$code]);
     }
+
+    public static function getTouteLesQuestions(): ?array
+    {
+        self::getConnection();
+        $questions = [];
+        for ($i = 0; $i < 5; $i++) {
+            $requete = 'SELECT * FROM questions';
+            $statement = self::$connection->prepare($requete);
+            if (!$statement) {
+                error_log('Impossible d\'obtenir les questions');
+                return null;
+            }
+            $statement->execute();
+            $questions[$i] = $statement->fetchAll(PDO::FETCH_COLUMN, $i);
+        }
+
+        return $questions;
+    }
 }

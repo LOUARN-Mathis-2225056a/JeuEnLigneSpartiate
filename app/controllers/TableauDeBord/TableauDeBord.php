@@ -49,4 +49,9 @@ class TableauDeBord
         }
     }
 
+    public static function getTouteLesQuestions():?array
+    {
+        return BDD::getTouteLesQuestions();
+    }
+
 }
