@@ -54,4 +54,9 @@ class TableauDeBord
         return BDD::getTouteLesQuestions();
     }
 
+    public static function supprimerQuestion($donneePost):void
+    {
+        BDD::supprimerQuestion($donneePost['supprimerQuestion']);
+    }
+
 }

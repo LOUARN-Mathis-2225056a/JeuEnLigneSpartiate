@@ -119,4 +119,16 @@ class BaseDeDonnee
 
         return $questions;
     }
+
+    public static function supprimerQuestion($id)
+    {
+        self::getConnection();
+        $requete = 'DELETE FROM questions WHERE id = ?';
+        $statement = self::$connection->prepare($requete);
+        if (!$statement) {
+            error_log('Impossible d\'obtenir les questions');
+            return null;
+        }
+        $statement->execute([$id]);
+    }
 }

@@ -40,5 +40,18 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
         echo json_encode( $reponse );
         exit;
     }
+    if (isset($_POST['supprimerQuestion'])){
+
+        TableauDeBord::supprimerQuestion($_POST);
+
+        $id = $_POST['supprimerQuestion'];
+
+        $reponse = array(
+            'message' => 'Le bouton d\'id : ' . $id . ' a été cliqué',
+            'status'  => true,
+        );
+        echo json_encode( $reponse );
+        exit;
+    }
 
 }
