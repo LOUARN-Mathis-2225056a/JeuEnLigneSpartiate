@@ -7,20 +7,20 @@ use config\BaseDeDonnee;
 
 header( 'Content-Type: application/json' );
 
-if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-    if ( isset( $_POST['changerCodeJeu'] ) ) {
-        // Here you parse the button value and return the result in JSON format
+if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) { //si c'est une méthode POST
+    if ( isset( $_POST['changerCodeJeu'] ) ) { //une variable qu'on définie comme on veut pour executer la bonne partie de code
+        //on execute le code qu'on veut executer
         $nomBouton = $_POST['changerCodeJeu'];
-
         (new TableauDeBord())->creerSalle();
         BaseDeDonnee::getCodeJeuActuel();
 
+        //écriture de la réponse en JSON (syntaxe a respecter).
         $reponse = array(
-            'message' => 'Le bouton ' . $nomBouton . ' a été cliqué',
-            'value' => $_SESSION['codeJeu'],
-            'status'  => true,
+            'message' => 'Le bouton ' . $nomBouton . ' a été cliqué', //message qu'on veut faire passer (mis dans la console du navigateur)
+            'value' => $_SESSION['codeJeu'], //un valeur qu'on return
+            'status'  => true, //aucune idée de ce que c'est mais c'est là
         );
-        echo json_encode( $reponse );
+        echo json_encode( $reponse ); //très important sinon on renvoi pas la réponse au client :3
         exit;
     }
     if ( isset( $_POST['ajouterQuestion'] ) ) {
