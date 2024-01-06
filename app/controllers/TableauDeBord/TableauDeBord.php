@@ -16,7 +16,7 @@ class TableauDeBord
     }
     public static function generateurNomAleatoire(int $longueur):string
     {
-        $alphabet = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $alphabet = '123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $nom = '';
         for ($i = 0; $i < $longueur; $i++) {
             $nom = $nom . $alphabet[random_int(0,strlen($alphabet))-1];
