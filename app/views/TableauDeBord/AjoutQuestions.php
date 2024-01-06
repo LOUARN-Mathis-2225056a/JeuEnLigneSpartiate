@@ -26,7 +26,6 @@ class AjoutQuestions
 
         <script>
             function doAjaxRequest(button) {
-                // The button is switched off to prevent it from being clicked again.
                 button.disabled = true;
                 const data = new URLSearchParams();
                 const question = document.getElementById('question').value;

@@ -8,6 +8,7 @@ class AjoutQuestions
 {
     public function execute():void
     {
+        unset($_SESSION['erreurAjouterQuestion']);
         unset($_SESSION['ajouterQuestion']);
         (new ajoutQuestionsView())->show();
     }

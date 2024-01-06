@@ -10,7 +10,8 @@ class TableauDeBord
 {
     public function execute(): void {
 
-        $_SESSION['creerSalleReponse'] = '';
+        unset($_SESSION['creerSalleReponse']);
+
         ( new tableauDeBordView() )->show();
     }
     public static function generateurNomAleatoire(int $longueur):string

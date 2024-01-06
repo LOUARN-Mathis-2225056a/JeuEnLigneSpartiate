@@ -7,6 +7,7 @@ class ModifierQuestions
     public function execute():void
     {
         unset($_SESSION['erreurModificationQuestion']);
+        unset($_SESSION['modifierQuestion']);
         (new modifierQuestionView())->show();
     }
 }
