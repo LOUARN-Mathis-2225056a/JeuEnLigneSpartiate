@@ -9,8 +9,8 @@ class TableauDeBord {
         ob_start();
         ?>
 
-        <button type="submit" name="creerSalle" value="TableauDeBord" onclick="doAjaxRequest(this)">Créer une salle</button>
-        <p class="codeJeu">code de jeu actuel : <?php echo $_SESSION['codeJeu']; ?></p>
+        <button type="submit" name="creerSalle" value="TableauDeBord" onclick="doAjaxRequest(this)">CREER UNE SALLE</button>
+        <p class="codeJeu">code de jeu actuel<br><label class="code"><?php echo $_SESSION['codeJeu']; ?></label></p>
         <button onclick="location.href = '/tableau-de-bord/ajout-questions'">Ajouter des questions</button>
 
         <script>
@@ -36,8 +36,8 @@ class TableauDeBord {
                     })
                     .then(json => {
                         // location.reload();
-                        const resultEl = document.querySelector('.codeJeu');
-                        resultEl.textContent = 'code de jeu actuel : ' + json.value;
+                        const resultEl = document.querySelector('.code');
+                        resultEl.textContent = json.value;
                         button.disabled = false;
                         console.log(json); // Here you can process the JSON response
                     })
