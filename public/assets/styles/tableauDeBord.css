@@ -1,19 +1,4 @@
 body {
-    height: 100vh;
-    width: 100vw;
-    border: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: nowrap;
-    background-image: url("../ressources/background1.jpeg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    margin: 0;
-    padding: 0;
-
     color: white;
     font-family: 'Roboto Condensed', sans-serif;
 }

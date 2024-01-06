@@ -9,15 +9,30 @@ class ListeDesQuestions
     public function show():void
     {
         ob_start();
-        $question = TableauDeBord::getTouteLesQuestions();
-        for ($id = 0; $id < sizeof($question[0]); $id++) {
-            echo '<p>' . $question[0][$id] . ' '
-                . $question[1][$id] . ' '
-                . $question[2][$id] . ' '
-                . $question[3][$id] . ' '
-                . $question[4][$id] . '<button id= '. $question[0][$id] . ' onclick="doAjaxRequest(this) "> supprimer la question</button> </p>';
-        }
-        ?>
+        $question = TableauDeBord::getTouteLesQuestions(); ?>
+        <div class="pageContent">
+        <?php for ($id = 0; $id < sizeof($question[0]); $id++) { ?>
+            <div class="question">
+                <div class="ligne">
+                    <label>ID</label> <label class="contenuQuestion"><?php echo wordwrap($question[0][$id], 20, '<br>', true) ?></label>
+                </div>
+                <div class="ligne">
+                    <label class="motQuestion">QUESTION</label> <label class="contenuQuestion"><?php echo wordwrap($question[1][$id], 20, '<br>', true) ?></label>
+                </div>
+                <div class="ligne">
+                    <label class="motVrai">VRAI</label> <label class="contenuQuestion"> <?php echo wordwrap($question[2][$id], 20, '<br>', true) ?></label>
+                </div>
+                <div class="ligne">
+                    <label class="motFaux">FAUX 1</label> <label class="contenuQuestion"> <?php echo wordwrap($question[3][$id], 20, '<br>', true) ?></label>
+                </div>
+                <div class="ligne">
+                    <label class="motFaux">FAUX 2</label> <label class="contenuQuestion"> <?php echo wordwrap($question[4][$id], 20, '<br>', true) ?></label>
+                </div>
+                <button class="supprimerQuestion" id="<?php echo $question[0][$id] ?>" onclick="doAjaxRequest(this)">supprimer la question</button>
+            </div> <?php
+        } ?>
+        </div>
+        <button onclick="window.location.href='../tableau-de-bord'" class="retour">retour</button>
         <script>
             function doAjaxRequest(button, id) {
                 const buttonValue = button.value;

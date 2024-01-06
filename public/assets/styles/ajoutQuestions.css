@@ -1,4 +1,57 @@
-body{
-    background-color: black;
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 10vw;
     color: white;
+    margin: 0;
+    padding: 0;
+}
+
+input {
+    margin-bottom: 8vw;
+    padding: 0;
+    width: 70vw;
+    height: 12vw;
+    font-size: 4vw;
+    text-align: center;
+    font-family: 'Roboto Condensed', sans-serif;
+    border: solid 0.5vw black;
+}
+
+input::placeholder {
+    color: black;
+}
+
+.title {
+    font-family: "Legend M54";
+    font-size: 5.5vw;
+    text-transform: uppercase;
+    margin-bottom: 3vw;
+}
+
+.question {
+    margin-bottom: 15vw;
+}
+
+.bonneReponse {
+    background-color: lightgreen;
+}
+
+.mauvaiseReponse {
+    background-color: #FF7F7F;
+}
+
+button {
+    height: 15vw;
+    width: 70vw;
+    font-size: 6.5vw;
+    margin: 10vw;
+    font-family: 'Legend M54';
+    background-color: #00CCFF;
+    border: none;
+    color: white;
+    border-radius: 50px/50px;
 }
