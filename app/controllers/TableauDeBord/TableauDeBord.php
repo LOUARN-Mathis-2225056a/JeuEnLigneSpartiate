@@ -34,11 +34,19 @@ class TableauDeBord
 
     public static function ajoutQuestion($donneePOST):void
     {
-        BDD::ajouterQuestion(
-            htmlspecialchars($donneePOST['question']),
-            htmlspecialchars($donneePOST['vrai']),
-            htmlspecialchars($donneePOST['faux']),
-            htmlspecialchars($donneePOST['faux2']));
+        if($donneePOST['question'] != '' and
+            $donneePOST['vrai'] != '' and
+            $donneePOST['faux'] != '' and
+            $donneePOST['faux2'] != '') {
+                BDD::ajouterQuestion(
+                htmlspecialchars($donneePOST['question']),
+                htmlspecialchars($donneePOST['vrai']),
+                htmlspecialchars($donneePOST['faux']),
+                htmlspecialchars($donneePOST['faux2']));
+        }else{
+            error_log('Il faut remplir tous les champs');
+            $_SESSION['erreurAjoutQuestion'] = 'true';
+        }
     }
 
 }

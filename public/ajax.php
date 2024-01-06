@@ -25,8 +25,16 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
     }
     if ( isset( $_POST['ajouterQuestion'] ) ) {
         TableauDeBord::ajoutQuestion($_POST);
+        if($_SESSION['erreurAjoutQuestion'] == 'true'){
+            $messageLog = 'Impossible d\'effectuer la requête, tous les champs ne sont pas remplis';
+            $message = 'Impossible d\'effectuer la requête, tous les champs ne sont pas remplis';
+        }else{
+            $messageLog = 'Requête correctement effectuée';
+            $message = 'Question ajoutée à la base de donnée';
+        }
         $reponse = array(
-            'message' => 'The add question button has been clicked',
+            'message' => $messageLog,
+            'value' => $message,
             'status'  => true,
         );
         echo json_encode( $reponse );

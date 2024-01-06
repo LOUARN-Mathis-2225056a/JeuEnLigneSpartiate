@@ -17,6 +17,7 @@ class AjoutQuestions
             <input type="text" name="faux2" id="faux2" placeholder="Deuxième réponse fausse">
             <button type="submit" value="ajoutQuestion" onclick="doAjax(this)">Ajouter la question</button>
         </form>
+        <p class="messageReponse"></p>
 
         <script>
             function doAjax(button) {
@@ -47,6 +48,9 @@ class AjoutQuestions
                         return response.json();
                     })
                     .then(json => {
+                        button.disabled = false;
+                        const messageReponse = document.querySelector('.messageReponse');
+                        messageReponse.textContent = json.value;
                         console.log(json); // Here you can process the JSON response
                     })
                     .catch(error => {
