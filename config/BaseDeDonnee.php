@@ -131,4 +131,33 @@ class BaseDeDonnee
         }
         $statement->execute([$id]);
     }
+
+    public static function modifierQuestion($attribut,$id,$valeur)
+    {
+        self::getConnection();
+        $requete = 'UPDATE questions SET ';
+        switch ($attribut){
+            case 1:
+                $requete = $requete . 'question = ? WHERE id = ?';
+                break;
+            case 2:
+                $requete = $requete . 'vrai = ? WHERE id = ?';
+                break;
+            case 3:
+                $requete = $requete . 'faux = ? WHERE id = ?';
+                break;
+            case 4:
+                $requete = $requete . 'faux2 = ? WHERE id = ?';
+                break;
+            default:
+                $_SESSION['erreurModificationQuestion'] = '2';
+                break;
+        }
+        $statement = self::$connection->prepare($requete);
+        if (!$statement) {
+            error_log('Impossible de modifier la question');
+            return null;
+        }
+        $statement->execute([$valeur,$id]);
+    }
 }

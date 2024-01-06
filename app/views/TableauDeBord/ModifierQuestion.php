@@ -4,18 +4,20 @@ namespace app\views\TableauDeBord;
 
 use app\models\ModelePage;
 
-class AjoutQuestions
+class ModifierQuestion
 {
     public function show():void
     {
         ob_start();
         ?>
-        <form>
+        <h1>Modifier une question (laisser le champ vide pour ne rien changer</h1>
+        <form method="post">
+            <input type="text" name="question" id="identifiant" placeholder="Identifiant de la question">
             <input type="text" name="question" id="question" placeholder="Texte Question">
             <input type="text" name="vrai" id="vrai" placeholder="Réponse juste">
             <input type="text" name="faux" id="faux" placeholder="Réponse fausse">
             <input type="text" name="faux2" id="faux2" placeholder="Deuxième réponse fausse">
-            <button type="submit" value="ajoutQuestion" onclick="doAjaxRequest(this)">Ajouter la question</button>
+            <button type="submit" value="modifierQuestion" onclick="doAjaxRequest(this)">Modifier la question</button>
         </form>
         <p class="messageReponse"></p>
 
@@ -24,11 +26,13 @@ class AjoutQuestions
                 // The button is switched off to prevent it from being clicked again.
                 button.disabled = true;
                 const data = new URLSearchParams();
+                const identifiant = document.getElementById('identifiant').value;
                 const question = document.getElementById('question').value;
                 const vrai = document.getElementById('vrai').value;
                 const faux = document.getElementById('faux').value;
                 const faux2 = document.getElementById('faux2').value;
-                data.append("ajouterQuestion", 'true')
+                data.append("modifierQuestion", 'true')
+                data.append("id", identifiant);
                 data.append("question", question);
                 data.append("vrai", vrai);
                 data.append("faux", faux);
@@ -52,13 +56,15 @@ class AjoutQuestions
                         const messageReponse = document.querySelector('.messageReponse');
                         messageReponse.textContent = json.value;
                         console.log(json); // Here you can process the JSON response
+                        console.log("données envoyées : ",data);
                     })
                     .catch(error => {
                         console.error('Error in execution of the request:', error);
+                        console.log("données envoyées : ",data);
                     });
             }
         </script>
         <?php
-        (new ModelePage('Ajout Questions', ob_get_clean(), 'ajoutQuestions'))->show();
+        (new ModelePage('Exemple page', ob_get_clean(), 'exemple'))->show();
     }
 }

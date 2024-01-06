@@ -7,6 +7,7 @@ use app\controllers\PageIntrouvable as pageIntrouvableController;
 use app\controllers\TableauDeBord\TableauDeBord as tableauDeBordController;
 use app\controllers\TableauDeBord\AjoutQuestion as ajoutQuestionsController;
 use app\controllers\TableauDeBord\ListeDesQuestions as listeDesQuestionsController;
+use app\controllers\TableauDeBord\ModifierQuestion as modifierQuestionController;
 
 //use app\controllers\Quizz as quizzController;
 session_start();
@@ -37,6 +38,8 @@ try {
                     case 'liste-questions':
                         (new listeDesQuestionsController())->execute();
                         break;
+                    case 'modifier-question':
+                        (new modifierQuestionController())->execute();
                 }
                 break;
 
