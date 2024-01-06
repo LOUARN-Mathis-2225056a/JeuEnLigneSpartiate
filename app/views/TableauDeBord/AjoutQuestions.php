@@ -11,12 +11,17 @@ class AjoutQuestions
         ob_start();
         ?>
         <form>
-            <input type="text" name="question" id="question" placeholder="Texte Question">
-            <input type="text" name="vrai" id="vrai" placeholder="Réponse juste">
-            <input type="text" name="faux" id="faux" placeholder="Réponse fausse">
-            <input type="text" name="faux2" id="faux2" placeholder="Deuxième réponse fausse">
+            <label class="title">Saisir la <label class="motQuestion">question</label> :</label>
+            <input class="question" type="text" name="question" id="question" placeholder="Question">
+            <label class="title">Saisir la <label class="motVrai">bonne</label> reponse :</label>
+            <input class="bonneReponse" type="text" name="vrai" id="vrai" placeholder="Bonne réponse">
+            <label class="title">Saisir une <label class="motFaux">mauvaise</label> reponse :</label>
+            <input class= "mauvaiseReponse" type="text" name="faux" id="faux" placeholder="Réponse fausse">
+            <label class="title">une autre <label class="motFaux">mauvaise</label> reponse :</label>
+            <input class= "mauvaiseReponse" type="text" name="faux2" id="faux2" placeholder="Réponse fausse">
             <button type="submit" value="ajoutQuestion" onclick="doAjax(this)">Ajouter la question</button>
         </form>
+        <button class="retour" onclick="window.location.href='../tableau-de-bord'">Retour</button>
         <p class="messageReponse"></p>
 
         <script>

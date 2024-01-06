@@ -1,0 +1,11 @@
+.retour {
+    height: 15vw;
+    width: 40vw;
+    font-size: 6.5vw;
+    margin: 5vw;
+    font-family: 'Legend M54';
+    background-color: #00CCFF;
+    border: none;
+    color: white;
+    border-radius: 50px/50px;
+}
