@@ -1,3 +1,20 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    background-image: url("../ressources/background1.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+}
+
 .retour {
     height: 15vw;
     width: 40vw;
@@ -8,4 +25,16 @@
     border: none;
     color: white;
     border-radius: 50px/50px;
+}
+
+.motVrai {
+    color: lightgreen;
+}
+
+.motFaux {
+    color: #FF7F7F;
+}
+
+.motQuestion {
+    color: #00CCFF;
 }

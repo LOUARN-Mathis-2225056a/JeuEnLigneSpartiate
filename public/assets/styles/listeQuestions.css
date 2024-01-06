@@ -1,0 +1,52 @@
+label {
+    color: white;
+    font-size: 5vw;
+    font-family: "Legend M54";
+}
+
+.pageContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: scroll;
+    width: 100%;
+}
+
+.question {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    align-items: center;
+    justify-content: center;
+    margin: 5vw;
+    padding: 5vw;
+    border: solid 1vw white;
+}
+
+.ligne {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 5vw;
+    padding-bottom: 5vw;
+    border-bottom: solid 1vw white;
+}
+
+button {
+    height: 10vw;
+    width: 50vw;
+    font-size: 4vw;
+    margin-top: 3vw;
+    font-family: 'Legend M54';
+    background-color: #00CCFF;
+    border: none;
+    color: white;
+    border-radius: 50px/50px;
+}
+
+.contenuQuestion {
+    font-family: 'Roboto Condensed', sans-serif;
+    width: 70%;
+    text-align: right;
+}
