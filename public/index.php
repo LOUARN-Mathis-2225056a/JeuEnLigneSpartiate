@@ -1,6 +1,9 @@
 <?php
 
 require_once __DIR__ . '/../vendor/autoload.php';
+
+use app\controllers\accueil\AccueilController as accueilController;
+
 session_start();
 
 try {
@@ -8,7 +11,9 @@ try {
         $route = ($_SERVER['REQUEST_URI'] === '/') ? '/' : explode('/', trim($_SERVER['REQUEST_URI'], '/'));
 
         switch ($route[0]){
-
+            case 'accueil':
+                (new accueilController())->execute();
+                break;
         }
     }
 }catch (Exception){
