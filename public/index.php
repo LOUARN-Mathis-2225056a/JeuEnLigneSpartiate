@@ -8,6 +8,7 @@ use app\controllers\TableauDeBord\TableauDeBord as tableauDeBordController;
 use app\controllers\TableauDeBord\AjoutQuestions as ajoutQuestionsController;
 use app\controllers\TableauDeBord\ListeDesQuestions as listeDesQuestionsController;
 use app\controllers\TableauDeBord\ModifierQuestions as modifierQuestionsController;
+use app\controllers\TableauDesScores as tableauDesScoresController;
 
 //use app\controllers\Quizz as quizzController;
 session_start();
@@ -47,6 +48,9 @@ try {
             case $_SESSION['codeJeu']:
                 //(new quizzController())->execute();
                 echo 'cest la page jeu prime';
+                break;
+            case 'scores':
+                (new tableauDesScoresController())->execute();
                 break;
             default:
                 (new pageIntrouvableController())->execute();
