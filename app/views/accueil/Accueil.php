@@ -1,12 +1,24 @@
-<img class="logo" src="/JeuEnLigneSpartiate/public/assets/ressources/logospartiates.png" alt="logo">
-<div class="titre">
-    <div>SPARTIATES</div>
-    <div>HOCKEY</div>
-    <div>GAME</div>
-</div>
-<button href="lien a mettre vers une autre page" class="boutton-jouer">JOUER</button>
-<button href="lien a mettre vers une autre page" class="boutton-regles">REGLES DU JEU</button>
+<?php
 
+namespace app\views\accueil;
 
-<link rel="stylesheet" href="/JeuEnLigneSpartiate/public/assets/styles/Accueil.css">
-<script src="/JeuEnLigneSpartiate/public/assets/javaScript/Accueil.js"></script>
+use app\models\ModelePage;
+
+class Accueil
+{
+    public function show(): void {
+        ob_start();
+        ?>
+        <img class="logo" src="/assets/ressources/logospartiates.png" alt="logo">
+        <div class="titre">
+            <div>SPARTIATES</div>
+            <div>HOCKEY</div>
+            <div>GAME</div>
+        </div>
+        <button href="lien a mettre vers une autre page" class="boutton-jouer">JOUER</button>
+        <button href="lien a mettre vers une autre page" class="boutton-regles">REGLES DU JEU</button>
+
+        <?php
+        (new ModelePage('Page d\'accueil', ob_get_clean(), 'accueil'))->show();
+    }
+}

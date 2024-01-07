@@ -8,8 +8,11 @@ use app\controllers\TableauDeBord\TableauDeBord as tableauDeBordController;
 use app\controllers\TableauDeBord\AjoutQuestions as ajoutQuestionsController;
 use app\controllers\TableauDeBord\ListeDesQuestions as listeDesQuestionsController;
 use app\controllers\TableauDeBord\ModifierQuestions as modifierQuestionsController;
-
+use app\controllers\accueil\AccueilController as accueilController;
 //use app\controllers\Quizz as quizzController;
+
+
+
 session_start();
 const APP_PATH = __DIR__ . '/../app';
 \config\BaseDeDonnee::getCodeJeuActuel();
@@ -48,9 +51,13 @@ try {
                 //(new quizzController())->execute();
                 echo 'cest la page jeu prime';
                 break;
+            case 'accueil':
+                (new accueilController())->execute();
+                break;
             default:
                 (new pageIntrouvableController())->execute();
                 break;
+
         }
     }
 }catch (Exception){
