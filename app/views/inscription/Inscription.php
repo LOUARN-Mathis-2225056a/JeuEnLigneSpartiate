@@ -10,7 +10,7 @@ class Inscription
     {
         ob_start();
         ?>
-        <form action="" method="post">
+        <form method="post">
             <div>
                 <label>PSEUDO</label>
                 <input type="text" id="pseudo" name="pseudo" placeholder="Pseudo">
@@ -19,7 +19,7 @@ class Inscription
                 <label>EMAIL</label>
                 <input type="text" id="email" name="email" placeholder="Email">
             </div>
-            <button type="submit" name="next" value="Next">jouer</button>
+            <button type="submit" name="next" value="inscriptionJoueur">jouer</button>
         </form>
         <?php
         (new ModelePage('Page d\'inscription', ob_get_clean(), 'inscription.css'))->show();
