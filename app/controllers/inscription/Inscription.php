@@ -11,4 +11,7 @@ class Inscription
         (new inscriptionView())->show();
 
     }
+    public function inscriptionJoueur($donneePost){
+
+    }
 }
