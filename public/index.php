@@ -3,7 +3,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 
-use app\controllers\inscription\InscriptionController as inscriptionController;
+use app\controllers\inscription\Inscription as inscriptionController;
 
 session_start();
 
@@ -13,7 +13,7 @@ try {
 
         switch ($route[0]){
             case 'inscription':
-                (new inscriptionController())->execute();
+                (new app\controllers\inscription\Inscription())->execute();
                 break;
         }
     }
