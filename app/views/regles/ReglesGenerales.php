@@ -24,10 +24,10 @@
     <a id="ancreHockeySurGlace"></a>
     <div class="contentBloc">
         <label class="contentTitle">
-            le hockey sur glace
+            le hockey sur \glace
         </label>
         <label class="contentText">
-            LE HOCKEY SUR GLACE EST UN SPORT COLLECTIF RAPIDE QUI SE JOUE SUR LA <label class="importantWord">GLACE</label> DANS UNE <label class="importantWord">PATINOIRE</label>
+            LE HOCKEY SUR \GLACE EST UN SPORT COLLECTIF RAPIDE QUI SE JOUE SUR LA <label class="importantWord">GLACE</label> DANS UNE <label class="importantWord">PATINOIRE</label>
             <br> <br> <br>
             CHAQUE <label class="importantWord">joueur</label> PORTE DES <label class="importantWord">patins</label> ET A UNE <label class="importantWord">crosse</label>
             <br> <br> <br>
