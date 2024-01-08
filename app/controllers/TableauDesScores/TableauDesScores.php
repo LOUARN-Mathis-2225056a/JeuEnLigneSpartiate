@@ -1,8 +1,12 @@
 <?php
 
-namespace app\controllers;
-use app\views\TableauDesScores as tableauDesScoresView;
+namespace app\controllers\TableauDesScores;
+require_once __DIR__ . '/../../../vendor/autoload.php';
+
+use app\models\Joueur;
+use app\views\TableauDesScores\TableauDesScores as tableauDesScoresView;
 use config\BaseDeDonnee as BDD;
+
 class TableauDesScores
 {
     public function execute():void
@@ -16,6 +20,8 @@ class TableauDesScores
      */
     public static function getTableauDesScores():?array
     {
-        return BDD::getTableauDesScores();
+        $tableauRaw = BDD::getTableauDesScores();
+        return Joueur::trierTableauDeJoueurs(Joueur::creerTableauDeJoueurs($tableauRaw[0],$tableauRaw[1]));
     }
+
 }

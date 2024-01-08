@@ -4,11 +4,12 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use app\controllers\Login as loginController;
 use app\controllers\PageIntrouvable as pageIntrouvableController;
-use app\controllers\TableauDeBord\TableauDeBord as tableauDeBordController;
 use app\controllers\TableauDeBord\AjoutQuestions as ajoutQuestionsController;
 use app\controllers\TableauDeBord\ListeDesQuestions as listeDesQuestionsController;
 use app\controllers\TableauDeBord\ModifierQuestions as modifierQuestionsController;
-use app\controllers\TableauDesScores as tableauDesScoresController;
+use app\controllers\TableauDeBord\TableauDeBord as tableauDeBordController;
+use app\controllers\TableauDesScores\TableauDesScores as tableauDesScoresController;
+use app\controllers\TableauDesScores\top10 as top10Controller;
 
 //use app\controllers\Quizz as quizzController;
 session_start();
@@ -44,14 +45,19 @@ try {
                         (new modifierQuestionsController())->execute();
                 }
                 break;
-
             case $_SESSION['codeJeu']:
                 //(new quizzController())->execute();
                 echo 'cest la page jeu prime';
                 break;
             case 'scores':
-                (new tableauDesScoresController())->execute();
-                break;
+                switch ($route[1]){
+                    case "":
+                        (new tableauDesScoresController())->execute();
+                        break;
+                    case "top10":
+                        (new top10Controller())->execute();
+                        break;
+                }
             default:
                 (new pageIntrouvableController())->execute();
                 break;

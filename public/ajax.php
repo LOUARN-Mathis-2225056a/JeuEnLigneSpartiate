@@ -93,5 +93,18 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) { //si c'est une méthode POST
         echo json_encode( $reponse );
         exit;
     }
+    if (isset($_POST['tailleTableauDesScores'])){
+//        $_SESSION['tailleTableauDesScores'] = intval($_POST['tailleTableauDesScores']);
+        $_SESSION['tailleTableauDesScores'] = 1;
+
+        $reponse = array(
+            'message' => 'La variable $_SESSION[\'tailleTableauDesScores\'] est maintenant égale à ' . $_SESSION['tailleTableauDesScores'],
+            'value' => $_SESSION['tailleTableauDesScores'],
+            'status'  => true,
+        );
+        echo json_encode( $reponse );
+        exit;
+    }
 
 }
+
