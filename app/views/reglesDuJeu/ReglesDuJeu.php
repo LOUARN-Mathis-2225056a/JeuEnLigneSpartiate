@@ -10,7 +10,7 @@ class ReglesDuJeu
 
         <label class="titre">LES REGLES DU JEU</label>
 
-        <label>les nigga les nigga les nigga les nigga les nigga les nigga</label>
+        <label>testtest etest tete tet teteteetetetetet</label>
 
         <button onclick="window.location.href='../accueil'" class="retour">accueil</button>
 
