@@ -3,30 +3,13 @@
 namespace config;
 
 error_reporting(E_ERROR | E_PARSE);
+
 use PDO;
 
 
 class BaseDeDonnee
 {
     private static ?PDO $connection = null;
-
-    /**
-     * <p>représente la connection avec la BDD, charge les informations de connection dans db.ini</p>
-     * @return PDO
-     *
-     */
-    public static function getConnection(): PDO
-    {
-        if (self::$connection === null) {
-            $config = parse_ini_file('db.ini');
-            if ($config === false) {
-                echo 'Erreur : peut pas load le fichier :3 UwU';
-                die("Error loading configuration file.");
-            }
-            self::$connection = new PDO($config['dsn'], $config['username'], $config['password']);
-        }
-        return self::$connection;
-    }
 
     /**
      * <p><b>Permet d'ajouter une question avec les réponses associées dans la BDD</b></p>
@@ -47,7 +30,25 @@ class BaseDeDonnee
             error_log('Impossible d\'insérer la question');
             return null;
         }
-        $declaration->execute([$question,$vrai,$faux,$faux2]);
+        $declaration->execute([$question, $vrai, $faux, $faux2]);
+    }
+
+    /**
+     * <p>représente la connection avec la BDD, charge les informations de connection dans db.ini</p>
+     * @return PDO
+     *
+     */
+    public static function getConnection(): PDO
+    {
+        if (self::$connection === null) {
+            $config = parse_ini_file('db.ini');
+            if ($config === false) {
+                echo 'Erreur : peut pas load le fichier :3 UwU';
+                die("Error loading configuration file.");
+            }
+            self::$connection = new PDO($config['dsn'], $config['username'], $config['password']);
+        }
+        return self::$connection;
     }
 
     /**
@@ -57,7 +58,7 @@ class BaseDeDonnee
      */
     public static function getQuestion(int $id): ?array
     {
-        if(in_array($id,self::getTousLesID())){
+        if (in_array($id, self::getTousLesID())) {
             self::getConnection();
             $requete = 'SELECT * FROM questions WHERE id = ? ';
             $declaration = self::$connection->prepare($requete);
@@ -67,8 +68,8 @@ class BaseDeDonnee
             }
             $declaration->execute([$id]);
             $reponseServeur = $declaration->fetch(PDO::FETCH_ASSOC);
-            return [$reponseServeur['question'],[$reponseServeur['vrai'],$reponseServeur['faux'],$reponseServeur['faux2']]];
-        }else{
+            return [$reponseServeur['question'], [$reponseServeur['vrai'], $reponseServeur['faux'], $reponseServeur['faux2']]];
+        } else {
             error_log('L\'identifiant donné en paramêtre n\'existe pas dans la base de donnée');
             return null;
         }
@@ -79,7 +80,7 @@ class BaseDeDonnee
      * <p>Permet d'obtenir un tableau contenant tous les ID de la colonne <i>"id"</i> dans la base de donnée</p>
      * @return array|null <p>un array d'integer simple <b>OU null</b> en cas d'erreur dans la préparation de la declaration </p>
      */
-    public static function getTousLesID():?array
+    public static function getTousLesID(): ?array
     {
         self::getConnection();
         $requete = 'SELECT id FROM questions';
@@ -141,7 +142,7 @@ class BaseDeDonnee
                 return null;
             }
             $declaration->execute();
-            $tableauDesScores[$i] = $declaration->fetchAll(PDO::FETCH_COLUMN,$i);
+            $tableauDesScores[$i] = $declaration->fetchAll(PDO::FETCH_COLUMN, $i);
         }
         return $tableauDesScores;
     }
@@ -224,14 +225,14 @@ class BaseDeDonnee
      * <p>modifie un question de la table question</p>
      * @param int $attribut <p> selon la valeur, la colonne modifiée sera différente : <br> 1-> question <br> 2-> vrai <br> 3-> faux <br> 4-> faux2</p>
      * @param int $id <p> identifiant de la question a modifier</p>
-     * @param string $valeur:string <p>contenu qui sera modifier après la requête</p>
+     * @param string $valeur :string <p>contenu qui sera modifier après la requête</p>
      * @return void|null
      */
     public static function modifierQuestion(int $attribut, int $id, string $valeur)
     {
         self::getConnection();
         $requete = 'UPDATE questions SET ';
-        switch ($attribut){
+        switch ($attribut) {
             case 1:
                 $requete = $requete . 'question = ? WHERE id = ?';
                 break;
@@ -253,6 +254,25 @@ class BaseDeDonnee
             error_log('Impossible de modifier la question');
             return null;
         }
-        $declaration->execute([$valeur,$id]);
+        $declaration->execute([$valeur, $id]);
+    }
+
+    /**
+     * <p>Cette fonction retourne tous les pseudos présent dans la base de donnée</p>
+     * @return array|null
+     */
+    public static function getTousLesPseudos(): ?array
+    {
+        self::getConnection();
+        $listePseudo = [];
+        $requete = 'SELECT * FROM joueurs ORDER BY score DESC ';
+        $declaration = self::$connection->prepare($requete);
+        if (!$declaration) {
+            error_log('Impossible d\'effectuer la requête pour le tableau des scores');
+            return null;
+        }
+        $declaration->execute();
+        $listePseudo = $declaration->fetchAll(PDO::FETCH_COLUMN, 0);
+        return $listePseudo;
     }
 }
