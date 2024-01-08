@@ -19,6 +19,11 @@ class Inscription
                 <label>EMAIL</label>
                 <input type="email" id="email" name="email" placeholder="Email">
             </div>
+            <?php if(isset($_SESSION['erreurInscription'])){
+                echo '<p>' . $_SESSION['erreurInscription'] . '</p>';
+                unset($_SESSION['erreurInscription']);
+            }
+            ?>
             <button type="submit" name="inscriptionJoueur" value="inscriptionJoueur">jouer</button>
         </form>
         <?php
