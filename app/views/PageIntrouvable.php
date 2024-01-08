@@ -10,7 +10,11 @@ class PageIntrouvable
     {
         ob_start();
         ?>
-        <?= "Cette page n'existe pas ¯\_(ツ)_/¯ "?>
+
+        <label class="erreur">ERREUR <label class="erreur2">404</label></label>
+        <label>Page introuvable...</label>
+        <button onclick="window.location.href='../accueil'" class="retour">ACCUEIL</button>
+
         <?php
         (new ModelePage('Error 404', ob_get_clean(), 'pageIntrouvable'))->show();
     }
