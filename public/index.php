@@ -88,8 +88,9 @@ try {
                         break;
                     case '':
                         header('Location: /regles/generales');
-
+                        break;
                 }
+                break;
             case 'inscription':
                 (new inscriptionController())->execute();
                 break;
