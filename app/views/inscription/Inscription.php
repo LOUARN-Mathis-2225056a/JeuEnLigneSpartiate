@@ -17,9 +17,9 @@ class Inscription
             </div>
             <div>
                 <label>EMAIL</label>
-                <input type="text" id="email" name="email" placeholder="Email">
+                <input type="email" id="email" name="email" placeholder="Email">
             </div>
-            <button type="submit" name="next" value="inscriptionJoueur">jouer</button>
+            <button type="submit" name="inscriptionJoueur" value="inscriptionJoueur">jouer</button>
         </form>
         <?php
         (new ModelePage('Page d\'inscription', ob_get_clean(), 'inscription'))->show();
