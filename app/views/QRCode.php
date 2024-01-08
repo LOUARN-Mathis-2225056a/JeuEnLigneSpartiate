@@ -29,7 +29,7 @@ class QRCode
                     tailleQRcode = largeurEcran;
                 }else {tailleQRcode = hauteurEcran}
                 new QRCode(document.getElementById("qrcode"), {
-                    text: "http://localhost:8080/" + codeJeu,
+                    text: window.location.host + '/' + codeJeu,
                     width: tailleQRcode*0.80,
                     height: tailleQRcode*0.80
                 });
