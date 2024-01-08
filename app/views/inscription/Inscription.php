@@ -22,6 +22,6 @@ class Inscription
             <button type="submit" name="next" value="inscriptionJoueur">jouer</button>
         </form>
         <?php
-        (new ModelePage('Page d\'inscription', ob_get_clean(), 'inscription.css'))->show();
+        (new ModelePage('Page d\'inscription', ob_get_clean(), 'inscription'))->show();
     }
 }
