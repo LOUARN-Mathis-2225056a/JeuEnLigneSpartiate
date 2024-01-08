@@ -19,6 +19,10 @@ use app\controllers\regles\ReglesJeuController as reglesJeuController;
 use app\controllers\regles\ReglesMateriellesController as reglesMateriellesController;
 use app\controllers\regles\ReglesPenalitesController as reglesPenalitesController;
 
+
+
+use app\controllers\inscription\Inscription as inscriptionController;
+
 session_start();
 const APP_PATH = __DIR__ . '/../app';
 \config\BaseDeDonnee::getCodeJeuActuel();
@@ -29,6 +33,11 @@ try {
         }
     }
 
+    if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (isset($_POST['inscriptionJoueur'])) {
+            (new inscriptionController())->inscriptionJoueur($_POST);
+        }
+    }
     if (isset($_SERVER['REQUEST_URI']) && isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'GET') {
         $route = ($_SERVER['REQUEST_URI'] === '/') ? '/' : explode('/', trim($_SERVER['REQUEST_URI'], '/'));
 
@@ -81,6 +90,9 @@ try {
                         header('Location: /regles/generales');
 
                 }
+            case 'inscription':
+                (new inscriptionController())->execute();
+                break;
         }
     }
 }catch (Exception){
