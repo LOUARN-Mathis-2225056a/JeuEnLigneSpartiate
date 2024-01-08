@@ -3,12 +3,14 @@
     font-family: "Legend M54";
     font-size: 8vw;
     color: #7de1ff;
-    margin-bottom: 8vw;
+    margin-bottom: 12vw;
 }
 
 label {
     font-family: 'Roboto Condensed', sans-serif;
     color: white;
+    text-align: center;
     font-size: 7vw;
     width: 80%;
+    margin-bottom: 8vw;
 }

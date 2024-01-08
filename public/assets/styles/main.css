@@ -58,3 +58,7 @@ input::placeholder {
     overflow: scroll;
     width: 100%;
 }
+
+.motImportant {
+    color: #00CCFF;
+}
