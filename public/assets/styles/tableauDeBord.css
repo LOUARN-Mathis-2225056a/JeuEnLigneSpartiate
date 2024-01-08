@@ -11,13 +11,15 @@ button {
     background-color: #00CCFF;
     color: white;
     border-radius: 50px/50px;
+    margin-bottom: 6vw;
 }
 
 p {
     font-family: 'Legend M54';
     font-size: 8vw;
     text-transform: uppercase;
-    margin-top: 10vw;
+    margin: 0;
+    margin-bottom: 12vw;
     text-align: center;
 }
 
