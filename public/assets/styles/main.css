@@ -38,3 +38,15 @@ body {
 .motQuestion {
     color: #00CCFF;
 }
+
+.bonneReponse {
+    background-color: lightgreen;
+}
+
+.mauvaiseReponse {
+    background-color: #FF7F7F;
+}
+
+input::placeholder {
+    color: black;
+}

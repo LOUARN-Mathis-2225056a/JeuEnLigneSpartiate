@@ -21,9 +21,7 @@ input {
     border: solid 0.5vw black;
 }
 
-input::placeholder {
-    color: black;
-}
+
 
 .title {
     font-family: "Legend M54";
@@ -36,13 +34,7 @@ input::placeholder {
     margin-bottom: 15vw;
 }
 
-.bonneReponse {
-    background-color: lightgreen;
-}
 
-.mauvaiseReponse {
-    background-color: #FF7F7F;
-}
 
 button {
     height: 15vw;
