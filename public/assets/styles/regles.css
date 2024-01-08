@@ -1,0 +1,167 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Legend M54';
+    background-image: url("../ressources/background1.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+header {
+    background-color: rgba(0, 72, 192, 0.8);
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.headerButton {
+    width: 18vw;
+    background: none;
+    height: 100%;
+    border: none;
+    padding: 1vh;
+    font-size: 3vw;
+    font-family: 'Legend M54';
+    text-align: center;
+    color: white;
+}
+
+.currentPageButton {
+    color: #009ac0;
+}
+
+/* MENU NAV */
+
+
+.nav-toggler {
+    position: absolute;
+    z-index: 10;
+    top: 15vw;
+    right: 2vw;
+    height: 10vw;
+    width: 10vw;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+}
+.line {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 1vw;
+    background: #f1f1f1;
+    transition: transform 0.3s ease-out,
+    opacity 0.1s ease-out;
+}
+.l1 {
+    transform: translateY(-3vw)
+}
+.l3 {
+    transform: translateY(3vw)
+}
+.nav-toggler.active .l1 {
+    transform: translateY(0vh) rotate(135deg);
+}
+.nav-toggler.active .l2 {
+    opacity: 0;
+}
+.nav-toggler.active .l3 {
+    transform: translateY(0vh) rotate(-135deg);
+}
+
+nav {
+    position: fixed;
+    width: 100%;
+    min-height: 100vh;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.8);
+    border-left: 1vw solid #cfcfcf;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.73, 0.11, 0.67, 0.84);
+}
+nav.active {
+    transform: translate(0);
+}
+nav a {
+    color: #f1f1f1;
+    font-size: 8vw;
+    display: block;
+    margin: 5vw;
+    text-decoration: none;
+}
+
+/* contenu de la page */
+
+.pageContent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: scroll;
+}
+
+.contentBloc {
+    display: flex;
+    flex-direction: column;
+    padding: 5vw;
+    font-size: 5vw;
+    padding-top: 30vw;
+}
+
+.lastContentBloc {
+    padding-bottom: 30vw;
+}
+
+.contentTitle {
+    color: #7de1ff;
+    text-align: center;
+    padding: 8vw;
+    font-size: 8vw;
+}
+
+.contentText {
+    color: white;
+    text-align: center;
+    padding: 5vw;
+    font-family: 'Roboto Condensed', sans-serif;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.importantWord {
+    color: #00CCFF;
+}
+
+.illustration {
+    border: solid dodgerblue 1vw;
+    width: 50vw;
+}
+
+.blackWord {
+    color: dimgrey;
+}
+
+.whiteWord {
+    color: antiquewhite;
+}
+
+.orangeWord {
+    color: orange;
+}
+
+.greenWord {
+    color: forestgreen;
+}

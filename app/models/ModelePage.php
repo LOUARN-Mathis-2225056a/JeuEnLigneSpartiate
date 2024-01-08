@@ -22,6 +22,15 @@ class ModelePage
 <!--                <link rel="shortcut icon" type="image/jpg" href="ICI"/> faut remplacer ICI par le chemin vers le logo et aussi enlever ce texte-->
         </head>
         <body>
+        <?php if ($this->title == 'Règles du Hockey sur Glace') { ?>
+            <header>
+                <button onclick="window.location.href='../../accueil'" class="headerButton">Accueil</button>
+                <button onclick="window.location.href='../regles/generales'" class="headerButton">Regles generales</button>
+                <button onclick="window.location.href='../regles/materielles'" class="headerButton">Regles materielles</button>
+                <button onclick="window.location.href='../regles/jeu'" class="headerButton">Regles de jeu</button>
+                <button onclick="window.location.href='../regles/penalites'" class="headerButton">Penalites</button>
+            </header>
+        <?php }?>
         <?= $this->content?>
         </body>
         </html>

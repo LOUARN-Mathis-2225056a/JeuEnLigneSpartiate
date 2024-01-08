@@ -13,6 +13,12 @@ use app\controllers\accueil\AccueilController as accueilController;
 
 
 
+
+use app\controllers\regles\ReglesGeneralesController as reglesGeneralesController;
+use app\controllers\regles\ReglesJeuController as reglesJeuController;
+use app\controllers\regles\ReglesMateriellesController as reglesMateriellesController;
+use app\controllers\regles\ReglesPenalitesController as reglesPenalitesController;
+
 session_start();
 const APP_PATH = __DIR__ . '/../app';
 \config\BaseDeDonnee::getCodeJeuActuel();
@@ -57,7 +63,24 @@ try {
             default:
                 (new pageIntrouvableController())->execute();
                 break;
+            case 'regles': //premier "/"
+                switch ($route[1]){ // deuxième "/"
+                    case 'generales': // url = [addresse-site.com]/regles/generales
+                        (new reglesGeneralesController())->execute();
+                        break;
+                    case 'jeu': // regles/jeu
+                        (new reglesJeuController())->execute();
+                        break;
+                    case 'materielles': // etc...
+                        (new reglesMateriellesController())->execute();
+                        break;
+                    case 'penalites':
+                        (new reglesPenalitesController())->execute();
+                        break;
+                    case '':
+                        header('Location: /regles/generales');
 
+                }
         }
     }
 }catch (Exception){
