@@ -4,6 +4,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use app\controllers\TableauDeBord\TableauDeBord;
 use config\BaseDeDonnee;
+use app\controllers\TableauDesScores\TableauDesScores as tableauDesScoresController;
 
 header( 'Content-Type: application/json' );
 
@@ -94,12 +95,13 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) { //si c'est une méthode POST
         exit;
     }
     if (isset($_POST['tailleTableauDesScores'])){
-//        $_SESSION['tailleTableauDesScores'] = intval($_POST['tailleTableauDesScores']);
-        $_SESSION['tailleTableauDesScores'] = 1;
+
+        $tableauDeJoueur = tableauDesScoresController::getTableauDesScores(intval($_POST['tailleTableauDesScores']));
+        $tableauARendre = tableauDesScoresController::desObectifierLeTableau($tableauDeJoueur);
 
         $reponse = array(
-            'message' => 'La variable $_SESSION[\'tailleTableauDesScores\'] est maintenant égale à ' . $_SESSION['tailleTableauDesScores'],
-            'value' => $_SESSION['tailleTableauDesScores'],
+            'message' => 'Demande traitée, réponse envoyées',
+            'value' => $tableauARendre,
             'status'  => true,
         );
         echo json_encode( $reponse );

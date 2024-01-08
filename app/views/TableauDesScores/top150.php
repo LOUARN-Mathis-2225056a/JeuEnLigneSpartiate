@@ -4,13 +4,13 @@ namespace app\views\TableauDesScores;
 
 use app\models\ModelePage;
 
-class top10
+class top150
 {
     public function show(): void
     {
         ob_start();
         echo '<ol>';
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 150; $i++) {
             echo '<li> <label id="' . $i . '-nom"></label><label id="' . $i . '-score"></label></li>';
         }
         ?>
@@ -23,11 +23,11 @@ class top10
         <form method="post">
             <select onchange="redirect()" id="changementTop">
                 <option value="1">Afficher le classement global</option>
-                <option value="10" selected>Afficher le top 10</option>
+                <option value="10">Afficher le top 10</option>
                 <option value="20">Afficher le top 20</option>
                 <option value="50">Afficher le top 50</option>
                 <option value="100">Afficher le top 100</option>
-                <option value="150">Afficher le top 150</option>
+                <option value="150" selected>Afficher le top 150</option>
                 <option value="200">Afficher le top 200</option>
             </select>
         </form>
@@ -36,7 +36,7 @@ class top10
             window.onload = () => {
                 window.setInterval(function (){
                     console.log("hey 2 sec sont passées");
-                    changerLesDonnees(10);
+                    changerLesDonnees(150);
                 },2000);
                 function changerLesDonnees(tailletableau){
                     const data = new URLSearchParams();
@@ -59,7 +59,7 @@ class top10
                             console.log(json);
                             console.log("tableau renvoyé ", json.value)
                             const tableauDesScores = json.value;
-                            for (let i = 0; i < 10; i++) {
+                            for (let i = 0; i < 150; i++) {
                                 if(tableauDesScores[0][i].toString() == ""){
                                     break;
                                 }else {
@@ -108,6 +108,6 @@ class top10
             }
         </script>
         <?php
-        (new ModelePage('Top 10', ob_get_clean(), 'scores'))->show();
+        (new ModelePage('Top 150', ob_get_clean(), 'scores'))->show();
     }
 }

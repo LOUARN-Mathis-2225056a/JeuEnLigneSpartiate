@@ -23,7 +23,7 @@ class Joueur
         if ($a->score == $b->score) {
             return 0;
         }
-        return ($a->score < $b->score) ? -1 : 1;
+        return ($a->score > $b->score) ? -1 : 1;
     }
 
     public static function creerTableauDeJoueurs(array $pseudo, array $valeur): array

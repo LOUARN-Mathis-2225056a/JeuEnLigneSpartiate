@@ -14,11 +14,11 @@ class TableauDesScores
         ?>
         </body>
         <head>
-            <meta http-equiv="refresh" content="40">
+            <meta http-equiv="refresh" content="30">
         </head>
         <body>
         <?php
-        $tableauDesScores = tableauDesScoresController::getTableauDesScores();
+        $tableauDesScores = tableauDesScoresController::getToutLeTableauDesScores();
         for ($i = 0; $i < sizeof($tableauDesScores); $i++) {
             echo '<li> <label class="nomJoueur" id=" ' . $i . '"> ' . $tableauDesScores[$i]->nom . '</label> <label class="scoreJoueur" id="' . $i . '">' . $tableauDesScores[$i]->score . '</label> </li>';
         }
@@ -67,6 +67,6 @@ class TableauDesScores
         </script>
 
         <?php
-        (new ModelePage('Tableau des scores', ob_get_clean(), 'tableauDesScores'))->show();
+        (new ModelePage('Tableau des scores', ob_get_clean(), 'scores'))->show();
     }
 }

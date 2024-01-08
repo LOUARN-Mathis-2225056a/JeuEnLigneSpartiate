@@ -10,6 +10,11 @@ use app\controllers\TableauDeBord\ModifierQuestions as modifierQuestionsControll
 use app\controllers\TableauDeBord\TableauDeBord as tableauDeBordController;
 use app\controllers\TableauDesScores\TableauDesScores as tableauDesScoresController;
 use app\controllers\TableauDesScores\top10 as top10Controller;
+use app\controllers\TableauDesScores\top20 as top20Controller;
+use app\controllers\TableauDesScores\top50 as top50Controller;
+use app\controllers\TableauDesScores\top100 as top100Controller;
+use app\controllers\TableauDesScores\top150 as top150Controller;
+use app\controllers\TableauDesScores\top200 as top200Controller;
 
 //use app\controllers\Quizz as quizzController;
 session_start();
@@ -57,7 +62,23 @@ try {
                     case "top10":
                         (new top10Controller())->execute();
                         break;
+                    case "top20":
+                        (new top20Controller())->execute();
+                        break;
+                    case "top50":
+                        (new top50Controller())->execute();
+                        break;
+                    case "top100":
+                        (new top100Controller())->execute();
+                        break;
+                    case "top150":
+                        (new top150Controller())->execute();
+                        break;
+                    case "top100":
+                        (new top200Controller())->execute();
+                        break;
                 }
+                break;
             default:
                 (new pageIntrouvableController())->execute();
                 break;
