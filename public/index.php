@@ -9,7 +9,7 @@ use app\controllers\TableauDeBord\AjoutQuestions as ajoutQuestionsController;
 use app\controllers\TableauDeBord\ListeDesQuestions as listeDesQuestionsController;
 use app\controllers\TableauDeBord\ModifierQuestions as modifierQuestionsController;
 use app\controllers\accueil\AccueilController as accueilController;
-//use app\controllers\Quizz as quizzController;
+use app\controllers\Quizz as quizzController;
 
 
 use app\controllers\regles\ReglesGeneralesController as reglesGeneralesController;
@@ -61,8 +61,7 @@ try {
                 break;
 
             case $_SESSION['codeJeu']:
-                //(new quizzController())->execute();
-                echo 'cest la page jeu prime';
+                (new quizzController())->execute();
                 break;
             case 'accueil':
                 (new accueilController())->execute();
