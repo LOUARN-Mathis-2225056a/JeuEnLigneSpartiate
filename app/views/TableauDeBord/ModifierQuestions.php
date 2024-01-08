@@ -10,19 +10,20 @@ class ModifierQuestions
     {
         ob_start();
         ?>
-        <label class="titre">Modifier une question</label>
-        <label>(laisser le champ vide pour ne rien changer)</label>
-        <form method="post">
-            <input type="text" name="question" id="identifiant" placeholder="Identifiant de la question">
-            <input type="text" name="question" id="question" placeholder="Texte Question">
-            <input class="bonneReponse" type="text" name="vrai" id="vrai" placeholder="Réponse juste">
-            <input class="mauvaiseReponse" type="text" name="faux" id="faux" placeholder="Réponse fausse">
-            <input class="mauvaiseReponse" type="text" name="faux2" id="faux2" placeholder="Deuxième réponse fausse">
-            <button type="submit" value="modifierQuestion" onclick="doAjaxRequest(this)">Modifier la question</button>
-        </form>
-        <p class="messageReponse"></p>
-        <button onclick="window.location.href='../tableau-de-bord'" class="retour">retour</button>
-
+        <div class="pageContent">
+            <label class="titre">Modifier une question</label>
+            <label>(laisser le champ vide pour ne rien changer)</label>
+            <form method="post">
+                <input type="text" name="question" id="identifiant" placeholder="Identifiant de la question">
+                <input type="text" name="question" id="question" placeholder="Texte Question">
+                <input class="bonneReponse" type="text" name="vrai" id="vrai" placeholder="Réponse juste">
+                <input class="mauvaiseReponse" type="text" name="faux" id="faux" placeholder="Réponse fausse">
+                <input class="mauvaiseReponse" type="text" name="faux2" id="faux2" placeholder="Deuxième réponse fausse">
+                <button type="submit" value="modifierQuestion" onclick="doAjaxRequest(this)">Modifier la question</button>
+            </form>
+            <p class="messageReponse"></p>
+            <button onclick="window.location.href='../tableau-de-bord'" class="retour">retour</button>
+        </div>
         <script>
             function doAjaxRequest(button) {
                 // The button is switched off to prevent it from being clicked again.

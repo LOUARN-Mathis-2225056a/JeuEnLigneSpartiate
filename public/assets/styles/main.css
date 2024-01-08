@@ -50,3 +50,11 @@ body {
 input::placeholder {
     color: black;
 }
+
+.pageContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: scroll;
+    width: 100%;
+}

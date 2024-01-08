@@ -12,16 +12,14 @@ use app\controllers\accueil\AccueilController as accueilController;
 //use app\controllers\Quizz as quizzController;
 
 
-
-
 use app\controllers\regles\ReglesGeneralesController as reglesGeneralesController;
 use app\controllers\regles\ReglesJeuController as reglesJeuController;
 use app\controllers\regles\ReglesMateriellesController as reglesMateriellesController;
 use app\controllers\regles\ReglesPenalitesController as reglesPenalitesController;
 
-
-
 use app\controllers\inscription\Inscription as inscriptionController;
+
+use app\controllers\reglesDuJeu\ReglesDuJeuController as reglesDuJeuController;
 
 session_start();
 const APP_PATH = __DIR__ . '/../app';
@@ -93,6 +91,9 @@ try {
                 break;
             case 'inscription':
                 (new inscriptionController())->execute();
+                break;
+            case 'regles-du-jeu':
+                (new reglesDuJeuController())->execute();
                 break;
         }
     }

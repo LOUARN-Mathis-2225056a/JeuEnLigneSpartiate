@@ -47,3 +47,9 @@ button {
     color: white;
     border-radius: 50px/50px;
 }
+
+p {
+    color: white;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 4.2vw;
+}
