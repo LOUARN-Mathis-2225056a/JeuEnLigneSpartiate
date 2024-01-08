@@ -11,7 +11,7 @@ use app\controllers\TableauDeBord\ModifierQuestions as modifierQuestionsControll
 use app\controllers\accueil\AccueilController as accueilController;
 //use app\controllers\Quizz as quizzController;
 
-
+use app\controllers\QRCode as qrcodeController;
 use app\controllers\regles\ReglesGeneralesController as reglesGeneralesController;
 use app\controllers\regles\ReglesJeuController as reglesJeuController;
 use app\controllers\regles\ReglesMateriellesController as reglesMateriellesController;
@@ -94,6 +94,9 @@ try {
                 break;
             case 'regles-du-jeu':
                 (new reglesDuJeuController())->execute();
+                break;
+            case 'qr-code':
+                (new qrcodeController())->execute();
                 break;
         }
     }
