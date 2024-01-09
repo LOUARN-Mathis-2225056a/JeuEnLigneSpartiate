@@ -18,6 +18,8 @@ use app\controllers\TableauDesScores\top100 as top100Controller;
 use app\controllers\TableauDesScores\top150 as top150Controller;
 use app\controllers\TableauDesScores\top200 as top200Controller;
 
+
+use app\controllers\QRCode as qrcodeController;
 use app\controllers\regles\ReglesGeneralesController as reglesGeneralesController;
 use app\controllers\regles\ReglesJeuController as reglesJeuController;
 use app\controllers\regles\ReglesMateriellesController as reglesMateriellesController;
@@ -131,6 +133,9 @@ try {
                 break;
             case 'rejoindre-room':
                 (new rejoindreRoomController())->execute();
+                break;
+            case 'qr-code':
+                (new qrcodeController())->execute();
                 break;
         }
     }

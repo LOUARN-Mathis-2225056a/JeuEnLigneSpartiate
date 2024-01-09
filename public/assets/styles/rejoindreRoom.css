@@ -29,6 +29,7 @@ input {
     margin-bottom: 20vw;
     border: none;
     background: white;
+    border: solid 1vw rgba(0, 94, 255, 0.81);
 }
 
 input::placeholder {

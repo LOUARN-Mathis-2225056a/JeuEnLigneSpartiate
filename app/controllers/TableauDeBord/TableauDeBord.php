@@ -3,9 +3,7 @@
 namespace app\controllers\TableauDeBord;
 use app\views\TableauDeBord\TableauDeBord as tableauDeBordView;
 use config\BaseDeDonnee as BDD;
-
 require_once __DIR__ . '/../../../vendor/autoload.php';
-//include 'app/dependences/phpqrcode/qrlib.php';
 class TableauDeBord
 {
     public function execute(): void {
@@ -132,4 +130,3 @@ class TableauDeBord
 
 }
 
-TableauDeBord::lancerJeu();

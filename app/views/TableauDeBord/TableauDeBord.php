@@ -5,8 +5,7 @@ namespace app\views\TableauDeBord;
 use app\controllers\TableauDeBord\TableauDeBord as tableauDeBordController;
 use app\models\ModelePage;
 
-class TableauDeBord
-{
+class TableauDeBord {
 
     public function show(): void
     {
@@ -27,6 +26,7 @@ class TableauDeBord
         <button onclick="location.href = '/tableau-de-bord/liste-questions'">Liste des questions</button>
         <button onclick="location.href = '/tableau-de-bord/ajout-questions'">Ajouter des questions</button>
         <button onclick="location.href = '/tableau-de-bord/modifier-questions'">Modifier des questions</button>
+        <button onclick="location.href = '/qr-code'">Montrer le QR code</button>
 
         <script>
             function doAjaxRequest() {

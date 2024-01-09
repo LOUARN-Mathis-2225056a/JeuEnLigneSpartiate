@@ -50,3 +50,46 @@ button {
     width: 70%;
     text-align: right;
 }
+
+@media only screen and (min-width: 992px) {
+
+    .pageContent {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+    }
+
+    .question {
+        width: 20%;
+        border: solid 0.5vw white;
+        padding: 1vw;
+    }
+
+    .ligne {
+        border-bottom: solid 0.5vw white;
+        margin-bottom: 1vw;
+        padding-bottom: 1vw;
+    }
+
+    label {
+        font-size: 1.5vw;
+    }
+
+    button {
+        width: 20vw;
+        font-size: 3vw;
+        height: 4vw;
+        font-size: 1.5vw;
+        margin-top: 1vw;
+        margin-bottom: 1vw;
+    }
+
+    p {
+        font-size: 3vw;
+        margin-bottom: 5vw;
+    }
+
+    .code {
+        font-size: 5vw;
+    }
+}
