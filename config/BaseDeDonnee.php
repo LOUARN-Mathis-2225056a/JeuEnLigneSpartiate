@@ -4,6 +4,7 @@ namespace config;
 
 error_reporting(E_ERROR | E_PARSE);
 
+use app\controllers\TableauDeBord\TableauDeBord;
 use PDO;
 
 
@@ -100,14 +101,17 @@ class BaseDeDonnee
      */
     public static function updateScore()
     {
-        self::getConnection();
-        $requete = 'UPDATE joueurs SET score = score + 1 WHERE pseudo = ?';
-        $declaration = self::$connection->prepare($requete);
-        if (!$declaration) {
-            error_log('Impossible d\'effectuer l\'update de score');
-            return null;
+        if(TableauDeBord::jeuLance()){
+            self::getConnection();
+            $requete = 'UPDATE joueurs SET score = score + 1 WHERE pseudo = ?';
+            $declaration = self::$connection->prepare($requete);
+            if (!$declaration) {
+                error_log('Impossible d\'effectuer l\'update de score');
+                return null;
+            }
+            $declaration->execute([$_SESSION['pseudoJoueur']]);
         }
-        $declaration->execute([$_SESSION['pseudoJoueur']]);
+
     }
 
     /**
@@ -275,4 +279,44 @@ class BaseDeDonnee
         $listePseudo = $declaration->fetchAll(PDO::FETCH_COLUMN, 0);
         return $listePseudo;
     }
+
+    public static function getAccepterScore()
+    {
+        self::getConnection();
+        $requete = 'SELECT accepterScore FROM accepterScore ';
+        $declaration = self::$connection->prepare($requete);
+        if (!$declaration) {
+            error_log('Impossible de savoir si le jeu est lancé');
+            return null;
+        }
+        $declaration->execute();
+        return $declaration->fetch()[0];
+    }
+
+    public static function pauseJeu()
+    {
+        self::getConnection();
+        $requete = 'UPDATE accepterScore SET accepterScore = 0';
+        $declaration = self::$connection->prepare($requete);
+        if (!$declaration) {
+            error_log('Impossible de mettre le jeu en pause');
+            return null;
+        }
+        $declaration->execute();
+        $_SESSION['accepterScore'] = 0;
+    }
+
+    public static function lancerJeu()
+    {
+        self::getConnection();
+        $requete = 'UPDATE accepterScore SET accepterScore = 1';
+        $declaration = self::$connection->prepare($requete);
+        if (!$declaration) {
+            error_log('Impossible de mettre le jeu en pause');
+            return null;
+        }
+        $declaration->execute();
+        $_SESSION['accepterScore'] = 1;
+    }
+
 }

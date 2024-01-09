@@ -111,5 +111,25 @@ class TableauDeBord
         }
 
     }
+    public static function jeuLance():bool
+    {
+        $_SESSION['accepterScore'] = BDD::getAccepterScore();
+        if ($_SESSION['accepterScore'] == 1){
+            return true;
+        }
+        return false;
+    }
+
+    public static function lancerJeu():void
+    {
+        BDD::lancerJeu();
+    }
+
+    public static function arreterJeu():void
+    {
+        BDD::pauseJeu();
+    }
 
 }
+
+TableauDeBord::lancerJeu();

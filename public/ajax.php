@@ -120,5 +120,27 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) { //si c'est une méthode POST
         exit;
     }
 
+    if (isset($_POST['lancerJeu'])){
+        TableauDeBord::lancerJeu();
+
+        $reponse = array(
+            'message' => 'Les scores sont maintenant pris en compte',
+            'status'  => true,
+        );
+        echo json_encode( $reponse );
+        exit;
+    }
+
+    if (isset($_POST['arreterJeu'])){
+        TableauDeBord::arreterJeu();
+
+        $reponse = array(
+            'message' => 'Les scores ne seront plus mis a jour',
+            'status'  => true,
+        );
+        echo json_encode( $reponse );
+        exit;
+    }
+
 }
 

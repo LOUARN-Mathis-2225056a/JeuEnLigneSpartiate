@@ -32,9 +32,7 @@ use app\controllers\rejoindreRoom\RejoindreRoomController as rejoindreRoomContro
 session_start();
 const APP_PATH = __DIR__ . '/../app';
 
-if(!isset($_SESSION['codeJeu'])){
-    \config\BaseDeDonnee::getCodeJeuActuel();
-}
+\config\BaseDeDonnee::getCodeJeuActuel();
 
 try {
     if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
