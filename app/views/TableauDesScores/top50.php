@@ -8,18 +8,8 @@ class top50
 {
     public function show(): void
     {
-        ob_start();
-        echo '<ol>';
-        for ($i = 0; $i < 50; $i++) {
-            echo '<li> <label id="' . $i . '-nom"></label><label id="' . $i . '-score"></label></li>';
-        }
-        ?>
-            </ol>
-        <style>
-            body {
-                color: white;
-            }
-        </style>
+        ob_start(); ?>
+
         <form method="post">
             <select onchange="redirect()" id="changementTop">
                 <option value="1">Afficher le classement global</option>
@@ -31,6 +21,19 @@ class top50
                 <option value="200">Afficher le top 200</option>
             </select>
         </form>
+
+        <?php echo '<ol>';
+        for ($i = 0; $i < 50; $i++) {
+            echo '<li> <label id="' . $i . '-nom"></label><label id="' . $i . '-score"></label></li>';
+        }
+        ?>
+            </ol>
+        <style>
+            body {
+                color: white;
+            }
+        </style>
+
 
         <script>
             window.onload = () => {

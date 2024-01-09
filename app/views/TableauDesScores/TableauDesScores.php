@@ -17,13 +17,7 @@ class TableauDesScores
             <meta http-equiv="refresh" content="30">
         </head>
         <body>
-        <?php
-        $tableauDesScores = tableauDesScoresController::getToutLeTableauDesScores();
-        for ($i = 0; $i < sizeof($tableauDesScores); $i++) {
-            echo '<li> <label class="nomJoueur" id=" ' . $i . '"> ' . $tableauDesScores[$i]->nom . '</label> <label class="scoreJoueur" id="' . $i . '">' . $tableauDesScores[$i]->score . '</label> </li>';
-        }
 
-        ?>
         <form method="post">
             <select onchange="redirect()" id="changementTop">
                 <option value="1" selected>Afficher le classement global</option>
@@ -35,6 +29,15 @@ class TableauDesScores
                 <option value="200">Afficher le top 200</option>
             </select>
         </form>
+
+        <?php
+        $tableauDesScores = tableauDesScoresController::getToutLeTableauDesScores(); ?>
+        <ol> <?php
+        for ($i = 0; $i < sizeof($tableauDesScores); $i++) {
+            echo '<li> <label class="nomJoueur" id=" ' . $i . '"> ' . $tableauDesScores[$i]->nom . '</label> <label class="scoreJoueur" id="' . $i . '">' . $tableauDesScores[$i]->score . '</label> </li>';
+        } ?>
+        </ol>
+
 
         <script>
             function redirect() {
