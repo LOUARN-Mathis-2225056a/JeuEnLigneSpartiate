@@ -27,6 +27,12 @@ input {
     text-align: center;
     font-family: 'Roboto Condensed', sans-serif;
     margin-bottom: 20vw;
+    border: none;
+    background: white;
+}
+
+input::placeholder {
+    color: rgba(0, 0, 0, 0.6);
 }
 
 button {
