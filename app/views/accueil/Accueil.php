@@ -18,6 +18,7 @@ class Accueil
             </div>
             <button href="lien a mettre vers une autre page" class="boutton-jouer">JOUER</button>
             <button onclick="window.location.href='../regles-du-jeu'" href="lien a mettre vers une autre page" class="boutton-regles">REGLES DU JEU</button>
+            <button onclick="window.location.href='../regles'" class="boutton-regles" style="margin-bottom: 20vw">REGLES DU HOCKEY</button>
         </div>
 
         <?php

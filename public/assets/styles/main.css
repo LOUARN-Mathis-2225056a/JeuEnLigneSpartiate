@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'Legend M54';
+    src: url('../font/LegendM54/legend_m54-webfont.woff2') format('woff2'),
+    url('../font/LegendM54/legend_m54-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     height: 100vh;
     width: 100vw;
