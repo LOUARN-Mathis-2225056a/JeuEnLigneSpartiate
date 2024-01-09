@@ -21,6 +21,8 @@ use app\controllers\inscription\Inscription as inscriptionController;
 
 use app\controllers\reglesDuJeu\ReglesDuJeuController as reglesDuJeuController;
 
+use app\controllers\rejoindreRoom\RejoindreRoomController as rejoindreRoomController;
+
 session_start();
 const APP_PATH = __DIR__ . '/../app';
 
@@ -97,6 +99,9 @@ try {
                 break;
             case 'regles-du-jeu':
                 (new reglesDuJeuController())->execute();
+                break;
+            case 'rejoindre-room':
+                (new rejoindreRoomController())->execute();
                 break;
         }
     }

@@ -16,7 +16,7 @@ class Accueil
                 <label>HOCKEY</label>
                 <label>GAME</label>
             </div>
-            <button>JOUER</button>
+            <button onclick="window.location.href='../rejoindre-room'" >JOUER</button>
             <button onclick="window.location.href='../regles-du-jeu'" class="bouton-regles">REGLES DU JEU</button>
             <button onclick="window.location.href='../regles'" class="bouton-regles" style="margin-bottom: 20vw">REGLES DU HOCKEY</button>
         </div>
