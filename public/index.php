@@ -24,7 +24,7 @@ use app\controllers\reglesDuJeu\ReglesDuJeuController as reglesDuJeuController;
 session_start();
 const APP_PATH = __DIR__ . '/../app';
 
-if(isset($_SESSION['codeJeu'])){
+if(!isset($_SESSION['codeJeu'])){
     \config\BaseDeDonnee::getCodeJeuActuel();
 }
 
