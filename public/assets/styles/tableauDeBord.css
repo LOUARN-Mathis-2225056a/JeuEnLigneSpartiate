@@ -28,3 +28,22 @@ p {
     font-family: 'Roboto Condensed', sans-serif;
     color: #00CCFF;
 }
+
+@media only screen and (min-width: 992px) {
+
+    button {
+        width: 40vw;
+        font-size: 3vw;
+        height: 8vw;
+        margin-bottom: 3vw;
+    }
+
+    p {
+        font-size: 3vw;
+        margin-bottom: 5vw;
+    }
+
+    .code {
+        font-size: 5vw;
+    }
+}

@@ -53,3 +53,37 @@ p {
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 4.2vw;
 }
+
+@media only screen and (min-width: 992px) {
+    .pageContent {
+        margin-top: 10vh;
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+    }
+
+    input {
+        width: 30%;
+        height: 5vw;
+        font-size: 2vw;
+        margin-bottom: 3vw;
+    }
+
+    .title {
+        font-size: 2vw;
+        margin-bottom: 1vw;
+    }
+
+    button {
+        width: 20vw;
+        font-size: 3vw;
+        height: 4vw;
+        font-size: 1.5vw;
+        margin-top: 1vw;
+        margin-bottom: 1vw;
+    }
+
+    .question {
+        margin-bottom: 5vw;
+    }
+}

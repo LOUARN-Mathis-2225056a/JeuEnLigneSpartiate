@@ -25,6 +25,7 @@ body {
 
 .retour {
     height: 15vw;
+    min-height: 15vw;
     width: 40vw;
     font-size: 6.5vw;
     margin: 5vw;
@@ -69,4 +70,19 @@ input::placeholder {
 
 .motImportant {
     color: #00CCFF;
+}
+
+@media only screen and (min-width: 992px) {
+    body {
+        justify-content: flex-start;
+        height: auto;
+        width: 100%;
+    }
+
+    .retour {
+        height: 5vw;
+        width: 15vw;
+        font-size: 2vw;
+        min-height: 5vw;
+    }
 }
