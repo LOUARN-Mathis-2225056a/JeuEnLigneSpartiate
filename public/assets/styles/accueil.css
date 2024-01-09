@@ -1,18 +1,3 @@
-body{
-    height: 100vh;
-    width: 100vw;
-    border: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    flex-wrap: nowrap;
-    background-image: url("../ressources/background1.jpeg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
 .logo{
     align-items: center;
     height: auto;
@@ -33,39 +18,35 @@ body{
     margin-bottom: 20vw;
 }
 
-.titre div:nth-child(2) {
+.titre label:nth-child(2) {
     color: #0CF;
 }
 
-.boutton-jouer
-{
-    cursor: pointer;
-    font-family: 'Legend M54';
-    background-color: #0048C0;
-    border: none;
-    color: #FFF2E3;
-    text-align: center;
-    font-size: 120px;
-    border-radius: 100px;
-    padding: 20px;
-    width: 50vw;
+label {
     margin-bottom: 3vw;
 }
 
-.boutton-jouer:hover
+button
+{
+    min-height: 150px;
+    height: 15vw;
+    width: 50vw;
+    font-size: 7.5vw;
+    margin-bottom: 3vw;
+    font-family: 'Legend M54';
+    background-color: #014bc6;
+    border: none;
+    color: white;
+    border-radius: 100px;
+}
+
+button:hover
 {
     background-color: #002F7F;
 }
 
-.boutton-regles
+.bouton-regles
 {
-    cursor: pointer;
-    font-family: 'Legend M54';
-    border: none;
-    background: none;
-    color: #FFF2E3;
-    text-align: center;
-    font-size: 50px;
-    margin-bottom: 3vw;
+    font-size: 5vw;
 }
 
