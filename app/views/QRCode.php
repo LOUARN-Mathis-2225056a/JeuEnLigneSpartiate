@@ -37,6 +37,6 @@ class QRCode
 
         </script>
         <?php
-        (new ModelePage('QR code', ob_get_clean(), ''))->show();
+        (new ModelePage('QR code', ob_get_clean(), 'qrCode'))->show();
     }
 }
