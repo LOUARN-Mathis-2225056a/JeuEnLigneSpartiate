@@ -3,16 +3,37 @@
 namespace app\views;
 
 use app\models\ModelePage;
+use config\BaseDeDonnee;
 
 class Quizz
 {
-    public function show():void
+    public function show(): void
     {
         ob_start();
         ?>
         <style>
-            body{
-                color: white;
+            * {
+                font-family: Arial, sans-serif;
+                margin: 20px;
+            }
+
+            h1 {
+                text-align: center;
+            }
+
+            form {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            button {
+                display: block;
+                margin-top: 10px;
             }
         </style>
         <h1>Quiz</h1>
@@ -21,72 +42,61 @@ class Quizz
             </div>
             <button type="submit">Valider</button>
         </form>
-        <script src="/JeuEnLigneSpartiate/public/assets/javaScript/Quizz.js"></script
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const questions = <?php echo json_encode(BaseDeDonnee::getTouteLesQuestions()); ?>;
+                const quizForm = document.getElementById('quiz-form');
+                const questionContainer = document.getElementById('question-container');
+                let questionIndex = 0;
 
+                function shuffleQuestions(array) {
+                    return array.sort(() => Math.random() - 0.5);
+                }
 
-            <script> // C'est le jeu dans le script là
-                document.addEventListener('DOMContentLoaded', function() {
-                    const questions = [
-                        {
-                            question: 'Combien y a-t-il de joueurs dans une équipe de hockey sur glace ?',
-                            options: ['10', '20', '30'],
-                            answer: '20'
-                        },
-                        {
-                            options: ['trois périodes de 15 minutes chacune, avec une pause de 20 minutes entre chaque période.','trois périodes de 20 minutes chacune, avec une pause de 15 minutes entre chaque période.','deux périodes de 20 minutes chacune, avec une pause de 15 minutes entre chaque période.'],
-                            answer: 'trois périodes de 20 minutes chacune, avec une pause de 15 minutes entre chaque période.'
-                        },
-                    ];
+                function displayQuestion() {
+                    const shuffledQuestions = shuffleQuestions(questions);
+                    const currentQuestion = shuffledQuestions[questionIndex];
+                    const questionMarkup = `
+                    <h2>Question ${questionIndex + 1}</h2>
+                    <p>${currentQuestion[0]}</p>
+                    <ul>
+                        ${currentQuestion[1].map(option => `<li><input type="radio" name="reponse" value="${option}"> ${option}</li>`).join('')}
+                    </ul>
+                `;
+                    questionContainer.innerHTML = questionMarkup;
+                }
 
-                    const quizForm = document.getElementById('quiz-form');
-                    const questionContainer = document.getElementById('question-container');
-                    let questionIndex = 0;
+                displayQuestion();
 
-                    function displayQuestion() {
-                        const currentQuestion = questions[questionIndex];
-                        const questionMarkup = `
-            <h2>Question ${questionIndex + 1}</h2>
-            <p>${currentQuestion.question}</p>
-            <ul>
-                ${currentQuestion.options.map(option => `<li><input type="radio" name="reponse" value="${option}"> ${option}</li>`).join('')}
-            </ul>
-        `;
-                        questionContainer.innerHTML = questionMarkup;
-                    }
+                quizForm.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    const selectedAnswer = document.querySelector('input[name="reponse"]:checked');
 
-                    displayQuestion();
+                    if (selectedAnswer) {
+                        const userAnswer = selectedAnswer.value;
 
-                    quizForm.addEventListener('submit', function(event) {
-                        event.preventDefault();
-
-                        const selectedAnswer = document.querySelector('input[name="reponse"]:checked');
-
-                        if (selectedAnswer) {
-                            const userAnswer = selectedAnswer.value;
-
-                            // Vérification de la réponse
-                            if (userAnswer === questions[questionIndex].answer) {
-                                alert('Bonne réponse !');
-                            } else {
-                                alert('Mauvaise réponse.');
-                            }
-
-                            questionIndex++;
-
-                            if (questionIndex < questions.length) {
-                                displayQuestion();
-                            } else {
-                                alert('Vous avez terminé le quiz !');
-                            }
+                        if (userAnswer === questions[questionIndex][2]) {
+                            alert('Bonne réponse !');
                         } else {
-                            alert('Veuillez sélectionner une réponse.');
+                            alert('Mauvaise réponse.');
                         }
-                    });
+
+                        questionIndex++;
+
+                        if (questionIndex < questions.length) {
+                            displayQuestion();
+                        } else {
+                            alert('Vous avez terminé le quiz !');
+                        }
+                    } else {
+                        alert('Veuillez sélectionner une réponse.');
+                    }
                 });
-            </script>
+            });
+        </script>
 
         <?php
         (new ModelePage('Quizz', ob_get_clean(), 'quizz'))->show();
     }
 }
-
+?>
