@@ -24,7 +24,7 @@ class top50
 
         <?php echo '<ol>';
         for ($i = 0; $i < 50; $i++) {
-            echo '<li> <label id="' . $i . '-nom"></label><label class="scoreJoueur" id="' . $i . '-score"></label></li>';
+            echo '<li> <label class="nomJoueur" id="' . $i . '-nom"></label><label class="scoreJoueur" id="' . $i . '-score"></label></li>';
         }
         ?>
             </ol>

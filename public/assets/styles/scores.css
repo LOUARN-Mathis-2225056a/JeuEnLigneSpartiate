@@ -16,13 +16,20 @@ body{
 }
 
 label {
+    display: flex;
     font-size: 8vw;
     margin: 3vw;
     font-family: "Roboto Condensed", sans-serif;
+    align-items: center;
+    justify-content: center;
 }
 
 .scoreJoueur {
     color: #00CCFF;
+}
+
+.nomJoueur {
+    font-size: 5.5vw;
 }
 
 ol{
