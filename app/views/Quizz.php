@@ -15,6 +15,7 @@ class Quizz
             * {
                 font-family: Arial, sans-serif;
                 margin: 20px;
+                color:white;
             }
 
             h1 {
@@ -42,6 +43,7 @@ class Quizz
             </div>
             <button type="submit">Valider</button>
         </form>
+
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 const questions = <?php echo json_encode(BaseDeDonnee::getTouteLesQuestions()); ?>;
@@ -57,12 +59,12 @@ class Quizz
                     const shuffledQuestions = shuffleQuestions(questions);
                     const currentQuestion = shuffledQuestions[questionIndex];
                     const questionMarkup = `
-                    <h2>Question ${questionIndex + 1}</h2>
-                    <p>${currentQuestion[0]}</p>
-                    <ul>
-                        ${currentQuestion[1].map(option => `<li><input type="radio" name="reponse" value="${option}"> ${option}</li>`).join('')}
-                    </ul>
-                `;
+            <h2>Question ${questionIndex + 1}</h2>
+            <p>${currentQuestion[0]}</p>
+            <ul>
+                ${currentQuestion[1].map(option => `<li><input type="radio" name="reponse" value="${option}"> ${option}</li>`).join('')}
+            </ul>
+        `;
                     questionContainer.innerHTML = questionMarkup;
                 }
 
@@ -74,11 +76,14 @@ class Quizz
 
                     if (selectedAnswer) {
                         const userAnswer = selectedAnswer.value;
+                        const correctAnswer = questions[questionIndex][2]; // Indice de la réponse correcte dans les données
 
-                        if (userAnswer === questions[questionIndex][2]) {
+                        if (userAnswer === correctAnswer) {
                             alert('Bonne réponse !');
+                            // Ajoutez ici toute autre action que vous souhaitez effectuer pour une bonne réponse
                         } else {
                             alert('Mauvaise réponse.');
+                            // Ajoutez ici toute autre action pour une mauvaise réponse
                         }
 
                         questionIndex++;
@@ -92,6 +97,7 @@ class Quizz
                         alert('Veuillez sélectionner une réponse.');
                     }
                 });
+
             });
         </script>
 
