@@ -56,34 +56,28 @@ class Quizz
                 }
 
                 function displayQuestion() {
-                    const shuffledQuestions = shuffleQuestions(questions);
-                    const currentQuestion = shuffledQuestions[questionIndex];
+                    const currentQuestion = questions[questionIndex];
                     const questionMarkup = `
-            <h2>Question ${questionIndex + 1}</h2>
-            <p>${currentQuestion[0]}</p>
-            <ul>
-                ${currentQuestion[1].map(option => `<li><input type="radio" name="reponse" value="${option}"> ${option}</li>`).join('')}
-            </ul>
-        `;
+                        <h2>Question ${questionIndex + 1}</h2>
+                        <p>${currentQuestion[0]}</p>
+                        <ul>
+                            ${currentQuestion[1].map(option => `<li><input type="radio" name="reponse" value="${option}"> ${option}</li>`).join('')}
+                        </ul>
+                    `;
                     questionContainer.innerHTML = questionMarkup;
                 }
 
-                displayQuestion();
-
-                quizForm.addEventListener('submit', function(event) {
-                    event.preventDefault();
+                function handleQuizSubmission() {
                     const selectedAnswer = document.querySelector('input[name="reponse"]:checked');
 
                     if (selectedAnswer) {
                         const userAnswer = selectedAnswer.value;
-                        const correctAnswer = questions[questionIndex][2]; // Indice de la réponse correcte dans les données
+                        const correctAnswer = questions[questionIndex][2];
 
                         if (userAnswer === correctAnswer) {
                             alert('Bonne réponse !');
-                            // Ajoutez ici toute autre action que vous souhaitez effectuer pour une bonne réponse
                         } else {
                             alert('Mauvaise réponse.');
-                            // Ajoutez ici toute autre action pour une mauvaise réponse
                         }
 
                         questionIndex++;
@@ -96,8 +90,14 @@ class Quizz
                     } else {
                         alert('Veuillez sélectionner une réponse.');
                     }
+                }
+
+                quizForm.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    handleQuizSubmission();
                 });
 
+                displayQuestion(); // Afficher la première question au chargement de la page
             });
         </script>
 
