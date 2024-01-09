@@ -74,7 +74,7 @@ try {
                     case "top150":
                         (new top150Controller())->execute();
                         break;
-                    case "top100":
+                    case "top200":
                         (new top200Controller())->execute();
                         break;
                 }
