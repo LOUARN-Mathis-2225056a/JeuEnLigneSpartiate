@@ -23,7 +23,11 @@ use app\controllers\reglesDuJeu\ReglesDuJeuController as reglesDuJeuController;
 
 session_start();
 const APP_PATH = __DIR__ . '/../app';
-\config\BaseDeDonnee::getCodeJeuActuel();
+
+if(isset($_SESSION['codeJeu'])){
+    \config\BaseDeDonnee::getCodeJeuActuel();
+}
+
 try {
     if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_POST['login'])) {
