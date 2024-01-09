@@ -101,6 +101,39 @@ class Quizz
             });
         </script>
 
+        <script>
+            let touteLesQuestions = [];
+            window.onload = () => {
+                getQuestion();
+            }
+
+            function getQuestion(){
+                const data = new URLSearchParams();
+                data.append("obtenirQuestion", 'true');
+
+                fetch("/ajax.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                    body: data
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(json => {
+                        touteLesQuestions = json.value;
+                    })
+                    .catch(error => {
+                        console.error('Error in execution of the request:', error);
+
+                    });
+            }
+        </script>
+
         <?php
         (new ModelePage('Quizz', ob_get_clean(), 'quizz'))->show();
     }

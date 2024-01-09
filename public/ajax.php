@@ -94,4 +94,16 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) { //si c'est une méthode POST
         exit;
     }
 
+    if (isset($_POST['obtenirQuestion'])){
+        $touteLesQuestions = BaseDeDonnee::getTouteLesQuestions();
+
+        $reponse = array(
+            'message' => 'envoi de toutes les questions',
+            'value' => $touteLesQuestions,
+            'status'  => true,
+        );
+        echo json_encode( $reponse );
+        exit;
+    }
+
 }
