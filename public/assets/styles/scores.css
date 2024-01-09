@@ -1,0 +1,50 @@
+body{
+    color: white;
+
+}
+
+#changementTop {
+    width: 80vw;
+    height: 20vw;
+    text-align: center;
+    font-size: 5.5vw;
+    font-family: "Legend M54";
+    background-color: #0048C0;
+    color: white;
+    border: solid white 0.5vw;
+    margin: 5vw;
+}
+
+label {
+    display: flex;
+    font-size: 8vw;
+    margin: 3vw;
+    font-family: "Roboto Condensed", sans-serif;
+    align-items: center;
+    justify-content: center;
+}
+
+.scoreJoueur {
+    color: #00CCFF;
+}
+
+.nomJoueur {
+    font-size: 5.5vw;
+}
+
+ol{
+    display: grid;
+    width: 70vw;
+    border: solid white 1vw;
+    padding: 0;
+    margin: 0;
+    border-bottom: none;
+    overflow: scroll;
+    margin-bottom: 10vw;
+}
+li{
+    display: flex;
+    border-bottom: solid white 1vw;
+    width: 100%;
+    justify-content: space-between;
+}

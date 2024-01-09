@@ -4,6 +4,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use app\controllers\TableauDeBord\TableauDeBord;
 use config\BaseDeDonnee;
+use app\controllers\TableauDesScores\TableauDesScores as tableauDesScoresController;
 
 header( 'Content-Type: application/json' );
 
@@ -93,6 +94,19 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) { //si c'est une méthode POST
         echo json_encode( $reponse );
         exit;
     }
+    if (isset($_POST['tailleTableauDesScores'])){
+
+        $tableauDeJoueur = tableauDesScoresController::getTableauDesScores(intval($_POST['tailleTableauDesScores']));
+        $tableauARendre = tableauDesScoresController::desObectifierLeTableau($tableauDeJoueur);
+
+        $reponse = array(
+            'message' => 'Demande traitée, réponse envoyées',
+            'value' => $tableauARendre,
+            'status'  => true,
+        );
+        echo json_encode( $reponse );
+        exit;
+    }
 
     if (isset($_POST['obtenirQuestion'])){
         $touteLesQuestions = BaseDeDonnee::getTouteLesQuestions();
@@ -107,3 +121,4 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) { //si c'est une méthode POST
     }
 
 }
+

@@ -10,7 +10,13 @@ use app\controllers\TableauDeBord\ListeDesQuestions as listeDesQuestionsControll
 use app\controllers\TableauDeBord\ModifierQuestions as modifierQuestionsController;
 use app\controllers\accueil\AccueilController as accueilController;
 use app\controllers\Quizz as quizzController;
-
+use app\controllers\TableauDesScores\TableauDesScores as tableauDesScoresController;
+use app\controllers\TableauDesScores\top10 as top10Controller;
+use app\controllers\TableauDesScores\top20 as top20Controller;
+use app\controllers\TableauDesScores\top50 as top50Controller;
+use app\controllers\TableauDesScores\top100 as top100Controller;
+use app\controllers\TableauDesScores\top150 as top150Controller;
+use app\controllers\TableauDesScores\top200 as top200Controller;
 
 use app\controllers\regles\ReglesGeneralesController as reglesGeneralesController;
 use app\controllers\regles\ReglesJeuController as reglesJeuController;
@@ -71,6 +77,31 @@ try {
                 break;
             case 'accueil':
                 (new accueilController())->execute();
+                break;
+            case 'scores':
+                switch ($route[1]){
+                    case "":
+                        (new tableauDesScoresController())->execute();
+                        break;
+                    case "top10":
+                        (new top10Controller())->execute();
+                        break;
+                    case "top20":
+                        (new top20Controller())->execute();
+                        break;
+                    case "top50":
+                        (new top50Controller())->execute();
+                        break;
+                    case "top100":
+                        (new top100Controller())->execute();
+                        break;
+                    case "top150":
+                        (new top150Controller())->execute();
+                        break;
+                    case "top200":
+                        (new top200Controller())->execute();
+                        break;
+                }
                 break;
             default:
                 (new pageIntrouvableController())->execute();
