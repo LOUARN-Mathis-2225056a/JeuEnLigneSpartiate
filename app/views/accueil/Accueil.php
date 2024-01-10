@@ -19,7 +19,7 @@ class Accueil
             <button onclick="window.location.href='../rejoindre-room'" >JOUER</button>
             <button onclick="window.location.href='../regles-du-jeu'" class="bouton-regles">REGLES DU JEU</button>
             <button onclick="window.location.href='../regles'" class="bouton-regles">REGLES DU HOCKEY</button>
-            <button onclick="window.location.href=''" class="bouton-regles" style="margin-bottom: 20vw">CLASSEMENT</button>
+            <button onclick="window.location.href='../scores'" class="bouton-regles" style="margin-bottom: 20vw">CLASSEMENT</button>
         </div>
 
         <?php
