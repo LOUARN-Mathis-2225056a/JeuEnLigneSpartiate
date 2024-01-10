@@ -319,4 +319,23 @@ class BaseDeDonnee
         $_SESSION['accepterScore'] = 1;
     }
 
+    public static function getJoueurs()
+    {
+        self::getConnection();
+        $listePseudo = [];
+        $listeScore = [];
+        $listeEmail = [];
+        $requete = 'SELECT * FROM joueurs ORDER BY score DESC ';
+        $declaration = self::$connection->prepare($requete);
+        if (!$declaration) {
+            error_log('Impossible d\'effectuer la requête pour la récupération d\'informations pour envoyer les emails.');
+            return null;
+        }
+        $declaration->execute();
+        $listePseudo = $declaration->fetchAll(PDO::FETCH_COLUMN, 0);
+        $listeScore = $declaration->fetchAll(PDO::FETCH_COLUMN, 1);
+        $listeEmail = $declaration->fetchAll(PDO::FETCH_COLUMN,2);
+        return [$listePseudo, $listeScore, $listeEmail];
+    }
+
 }
