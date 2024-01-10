@@ -40,50 +40,7 @@ class Quizz
             <div id="question-container">
             </div>
         </form>
-
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                let questions = [];
-
-                function displayQuestion() {
-                    const questionContainer = document.getElementById('question-container');
-                    const currentQuestion = questions[questionIndex];
-                    const questionMarkup = `
-                        <h2>Question ${questionIndex + 1}</h2>
-                        <p>${currentQuestion[0]}</p>
-                        <ul>
-                            ${currentQuestion[1].map(option => `<li><input type="radio" name="reponse" value="${option}"> ${option}</li>`).join('')}
-                        </ul>
-                    `;
-                    questionContainer.innerHTML = questionMarkup;
-                }
-
-                function handleQuizSubmission() {
-                    const selectedAnswer = document.querySelector('input[name="reponse"]:checked');
-
-                    if (selectedAnswer) {
-                        const userAnswer = selectedAnswer.value;
-                        const correctAnswer = questions[questionIndex][2];
-
-                    questionIndex++;
-                    if (questionIndex < questions.length) {
-                        displayQuestion();
-                    } else {
-                        alert('Vous avez terminé le quiz !');
-                    }
-                }
-
-                quizForm.addEventListener('submit', function(event) {
-                    event.preventDefault();
-                    handleQuizSubmission();
-                });
-
-                    displayQuestion();
-                });
-        </script>
-
-        <script>
-            let touteLesQuestions = [];
             window.onload = () => {
                 getQuestion();
             }
@@ -110,9 +67,27 @@ class Quizz
                     })
                     .catch(error => {
                         console.error('Error in execution of the request:', error);
-
                     });
             }
+
+
+            function displayQuestion() {
+                const questionContainer = document.getElementById('question-container');
+                const currentQuestion = questions[questionIndex];
+                const questionMarkup = `
+        <h2>Question ${questionIndex + 1}</h2>
+        <p>${currentQuestion[0]}</p>
+        <ul>
+            ${currentQuestion[1].map(option => `<li><input type="radio" name="reponse" value="${option}"> ${option}</li>`).join('')}
+        </ul>
+    `;
+                questionContainer.innerHTML = questionMarkup;
+            }
+
+
+            window.onload = () => {
+                getQuestion();
+            };
         </script>
 
         <?php
