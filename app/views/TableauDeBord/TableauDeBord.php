@@ -18,8 +18,7 @@ class TableauDeBord {
 
         ?>
 
-        <button type="submit" name="creerSalle" value="TableauDeBord" onclick="doAjaxRequest()">CREER UNE SALLE
-        </button>
+        <button style="margin-top: 10vw" type="submit" name="creerSalle" value="TableauDeBord" onclick="doAjaxRequest()">CREER UNE SALLE</button>
         <p class="codeJeu">code de jeu actuel<br><label class="code"><?php echo $_SESSION['codeJeu']; ?></label></p>
         <button id="lancerJeu" value="jeuLance" onclick="lancerJeu()">Lancer le jeu</button>
         <button id="stopperJeu" value="jeuPause" onclick="stopperJeu()">Stopper le jeu</button>
@@ -82,6 +81,8 @@ class TableauDeBord {
                     .then(json => {
                         console.log('jeu lancé');
                         document.getElementById("stopperJeu").disabled = false;
+                        document.getElementById("stopperJeu").style = "background-color: #00CCFF;";
+                        document.getElementById("lancerJeu").style = "background-color: #0048C0;";
                         document.getElementById("lancerJeu").disabled = true;
                     })
                     .catch(error => {
@@ -113,6 +114,8 @@ class TableauDeBord {
                     .then(json => {
                         console.log('jeu stoppé');
                         document.getElementById("lancerJeu").disabled = false;
+                        document.getElementById("lancerJeu").style = "background-color: #00CCFF;";
+                        document.getElementById("stopperJeu").style = "background-color: #0048C0;";
                         document.getElementById("stopperJeu").disabled = true;
                     })
                     .catch(error => {
@@ -124,10 +127,14 @@ class TableauDeBord {
             window.onload = () => {
                 if (document.getElementById("jeuEstLance").innerText == 1) {
                     document.getElementById("stopperJeu").disabled = false;
+                    document.getElementById("stopperJeu").style = "background-color: #00CCFF;";
+                    document.getElementById("lancerJeu").style = "background-color: #0048C0;";
                     document.getElementById("lancerJeu").disabled = true;
                     console.log('Le jeu est lancé')
                 } else {
                     document.getElementById("lancerJeu").disabled = false;
+                    document.getElementById("lancerJeu").style = "background-color: #00CCFF;";
+                    document.getElementById("stopperJeu").style = "background-color: #0048C0;";
                     document.getElementById("stopperJeu").disabled = true;
                     console.log('Le jeu est stoppé')
                 }
