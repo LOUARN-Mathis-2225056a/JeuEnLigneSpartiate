@@ -138,9 +138,13 @@ try {
                 }
                 break;
             case 'inscription':
-                if(isset($_SESSION['codeValide']) and $_SESSION['codeValide'] == 'vrai'){
+                if (isset($_SESSION['estInscrit']) and $_SESSION['estInscrit'] == 'vrai'){
+                    header('Location: /' . $_SESSION['codeJeu']);
+                }
+                elseif(isset($_SESSION['codeValide']) and $_SESSION['codeValide'] == 'vrai'){
                     (new inscriptionController())->execute();
-                } else {
+                }
+                else {
                     header('Location: /rejoindre-room');
                 }
                 break;
@@ -148,7 +152,12 @@ try {
                 (new reglesDuJeuController())->execute();
                 break;
             case 'rejoindre-room':
-                (new rejoindreRoomController())->execute();
+                if(isset($_SESSION['codeValide']) and  $_SESSION['codeValide'] == 'vrai'){
+                    header('Location: /inscription');
+                }
+                else{
+                    (new rejoindreRoomController())->execute();
+                }
                 break;
             case 'qr-code':
                 (new qrcodeController())->execute();
