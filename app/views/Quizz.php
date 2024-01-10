@@ -19,7 +19,7 @@ class Quizz
         <script>
             window.onload = () => {
                 getQuestion();
-            }
+            };
 
             function getQuestion(){
                 const data = new URLSearchParams();
@@ -40,28 +40,24 @@ class Quizz
                     })
                     .then(json => {
                         touteLesQuestions = json.value;
+                        displayQuestion();
                     })
                     .catch(error => {
                         console.error('Error in execution of the request:', error);
                     });
             }
 
-
             function displayQuestion() {
                 const questionContainer = document.getElementById('question-container');
-                const currentQuestion = questions[questionIndex];
+                const currentQuestion = touteLesQuestions[0];
                 const questionMarkup = `
-                    <h2>Question ${questionIndex + 1}</h2>
-                    <p>${currentQuestion[0]}</p>
-                    <ul>
-                        ${currentQuestion[1].map(option => `<li><input type="radio" name="reponse" value="${option}"> ${option}</li>`).join('')}
-                    </ul>`;
+        <h2>Question 1</h2>
+        <p>${currentQuestion.question}</p>
+        <ul>
+            ${currentQuestion.reponses.map(option => `<li><input type="radio" name="reponse" value="${option}"> ${option}</li>`).join('')}
+        </ul>`;
                 questionContainer.innerHTML = questionMarkup;
             }
-
-            window.onload = () => {
-                getQuestion();
-            };
         </script>
 
         <?php
