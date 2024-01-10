@@ -11,30 +11,6 @@ class Quizz
     {
         ob_start();
         ?>
-        <style>
-            body{
-                background: white;
-            }
-            * {
-                font-family: Arial, sans-serif;
-                margin: 20px;
-                color:black;
-            }
-
-            h1 {
-                text-align: center;
-            }
-
-            form {
-                max-width: 500px;
-                margin: 0 auto;
-            }
-
-            ul {
-                list-style: none;
-                padding: 0;
-            }
-        </style>
         <h1>Quiz</h1>
         <form id="quiz-form">
             <div id="question-container">
@@ -75,15 +51,13 @@ class Quizz
                 const questionContainer = document.getElementById('question-container');
                 const currentQuestion = questions[questionIndex];
                 const questionMarkup = `
-        <h2>Question ${questionIndex + 1}</h2>
-        <p>${currentQuestion[0]}</p>
-        <ul>
-            ${currentQuestion[1].map(option => `<li><input type="radio" name="reponse" value="${option}"> ${option}</li>`).join('')}
-        </ul>
-    `;
+                    <h2>Question ${questionIndex + 1}</h2>
+                    <p>${currentQuestion[0]}</p>
+                    <ul>
+                        ${currentQuestion[1].map(option => `<li><input type="radio" name="reponse" value="${option}"> ${option}</li>`).join('')}
+                    </ul>`;
                 questionContainer.innerHTML = questionMarkup;
             }
-
 
             window.onload = () => {
                 getQuestion();
