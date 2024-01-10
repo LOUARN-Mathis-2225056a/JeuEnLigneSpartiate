@@ -11,35 +11,7 @@ class Quizz
     {
         ob_start();
         ?>
-        <style>
-            body{
-                background: white;
-            }
-            * {
-                font-family: Arial, sans-serif;
-                margin: 20px;
-                color:black;
-            }
 
-            h1 {
-                text-align: center;
-            }
-
-            form {
-                max-width: 500px;
-                margin: 0 auto;
-            }
-
-            ul {
-                list-style: none;
-                padding: 0;
-            }
-
-            button {
-                display: block;
-                margin-top: 10px;
-            }
-        </style>
         <h1>Quiz</h1>
         <form id="quiz-form">
             <div id="question-container">
