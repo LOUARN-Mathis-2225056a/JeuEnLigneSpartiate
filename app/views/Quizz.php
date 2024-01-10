@@ -34,17 +34,11 @@ class Quizz
                 list-style: none;
                 padding: 0;
             }
-
-            button {
-                display: block;
-                margin-top: 10px;
-            }
         </style>
         <h1>Quiz</h1>
         <form id="quiz-form">
             <div id="question-container">
             </div>
-            <button type="submit">Valider</button>
         </form>
 
         <script>
