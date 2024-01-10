@@ -34,6 +34,7 @@ class Inscription
             $_SESSION['joueurPseudo'] = $pseudo;
             $_SESSION['joueurEmail'] = $email;
             $_SESSION['joueurScore'] = 0;
+            $_SESSION['estInscrit'] = 'vrai';
             header('Location: /'.$_SESSION['codeJeu']);
         }
 
