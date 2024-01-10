@@ -97,8 +97,8 @@ class Quizz
                     handleQuizSubmission();
                 });
 
-                displayQuestion(); // affichage de la première question au chargement de la page (normalement)
-            });
+                    displayQuestion();
+                });
         </script>
 
         <script>
