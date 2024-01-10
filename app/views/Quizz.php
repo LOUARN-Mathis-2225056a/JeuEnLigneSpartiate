@@ -12,10 +12,13 @@ class Quizz
         ob_start();
         ?>
         <style>
+            body{
+                background: white;
+            }
             * {
                 font-family: Arial, sans-serif;
                 margin: 20px;
-                color:white;
+                color:black;
             }
 
             h1 {
@@ -46,16 +49,10 @@ class Quizz
 
         <script>
             document.addEventListener('DOMContentLoaded', function() {
-                const questions = <?php echo json_encode(BaseDeDonnee::getTouteLesQuestions()); ?>;
-                const quizForm = document.getElementById('quiz-form');
-                const questionContainer = document.getElementById('question-container');
-                let questionIndex = 0;
-
-                function shuffleQuestions(array) {
-                    return array.sort(() => Math.random() - 0.5);
-                }
+                let questions = [];
 
                 function displayQuestion() {
+                    const questionContainer = document.getElementById('question-container');
                     const currentQuestion = questions[questionIndex];
                     const questionMarkup = `
                         <h2>Question ${questionIndex + 1}</h2>
@@ -74,21 +71,11 @@ class Quizz
                         const userAnswer = selectedAnswer.value;
                         const correctAnswer = questions[questionIndex][2];
 
-                        if (userAnswer === correctAnswer) {
-                            alert('Bonne réponse !');
-                        } else {
-                            alert('Mauvaise réponse.');
-                        }
-
-                        questionIndex++;
-
-                        if (questionIndex < questions.length) {
-                            displayQuestion();
-                        } else {
-                            alert('Vous avez terminé le quiz !');
-                        }
+                    questionIndex++;
+                    if (questionIndex < questions.length) {
+                        displayQuestion();
                     } else {
-                        alert('Veuillez sélectionner une réponse.');
+                        alert('Vous avez terminé le quiz !');
                     }
                 }
 
