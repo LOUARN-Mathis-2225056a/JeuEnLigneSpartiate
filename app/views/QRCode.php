@@ -9,14 +9,8 @@ class QRCode
     public function show():void
     {
         ob_start();
-        echo '<label id="codeJeu" hidden="hidden">'.$_SESSION['codeJeu'] . ' </label>'
+        echo '<label id="codeJeu" hidden="hidden">'.$_SESSION['codeJeu'] . '</label>'
         ?>
-        <style>
-            html{
-                background-color: blue;
-            /*    faut changer ça jsp comment faire mdr*/
-            }
-        </style>
         <div id="qrcode"></div>
 
         <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
@@ -29,7 +23,7 @@ class QRCode
                     tailleQRcode = largeurEcran;
                 }else {tailleQRcode = hauteurEcran}
                 new QRCode(document.getElementById("qrcode"), {
-                    text: window.location.host + '/' + codeJeu,
+                    text: window.location.host + '/' + codeJeu + '-qr-code',
                     width: tailleQRcode*0.80,
                     height: tailleQRcode*0.80
                 });

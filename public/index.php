@@ -48,6 +48,13 @@ try {
             (new inscriptionController())->inscriptionJoueur($_POST);
         }
     }
+
+    if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (isset($_POST['validationCode'])) {
+            (new rejoindreRoomController())->validationCode($_POST['roomCode']);
+        }
+    }
+
     if (isset($_SERVER['REQUEST_URI']) && isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'GET') {
         $route = ($_SERVER['REQUEST_URI'] === '/') ? '/' : explode('/', trim($_SERVER['REQUEST_URI'], '/'));
 
@@ -73,7 +80,12 @@ try {
                 break;
 
             case $_SESSION['codeJeu']:
-                (new quizzController())->execute();
+                if(isset($_SESSION['estInscrit']) and $_SESSION['estInscrit'] == 'vrai'){
+                    (new quizzController())->execute();
+                }else{
+                    header('Location: /inscription');
+                }
+
                 break;
             case 'accueil':
                 (new accueilController())->execute();
@@ -126,7 +138,11 @@ try {
                 }
                 break;
             case 'inscription':
-                (new inscriptionController())->execute();
+                if(isset($_SESSION['codeValide']) and $_SESSION['codeValide'] == 'vrai'){
+                    (new inscriptionController())->execute();
+                } else {
+                    header('Location: /rejoindre-room');
+                }
                 break;
             case 'regles-du-jeu':
                 (new reglesDuJeuController())->execute();
@@ -137,7 +153,12 @@ try {
             case 'qr-code':
                 (new qrcodeController())->execute();
                 break;
+            case $_SESSION['codeJeu'] . '-qr-code':
+                $_SESSION['codeValide'] = 'vrai';
+                header('Location /inscription');
+                break;
         }
+
     }
 }catch (Exception){
 
