@@ -40,7 +40,8 @@ class Quizz
                     })
                     .then(json => {
                         touteLesQuestions = json.value;
-                        displayQuestion();
+                        console.log(touteLesQuestions); // Ajoutez cette ligne pour déboguer
+                        displayQuestion(); // Appel à la fonction pour afficher la première question
                     })
                     .catch(error => {
                         console.error('Error in execution of the request:', error);
@@ -50,14 +51,22 @@ class Quizz
             function displayQuestion() {
                 const questionContainer = document.getElementById('question-container');
                 const currentQuestion = touteLesQuestions[0];
-                const questionMarkup = `
-        <h2>Question 1</h2>
-        <p>${currentQuestion.question}</p>
-        <ul>
-            ${currentQuestion.reponses.map(option => `<li><input type="radio" name="reponse" value="${option}"> ${option}</li>`).join('')}
-        </ul>`;
-                questionContainer.innerHTML = questionMarkup;
+
+                console.log('Current Question:', currentQuestion);
+
+                if (currentQuestion && Array.isArray(currentQuestion)) {
+                    const questionMarkup = `
+            <h2>Question 1</h2>
+            <p>${currentQuestion[0]}</p>
+            <ul>
+                ${currentQuestion.slice(1).map(option => `<li><input type="radio" name="reponse" value="${option}"> ${option}</li>`).join('')}
+            </ul>`;
+                    questionContainer.innerHTML = questionMarkup;
+                } else {
+                    console.error('Structure de données incorrecte.');
+                }
             }
+
         </script>
 
         <?php
