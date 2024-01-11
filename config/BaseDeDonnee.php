@@ -189,20 +189,20 @@ class BaseDeDonnee
     public static function getTouteLesQuestions(): ?array
     {
         self::getConnection();
-        $questions = [];
-        for ($i = 0; $i < 5; $i++) {
-            $requete = 'SELECT * FROM questions';
-            $declaration = self::$connection->prepare($requete);
-            if (!$declaration) {
-                error_log('Impossible d\'obtenir les questions');
-                return null;
-            }
-            $declaration->execute();
-            $questions[$i] = $declaration->fetchAll(PDO::FETCH_COLUMN, $i);
+        $requete = 'SELECT * FROM questions';
+        $declaration = self::$connection->prepare($requete);
+
+        if (!$declaration) {
+            error_log('Impossible d\'obtenir les questions');
+            return null;
         }
+
+        $declaration->execute();
+        $questions = $declaration->fetchAll(PDO::FETCH_ASSOC);
 
         return $questions;
     }
+
 
     /**
      * <p>supprime la question d'identifiant correspondant à l'identifiant fourni en paramêtre dans la table "questions"</p>

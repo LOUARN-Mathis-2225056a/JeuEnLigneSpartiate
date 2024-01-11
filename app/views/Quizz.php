@@ -42,13 +42,7 @@ class Quizz
                         return response.json();
                     })
                     .then(json => {
-                        touteLesQuestions = json.value.map(question => {
-                            const id = question[0];
-                            const questionText = question[1];
-                            const reponses = [question[3], question[4], question[5]];
-                            return { id, questionText, reponses };
-                        });
-
+                        touteLesQuestions = json.value;
                         console.log('Questions récupérées :', touteLesQuestions);
                         displayQuestion();
                     })
@@ -56,6 +50,7 @@ class Quizz
                         console.error('Erreur dans l\'exécution de la requête:', error);
                     });
             }
+
 
 
             function displayQuestion() {
@@ -67,20 +62,18 @@ class Quizz
 
                 if (currentQuestion) {
                     const questionMarkup = `
-            <h2>Question ${questionIndex + 1}</h2>
-            <p>${currentQuestion.questionText}</p>
-            <ul>
-                ${currentQuestion.reponses.map(option => `<li><input type="radio" name="reponse" value="${option}"> ${option}</li>`).join('')}
-            </ul>`;
+            <div class="question">
+                <h2>Question ${questionIndex + 1}</h2>
+                <p>${currentQuestion.questionText}</p>
+                <ul>
+                    ${currentQuestion.reponses.map(option => `<li><input type="radio" name="reponse" value="${option}"> ${option}</li>`).join('')}
+                </ul>
+            </div>`;
                     questionContainer.innerHTML = questionMarkup;
                 } else {
                     console.error('Structure de données incorrecte.');
                 }
             }
-
-
-
-
         </script>
 
         <?php
