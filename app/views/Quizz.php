@@ -59,21 +59,33 @@ class Quizz
                 const currentQuestion = touteLesQuestions[questionIndex];
 
                 console.log('Current Question:', currentQuestion);
+                console.log('Current Question (JSON):', JSON.stringify(currentQuestion, null, 2));
 
                 if (currentQuestion) {
                     const questionMarkup = `
-            <div class="question">
-                <h2>Question ${questionIndex + 1}</h2>
-                <p>${currentQuestion.questionText}</p>
-                <ul>
-                    ${currentQuestion.reponses.map(option => `<li><input type="radio" name="reponse" value="${option}"> ${option}</li>`).join('')}
-                </ul>
-            </div>`;
+        <div class="question">
+            <h2>Question ${questionIndex + 1}</h2>
+            <p>${currentQuestion.question}</p>
+            <ul>
+                <li><input type="radio" name="reponse" value="${currentQuestion.vrai}"> ${currentQuestion.vrai}</li>
+                <li><input type="radio" name="reponse" value="${currentQuestion.faux}"> ${currentQuestion.faux}</li>
+                <li><input type="radio" name="reponse" value="${currentQuestion.faux2}"> ${currentQuestion.faux2}</li>
+            </ul>
+        </div>`;
                     questionContainer.innerHTML = questionMarkup;
+                    const radioButtons = document.querySelectorAll('input[name="reponse"]');
+                    radioButtons.forEach(button => {
+                        button.addEventListener('change', () => {
+                            questionIndex++;
+                            displayQuestion();
+                        });
+                    });
                 } else {
                     console.error('Structure de données incorrecte.');
                 }
             }
+
+
         </script>
 
         <?php
