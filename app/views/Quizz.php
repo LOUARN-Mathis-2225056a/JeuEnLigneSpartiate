@@ -17,11 +17,14 @@ class Quizz
             </div>
         </form>
         <script>
+            let touteLesQuestions = [];
+            let questionIndex = 0;
+
             window.onload = () => {
                 getQuestion();
             };
 
-            function getQuestion(){
+            function getQuestion() {
                 const data = new URLSearchParams();
                 data.append("obtenirQuestion", 'true');
 
@@ -34,38 +37,49 @@ class Quizz
                 })
                     .then(response => {
                         if (!response.ok) {
-                            throw new Error(`HTTP error! status: ${response.status}`);
+                            throw new Error(`HTTP erreur! status: ${response.status}`);
                         }
                         return response.json();
                     })
                     .then(json => {
-                        touteLesQuestions = json.value;
-                        console.log(touteLesQuestions); // Ajoutez cette ligne pour déboguer
-                        displayQuestion(); // Appel à la fonction pour afficher la première question
+                        touteLesQuestions = json.value.map(question => {
+                            const id = question[0];
+                            const questionText = question[1];
+                            const reponses = [question[3], question[4], question[5]];
+                            return { id, questionText, reponses };
+                        });
+
+                        console.log('Questions récupérées :', touteLesQuestions);
+                        displayQuestion();
                     })
                     .catch(error => {
-                        console.error('Error in execution of the request:', error);
+                        console.error('Erreur dans l\'exécution de la requête:', error);
                     });
             }
 
+
             function displayQuestion() {
+                console.log('Affichage de la question.');
                 const questionContainer = document.getElementById('question-container');
-                const currentQuestion = touteLesQuestions[0];
+                const currentQuestion = touteLesQuestions[questionIndex];
 
                 console.log('Current Question:', currentQuestion);
 
-                if (currentQuestion && Array.isArray(currentQuestion)) {
+                if (currentQuestion) {
                     const questionMarkup = `
-            <h2>Question 1</h2>
-            <p>${currentQuestion[0]}</p>
+            <h2>Question ${questionIndex + 1}</h2>
+            <p>${currentQuestion.questionText}</p>
             <ul>
-                ${currentQuestion.slice(1).map(option => `<li><input type="radio" name="reponse" value="${option}"> ${option}</li>`).join('')}
+                ${currentQuestion.reponses.map(option => `<li><input type="radio" name="reponse" value="${option}"> ${option}</li>`).join('')}
             </ul>`;
                     questionContainer.innerHTML = questionMarkup;
                 } else {
                     console.error('Structure de données incorrecte.');
                 }
             }
+
+
+
 
         </script>
 
