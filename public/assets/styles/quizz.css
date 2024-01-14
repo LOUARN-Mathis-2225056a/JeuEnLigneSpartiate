@@ -9,11 +9,18 @@ div {
 .numeroQuestion {
     color: #00CCFF;
     font-family: "Legend M54";
+    background: none;
+    padding: 0;
+    border: none;
 }
 
 label {
     width: 100%;
     text-align: center;
+    background-color: #002F7F;
+    padding: 3vw;
+    border: solid 1vw white;
+
 }
 
 input {
@@ -44,12 +51,9 @@ li {
     color: white;
     margin: 0;
     margin-bottom: 10vw;
-    border: solid 1vw white;
     font-size: 6vw;
     margin-left: 5vw;
     margin-right: 5vw;
-    background-color: #00CCFF;
-    padding: 3vw;
 }
 
 form {

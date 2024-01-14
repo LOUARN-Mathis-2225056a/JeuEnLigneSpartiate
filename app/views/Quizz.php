@@ -60,7 +60,7 @@ class Quizz
 
 
 
-            function displayQuestion() {
+            async function displayQuestion() {
                 console.log('Affichage de la question.');
                 const questionContainer = document.getElementById('question-container');
                 const currentQuestion = touteLesQuestions[questionIndex];
@@ -74,16 +74,18 @@ class Quizz
             <h2>Question <label class="numeroQuestion">${questionIndex + 1}</label></h2>
             <p>${currentQuestion.question}</p>
             <ul>
-                <li><input id="vrai" type="radio" name="reponse" value="${currentQuestion.vrai}"><label for="vrai">${currentQuestion.vrai}</label></li>
-                <li><input id="faux" type="radio" name="reponse" value="${currentQuestion.faux}"><label for="faux">${currentQuestion.faux}</label></li>
-                <li><input id="faux2" type="radio" name="reponse" value="${currentQuestion.faux2}"><label for="faux2">${currentQuestion.faux2}</label></li>
+                <li><input id="vrai" type="radio" name="reponse" value="${currentQuestion.vrai}"><label id="vraiLabel" for="vrai">${currentQuestion.vrai}</label></li>
+                <li><input id="faux" type="radio" name="reponse" value="${currentQuestion.faux}"><label id="fauxLabel" for="faux">${currentQuestion.faux}</label></li>
+                <li><input id="faux2" type="radio" name="reponse" value="${currentQuestion.faux2}"><label id="faux2Label" for="faux2">${currentQuestion.faux2}</label></li>
             </ul>
         </div>`;
                     questionContainer.innerHTML = questionMarkup;
                     const radioButtons = document.querySelectorAll('input[name="reponse"]');
                     radioButtons.forEach(button => {
-                        button.addEventListener('change', () => {
+                        button.addEventListener('change', async () => {
                             verifieReponse();
+                            var time = 1500;
+                            await sleepNow(time);
                             questionIndex++;
                             displayQuestion();
                         });
@@ -95,16 +97,15 @@ class Quizz
 
             const sleepNow = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 
-            async function verifieReponse() {
-                const vrai = document.getElementById("vrai");
-                const faux = document.getElementById("faux");
-                const faux2 = document.getElementById("faux2");
-                var time = 10000;
+            function verifieReponse() {
+                const vrai = document.getElementById("vraiLabel");
+                const faux = document.getElementById("fauxLabel");
+                const faux2 = document.getElementById("faux2Label");
 
-                await sleepNow(time);
-                vrai.style.backgroundColor = "green";
-                faux.style.backgroundColor = "red";
-                faux2.style.backgroundColor = "red";
+
+                vrai.style.backgroundColor= "#017d00";
+                faux.style.backgroundColor = "#9a0003";
+                faux2.style.backgroundColor = "#9a0003";
             }
 
         </script>
