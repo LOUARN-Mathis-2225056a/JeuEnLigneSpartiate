@@ -1,22 +1,64 @@
 body{
-    background: white;
-}
-* {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    color:black;
+
 }
 
-h1 {
+div {
+    margin: 0;
+}
+
+.numeroQuestion {
+    color: #00CCFF;
+    font-family: "Legend M54";
+}
+
+label {
+    width: 100%;
     text-align: center;
 }
 
+input {
+    display: none;
+}
+
+h2 {
+    font-family: "Legend M54";
+    font-size: 9vw;
+    text-align: center;
+    color: white;
+    margin: 0;
+    margin-bottom: 10vw;
+}
+
+p {
+    font-size: 7vw;
+    text-align: center;
+    color: white;
+    margin: 0;
+    margin-bottom: 10vw;
+}
+
+li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin: 0;
+    margin-bottom: 10vw;
+    border: solid 1vw white;
+    font-size: 6vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    background-color: #00CCFF;
+    padding: 3vw;
+}
+
 form {
-    max-width: 500px;
-    margin: 0 auto;
+    width: 100%;
+    margin: 0;
 }
 
 ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }

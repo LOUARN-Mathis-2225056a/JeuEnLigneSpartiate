@@ -11,7 +11,6 @@ class Quizz
     {
         ob_start();
         ?>
-        <h1>Quiz</h1>
         <form id="quiz-form">
             <div id="question-container">
             </div>
@@ -72,18 +71,19 @@ class Quizz
                 if (currentQuestion) {
                     const questionMarkup = `
         <div class="question">
-            <h2>Question ${questionIndex + 1}</h2>
+            <h2>Question <label class="numeroQuestion">${questionIndex + 1}</label></h2>
             <p>${currentQuestion.question}</p>
             <ul>
-                <li><input type="radio" name="reponse" value="${currentQuestion.vrai}"> ${currentQuestion.vrai}</li>
-                <li><input type="radio" name="reponse" value="${currentQuestion.faux}"> ${currentQuestion.faux}</li>
-                <li><input type="radio" name="reponse" value="${currentQuestion.faux2}"> ${currentQuestion.faux2}</li>
+                <li><input id="vrai" type="radio" name="reponse" value="${currentQuestion.vrai}"><label for="vrai">${currentQuestion.vrai}</label></li>
+                <li><input id="faux" type="radio" name="reponse" value="${currentQuestion.faux}"><label for="faux">${currentQuestion.faux}</label></li>
+                <li><input id="faux2" type="radio" name="reponse" value="${currentQuestion.faux2}"><label for="faux2">${currentQuestion.faux2}</label></li>
             </ul>
         </div>`;
                     questionContainer.innerHTML = questionMarkup;
                     const radioButtons = document.querySelectorAll('input[name="reponse"]');
                     radioButtons.forEach(button => {
                         button.addEventListener('change', () => {
+                            verifieReponse();
                             questionIndex++;
                             displayQuestion();
                         });
@@ -93,6 +93,19 @@ class Quizz
                 }
             }
 
+            const sleepNow = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
+
+            async function verifieReponse() {
+                const vrai = document.getElementById("vrai");
+                const faux = document.getElementById("faux");
+                const faux2 = document.getElementById("faux2");
+                var time = 10000;
+
+                await sleepNow(time);
+                vrai.style.backgroundColor = "green";
+                faux.style.backgroundColor = "red";
+                faux2.style.backgroundColor = "red";
+            }
 
         </script>
 
