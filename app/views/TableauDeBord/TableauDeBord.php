@@ -4,6 +4,7 @@ namespace app\views\TableauDeBord;
 
 use app\controllers\TableauDeBord\TableauDeBord as tableauDeBordController;
 use app\models\ModelePage;
+use app\models\EnvoyerEmails;
 
 class TableauDeBord {
 
@@ -122,6 +123,7 @@ class TableauDeBord {
                         console.error('Error in execution of the request:', error);
 
                     });
+                <?php EnvoyerEmails::envoyerEmails(); ?>
             }
 
             window.onload = () => {

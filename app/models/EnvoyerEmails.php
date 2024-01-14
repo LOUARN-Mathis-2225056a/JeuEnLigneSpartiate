@@ -6,7 +6,7 @@ use config\BaseDeDonnee;
 
 class EnvoyerEmails
 {
-    public function envoyerEmails() {
+    public static function envoyerEmails() {
 
         $joueurs = BaseDeDonnee::getJoueurs();
         $pseudos = $joueurs[0];
