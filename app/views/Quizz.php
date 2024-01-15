@@ -69,17 +69,25 @@ class Quizz
                 console.log('Current Question (JSON):', JSON.stringify(currentQuestion, null, 2));
 
                 if (currentQuestion) {
+                    const shuffledReponses = shuffleArray([
+                        currentQuestion.vrai,
+                        currentQuestion.faux,
+                        currentQuestion.faux2
+                    ]);
+
                     const questionMarkup = `
-        <div class="question">
-            <h2>Question <label class="numeroQuestion">${questionIndex + 1}</label></h2>
-            <p>${currentQuestion.question}</p>
-            <ul>
-                <li><input id="vrai" type="radio" name="reponse" value="${currentQuestion.vrai}"><label id="vraiLabel" for="vrai">${currentQuestion.vrai}</label></li>
-                <li><input id="faux" type="radio" name="reponse" value="${currentQuestion.faux}"><label id="fauxLabel" for="faux">${currentQuestion.faux}</label></li>
-                <li><input id="faux2" type="radio" name="reponse" value="${currentQuestion.faux2}"><label id="faux2Label" for="faux2">${currentQuestion.faux2}</label></li>
-            </ul>
-        </div>`;
+            <div class="question">
+                <h2>Question <label class="numeroQuestion">${questionIndex + 1}</label></h2>
+                <p>${currentQuestion.question}</p>
+                <ul>
+                    <li><input id="vrai" type="radio" name="reponse" value="${shuffledReponses[0]}"><label id="vraiLabel" for="vrai">${shuffledReponses[0]}</label></li>
+                    <li><input id="faux" type="radio" name="reponse" value="${shuffledReponses[1]}"><label id="fauxLabel" for="faux">${shuffledReponses[1]}</label></li>
+                    <li><input id="faux2" type="radio" name="reponse" value="${shuffledReponses[2]}"><label id="faux2Label" for="faux2">${shuffledReponses[2]}</label></li>
+                </ul>
+            </div>`;
+
                     questionContainer.innerHTML = questionMarkup;
+
                     const radioButtons = document.querySelectorAll('input[name="reponse"]');
                     radioButtons.forEach(button => {
                         button.addEventListener('change', async () => {
