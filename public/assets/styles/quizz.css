@@ -1,5 +1,5 @@
 body{
-
+    justify-content: flex-start;
 }
 
 div {
@@ -27,12 +27,23 @@ input {
     display: none;
 }
 
+h1 {
+    font-family: "Legend M54";
+    font-size: 9vw;
+    text-align: center;
+    color: white;
+    margin: 0;
+    margin-top: 10vw;
+    margin-bottom: 10vw;
+}
+
 h2 {
     font-family: "Legend M54";
     font-size: 9vw;
     text-align: center;
     color: white;
     margin: 0;
+    margin-top: 10vw;
     margin-bottom: 10vw;
 }
 

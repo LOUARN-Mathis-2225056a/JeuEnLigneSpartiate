@@ -101,7 +101,7 @@ class BaseDeDonnee
     public static function updateScore()
     {
         self::getConnection();
-        $requete = 'UPDATE joueurs SET score = score + 1 WHERE pseudo = ?';
+        $requete = 'UPDATE joueurs SET score = score + 100 WHERE pseudo = ?';
         $declaration = self::$connection->prepare($requete);
         if (!$declaration) {
             error_log('Impossible d\'effectuer l\'update de score');

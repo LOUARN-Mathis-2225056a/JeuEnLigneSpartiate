@@ -75,14 +75,16 @@ class Quizz
                         currentQuestion.faux2
                     ]);
 
+                    // language=HTML
                     const questionMarkup = `
             <div class="question">
+                <h1 id="score"><?php  ?></h1>
                 <h2>Question <label class="numeroQuestion">${questionIndex + 1}</label></h2>
                 <p>${currentQuestion.question}</p>
                 <ul>
-                    <li><input id="vrai" type="radio" name="reponse" value="${shuffledReponses[0]}"><label id="vraiLabel" for="vrai">${shuffledReponses[0]}</label></li>
-                    <li><input id="faux" type="radio" name="reponse" value="${shuffledReponses[1]}"><label id="fauxLabel" for="faux">${shuffledReponses[1]}</label></li>
-                    <li><input id="faux2" type="radio" name="reponse" value="${shuffledReponses[2]}"><label id="faux2Label" for="faux2">${shuffledReponses[2]}</label></li>
+                    <li><input id="${shuffledReponses[0]}" type="radio" name="reponse" value="${shuffledReponses[0]}"><label id="reponse1" value="${shuffledReponses[0]}" for="${shuffledReponses[0]}">${shuffledReponses[0]}</label></li>
+                    <li><input id="${shuffledReponses[1]}" type="radio" name="reponse" value="${shuffledReponses[1]}"><label id="reponse2" value="${shuffledReponses[1]}" for="${shuffledReponses[1]}">${shuffledReponses[1]}</label></li>
+                    <li><input id="${shuffledReponses[2]}" type="radio" name="reponse" value="${shuffledReponses[2]}"><label id="reponse3" value="${shuffledReponses[2]}" for="${shuffledReponses[2]}">${shuffledReponses[2]}</label></li>
                 </ul>
             </div>`;
 
@@ -91,8 +93,11 @@ class Quizz
                     const radioButtons = document.querySelectorAll('input[name="reponse"]');
                     radioButtons.forEach(button => {
                         button.addEventListener('change', async () => {
-                            verifieReponse();
-                            var time = 1500;
+                            verifieReponse(currentQuestion.vrai);
+                            if (button.id === currentQuestion.vrai) {
+                                <?php BaseDeDonnee::updateScore() ?>
+                            }
+                            var time = 1000;
                             await sleepNow(time);
                             questionIndex++;
                             displayQuestion();
@@ -105,15 +110,31 @@ class Quizz
 
             const sleepNow = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 
-            function verifieReponse() {
-                const vrai = document.getElementById("vraiLabel");
-                const faux = document.getElementById("fauxLabel");
-                const faux2 = document.getElementById("faux2Label");
+            function verifieReponse(reponseVraie) {
+                const reponseVraieLabel = document.createElement('label');
+                reponseVraieLabel.innerHTML = reponseVraie;
 
+                const reponse1 = document.getElementById("reponse1");
+                const reponse2 = document.getElementById("reponse2");
+                const reponse3 = document.getElementById("reponse3");
 
-                vrai.style.backgroundColor= "#017d00";
-                faux.style.backgroundColor = "#9a0003";
-                faux2.style.backgroundColor = "#9a0003";
+                if (reponse1.textContent === reponseVraieLabel.innerHTML) {
+                    reponse1.style.backgroundColor= "#017d00";
+                } else {
+                    reponse1.style.backgroundColor= "#9a0003";
+                }
+
+                if (reponse2.textContent === reponseVraieLabel.innerHTML) {
+                    reponse2.style.backgroundColor= "#017d00";
+                } else {
+                    reponse2.style.backgroundColor= "#9a0003";
+                }
+
+                if (reponse3.textContent === reponseVraieLabel.innerHTML) {
+                    reponse3.style.backgroundColor= "#017d00";
+                } else {
+                    reponse3.style.backgroundColor= "#9a0003";
+                }
             }
 
         </script>
