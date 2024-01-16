@@ -322,9 +322,6 @@ class BaseDeDonnee
     public static function getJoueurs()
     {
         self::getConnection();
-        $listePseudo = [];
-        $listeScore = [];
-        $listeEmail = [];
         $requete = 'SELECT * FROM joueurs ORDER BY score DESC ';
         $declaration = self::$connection->prepare($requete);
         if (!$declaration) {
