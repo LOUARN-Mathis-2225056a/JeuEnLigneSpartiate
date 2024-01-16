@@ -10,7 +10,6 @@ class Quizz
     public function show(): void
     {
         ob_start();
-        echo '<p id="nomJoueur">' . $_SESSION['joueurPseudo'] . ' </p>'
         ?>
         <form id="quiz-form">
             <div id="question-container">
@@ -80,13 +79,23 @@ class Quizz
                     // language=HTML
                     const questionMarkup = `
             <div class="question">
-                <h1 id="score">${newScore}</h1>
+                <div class="pseudoScoreDiv">
+                    <p id="nomJoueur"><?php echo $_SESSION['joueurPseudo'] ?></p>
+                    <h1 id="score">${newScore}</h1>
+                </div>
                 <h2>Question <label class="numeroQuestion">${questionIndex + 1}</label></h2>
                 <p>${currentQuestion.question}</p>
+                <div class="cases">
+                    <label id="caseReponse1" class="caseReponse">A</label>
+                    <label id="caseReponse2" class="caseReponse">B</label>
+                    <label id="caseReponse3" class="caseReponse">C</label>
+                </div>
+                <img id="spriteTireur" src="/assets/ressources/sprites/AttaquantHockey1.png">
+                <img id="palet" src="/assets/ressources/sprites/palet.png">
                 <ul>
-                    <li><input id="${shuffledReponses[0]}" type="radio" name="reponse" value="${shuffledReponses[0]}"><label id="reponse1" value="${shuffledReponses[0]}" for="${shuffledReponses[0]}">${shuffledReponses[0]}</label></li>
-                    <li><input id="${shuffledReponses[1]}" type="radio" name="reponse" value="${shuffledReponses[1]}"><label id="reponse2" value="${shuffledReponses[1]}" for="${shuffledReponses[1]}">${shuffledReponses[1]}</label></li>
-                    <li><input id="${shuffledReponses[2]}" type="radio" name="reponse" value="${shuffledReponses[2]}"><label id="reponse3" value="${shuffledReponses[2]}" for="${shuffledReponses[2]}">${shuffledReponses[2]}</label></li>
+                    <li><label class="lettreReponse">A</label><input id="${shuffledReponses[0]}" type="radio" name="reponse" value="${shuffledReponses[0]}"><label class="reponse" id="reponse1" value="${shuffledReponses[0]}" for="${shuffledReponses[0]}">${shuffledReponses[0]}</label></li>
+                    <li><label class="lettreReponse">B</label><input id="${shuffledReponses[1]}" type="radio" name="reponse" value="${shuffledReponses[1]}"><label class="reponse" id="reponse2" value="${shuffledReponses[1]}" for="${shuffledReponses[1]}">${shuffledReponses[1]}</label></li>
+                    <li><label class="lettreReponse">C</label><input id="${shuffledReponses[2]}" type="radio" name="reponse" value="${shuffledReponses[2]}"><label class="reponse" id="reponse3" value="${shuffledReponses[2]}" for="${shuffledReponses[2]}">${shuffledReponses[2]}</label></li>
                 </ul>
             </div>`;
 
@@ -95,6 +104,23 @@ class Quizz
                     const radioButtons = document.querySelectorAll('input[name="reponse"]');
                     radioButtons.forEach(button => {
                         button.addEventListener('change', async () => {
+
+                            const palet = document.getElementById("palet");
+
+                            spriteShootingAnimation();
+                            await sleepNow(910);
+
+                            if (button.id === shuffledReponses[0]) {
+                                palet.style.animation = "paletCas1 0.7s";
+                            }
+                            else if (button.id === shuffledReponses[1]) {
+                                palet.style.animation = "paletCas2 0.7s";
+                            }
+                            else if (button.id === shuffledReponses[2]) {
+                                palet.style.animation = "paletCas3 0.7s";
+                            }
+                            await sleepNow(1000);
+
                             verifieReponse(currentQuestion.vrai);
                             if (button.id === currentQuestion.vrai) {
                                 const data = new URLSearchParams();
@@ -115,7 +141,6 @@ class Quizz
                                         return reponse.json();
                                     })
                                     .then(json => {
-                                        console.log(json.value);
                                         newScore += 100;
                                     })
                                     .catch(error => {
@@ -143,24 +168,59 @@ class Quizz
                 const reponse1 = document.getElementById("reponse1");
                 const reponse2 = document.getElementById("reponse2");
                 const reponse3 = document.getElementById("reponse3");
+                const caseReponse1 = document.getElementById("caseReponse1");
+                const caseReponse2 = document.getElementById("caseReponse2");
+                const caseReponse3 = document.getElementById("caseReponse3");
 
                 if (reponse1.textContent === reponseVraieLabel.innerHTML) {
                     reponse1.style.backgroundColor= "#017d00";
+                    caseReponse1.style.backgroundColor="#017d00";
                 } else {
                     reponse1.style.backgroundColor= "#9a0003";
+                    caseReponse1.style.backgroundColor="#9a0003";
                 }
 
                 if (reponse2.textContent === reponseVraieLabel.innerHTML) {
                     reponse2.style.backgroundColor= "#017d00";
+                    caseReponse2.style.backgroundColor="#017d00";
                 } else {
                     reponse2.style.backgroundColor= "#9a0003";
+                    caseReponse2.style.backgroundColor="#9a0003";
                 }
 
                 if (reponse3.textContent === reponseVraieLabel.innerHTML) {
                     reponse3.style.backgroundColor= "#017d00";
+                    caseReponse3.style.backgroundColor="#017d00";
                 } else {
                     reponse3.style.backgroundColor= "#9a0003";
+                    caseReponse3.style.backgroundColor="#9a0003";
                 }
+            }
+
+            async function spriteShootingAnimation() {
+                var tireur = document.getElementById("spriteTireur");
+
+                await sleepNow(100)
+                tireur.src = "/assets/ressources/sprites/AttaquantHockey2.png";
+                await sleepNow(100);
+                tireur.src = "/assets/ressources/sprites/AttaquantHockey3.png";
+                await sleepNow(100);
+                tireur.src = "/assets/ressources/sprites/AttaquantHockey4.png";
+                await sleepNow(100);
+                tireur.src = "/assets/ressources/sprites/AttaquantHockey5.png";
+                await sleepNow(100);
+                tireur.src = "/assets/ressources/sprites/AttaquantHockey6.png";
+                await sleepNow(100);
+                tireur.src = "/assets/ressources/sprites/AttaquantHockey7.png";
+                await sleepNow(80);
+                tireur.src = "/assets/ressources/sprites/AttaquantHockey8.png";
+                await sleepNow(80);
+                tireur.src = "/assets/ressources/sprites/AttaquantHockey9.png";
+                await sleepNow(50);
+                tireur.src = "/assets/ressources/sprites/AttaquantHockey10.png";
+                await sleepNow(50);
+                tireur.src = "/assets/ressources/sprites/AttaquantHockey11.png";
+                await sleepNow(50);
             }
 
         </script>

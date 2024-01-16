@@ -1,9 +1,21 @@
 body{
     justify-content: flex-start;
+    overflow: hidden;
+}
+
+form {
+    height: 100%;
 }
 
 div {
     margin: 0;
+    height: 100%;
+}
+
+.question {
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
 }
 
 .numeroQuestion {
@@ -14,13 +26,39 @@ div {
     border: none;
 }
 
-label {
+.reponse {
     width: 100%;
     text-align: center;
     background-color: #002F7F;
-    padding: 3vw;
+    padding: 2vw;
     border: solid 1vw white;
+    font-family: "Roboto Condensed", sans-serif;
 
+}
+
+.lettreReponse {
+    margin-right: 4vw;
+    font-size: 5vw;
+    font-family: "Legend M54";
+}
+
+.caseReponse {
+    font-family: "Legend M54";
+    font-size: 8vw;
+    color: white;
+    background-color: #002F7F;
+    padding: 3vw;
+    width: 6vw;
+    height: 6vw;
+    text-align: center;
+    border-radius: 50%;
+    border: solid 1vw white;
+}
+
+.cases {
+    margin-bottom: 9vw;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 input {
@@ -29,30 +67,36 @@ input {
 
 h1 {
     font-family: "Legend M54";
-    font-size: 9vw;
+    font-size: 7.5vw;
     text-align: center;
     color: white;
     margin: 0;
-    margin-top: 10vw;
-    margin-bottom: 10vw;
 }
 
 h2 {
     font-family: "Legend M54";
-    font-size: 9vw;
+    font-size: 7.5vw;
     text-align: center;
     color: white;
     margin: 0;
-    margin-top: 10vw;
-    margin-bottom: 10vw;
+    margin-top: 5vw;
 }
 
 p {
-    font-size: 7vw;
+    font-size: 5.5vw;
     text-align: center;
     color: white;
     margin: 0;
-    margin-bottom: 10vw;
+    margin-top: 5vw;
+    margin-bottom: 7vw;
+    margin-right: 3vw;
+    margin-left: 3vw;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+#nomJoueur {
+    color: #00CCFF;
+    margin: 0;
 }
 
 li {
@@ -61,8 +105,8 @@ li {
     align-items: center;
     color: white;
     margin: 0;
-    margin-bottom: 10vw;
-    font-size: 6vw;
+    margin-bottom: 4vw;
+    font-size: 4vw;
     margin-left: 5vw;
     margin-right: 5vw;
 }
@@ -73,7 +117,64 @@ form {
 }
 
 ul {
+    height: 100%;
     list-style: none;
     padding: 0;
     margin: 0;
+}
+
+#spriteTireur {
+    z-index: 10;
+    position: relative;
+    width: 70%;
+    left: 35%;
+}
+
+#palet {
+    width: 5%;
+    position: absolute;
+    top: 70%;
+    left: 70%;
+}
+
+@keyframes paletCas1 {
+    0% {
+        top: 70%;
+        left: 70%;
+    }
+    100% {
+        top: 22.5%;
+        left: 17%;
+    }
+
+}
+
+@keyframes paletCas2 {
+    0% {
+        top: 70%;
+        left: 70%;
+    }
+    100% {
+        top: 22.5%;
+        left: 47%;
+    }
+}
+
+@keyframes paletCas3 {
+    0% {
+        top: 70%;
+        left: 70%;
+    }
+    100% {
+        top: 22.5%;
+        left: 77%;
+    }
+}
+
+.pseudoScoreDiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 4vw;
+    height: 10vw;
 }
