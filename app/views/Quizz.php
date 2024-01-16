@@ -11,103 +11,27 @@ class Quizz
     {
         ob_start();
         ?>
-        <style>
-            * {
-                font-family: Arial, sans-serif;
-                margin: 20px;
-                color:white;
-            }
-
-            h1 {
-                text-align: center;
-            }
-
-            form {
-                max-width: 500px;
-                margin: 0 auto;
-            }
-
-            ul {
-                list-style: none;
-                padding: 0;
-            }
-
-            button {
-                display: block;
-                margin-top: 10px;
-            }
-        </style>
-        <h1>Quiz</h1>
         <form id="quiz-form">
             <div id="question-container">
             </div>
-            <button type="submit">Valider</button>
         </form>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const questions = <?php echo json_encode(BaseDeDonnee::getTouteLesQuestions()); ?>;
-                const quizForm = document.getElementById('quiz-form');
-                const questionContainer = document.getElementById('question-container');
-                let questionIndex = 0;
-
-                function shuffleQuestions(array) {
-                    return array.sort(() => Math.random() - 0.5);
-                }
-
-                function displayQuestion() {
-                    const currentQuestion = questions[questionIndex];
-                    const questionMarkup = `
-                        <h2>Question ${questionIndex + 1}</h2>
-                        <p>${currentQuestion[0]}</p>
-                        <ul>
-                            ${currentQuestion[1].map(option => `<li><input type="radio" name="reponse" value="${option}"> ${option}</li>`).join('')}
-                        </ul>
-                    `;
-                    questionContainer.innerHTML = questionMarkup;
-                }
-
-                function handleQuizSubmission() {
-                    const selectedAnswer = document.querySelector('input[name="reponse"]:checked');
-
-                    if (selectedAnswer) {
-                        const userAnswer = selectedAnswer.value;
-                        const correctAnswer = questions[questionIndex][2];
-
-                        if (userAnswer === correctAnswer) {
-                            alert('Bonne réponse !');
-                        } else {
-                            alert('Mauvaise réponse.');
-                        }
-
-                        questionIndex++;
-
-                        if (questionIndex < questions.length) {
-                            displayQuestion();
-                        } else {
-                            alert('Vous avez terminé le quiz !');
-                        }
-                    } else {
-                        alert('Veuillez sélectionner une réponse.');
-                    }
-                }
-
-                quizForm.addEventListener('submit', function(event) {
-                    event.preventDefault();
-                    handleQuizSubmission();
-                });
-
-                displayQuestion(); // affichage de la première question au chargement de la page (normalement)
-            });
-        </script>
-
         <script>
             let touteLesQuestions = [];
+            let questionIndex = 0;
+
             window.onload = () => {
                 getQuestion();
+            };
+
+            function shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
             }
 
-            function getQuestion(){
+            function getQuestion() {
                 const data = new URLSearchParams();
                 data.append("obtenirQuestion", 'true');
 
@@ -120,18 +44,99 @@ class Quizz
                 })
                     .then(response => {
                         if (!response.ok) {
-                            throw new Error(`HTTP error! status: ${response.status}`);
+                            throw new Error(`HTTP erreur! status: ${response.status}`);
                         }
                         return response.json();
                     })
                     .then(json => {
-                        touteLesQuestions = json.value;
+                        touteLesQuestions = shuffleArray(json.value);
+                        console.log('Questions récupérées (mélangées) :', touteLesQuestions);
+                        displayQuestion();
                     })
                     .catch(error => {
-                        console.error('Error in execution of the request:', error);
-
+                        console.error('Erreur dans l\'exécution de la requête:', error);
                     });
             }
+
+
+
+            async function displayQuestion() {
+                console.log('Affichage de la question.');
+                const questionContainer = document.getElementById('question-container');
+                const currentQuestion = touteLesQuestions[questionIndex];
+
+                console.log('Current Question:', currentQuestion);
+                console.log('Current Question (JSON):', JSON.stringify(currentQuestion, null, 2));
+
+                if (currentQuestion) {
+                    const shuffledReponses = shuffleArray([
+                        currentQuestion.vrai,
+                        currentQuestion.faux,
+                        currentQuestion.faux2
+                    ]);
+
+                    // language=HTML
+                    const questionMarkup = `
+            <div class="question">
+                <h1 id="score"><?php  ?></h1>
+                <h2>Question <label class="numeroQuestion">${questionIndex + 1}</label></h2>
+                <p>${currentQuestion.question}</p>
+                <ul>
+                    <li><input id="${shuffledReponses[0]}" type="radio" name="reponse" value="${shuffledReponses[0]}"><label id="reponse1" value="${shuffledReponses[0]}" for="${shuffledReponses[0]}">${shuffledReponses[0]}</label></li>
+                    <li><input id="${shuffledReponses[1]}" type="radio" name="reponse" value="${shuffledReponses[1]}"><label id="reponse2" value="${shuffledReponses[1]}" for="${shuffledReponses[1]}">${shuffledReponses[1]}</label></li>
+                    <li><input id="${shuffledReponses[2]}" type="radio" name="reponse" value="${shuffledReponses[2]}"><label id="reponse3" value="${shuffledReponses[2]}" for="${shuffledReponses[2]}">${shuffledReponses[2]}</label></li>
+                </ul>
+            </div>`;
+
+                    questionContainer.innerHTML = questionMarkup;
+
+                    const radioButtons = document.querySelectorAll('input[name="reponse"]');
+                    radioButtons.forEach(button => {
+                        button.addEventListener('change', async () => {
+                            verifieReponse(currentQuestion.vrai);
+                            if (button.id === currentQuestion.vrai) {
+                                <?php BaseDeDonnee::updateScore() ?>
+                            }
+                            var time = 1000;
+                            await sleepNow(time);
+                            questionIndex++;
+                            displayQuestion();
+                        });
+                    });
+                } else {
+                    console.error('Structure de données incorrecte.');
+                }
+            }
+
+            const sleepNow = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
+
+            function verifieReponse(reponseVraie) {
+                const reponseVraieLabel = document.createElement('label');
+                reponseVraieLabel.innerHTML = reponseVraie;
+
+                const reponse1 = document.getElementById("reponse1");
+                const reponse2 = document.getElementById("reponse2");
+                const reponse3 = document.getElementById("reponse3");
+
+                if (reponse1.textContent === reponseVraieLabel.innerHTML) {
+                    reponse1.style.backgroundColor= "#017d00";
+                } else {
+                    reponse1.style.backgroundColor= "#9a0003";
+                }
+
+                if (reponse2.textContent === reponseVraieLabel.innerHTML) {
+                    reponse2.style.backgroundColor= "#017d00";
+                } else {
+                    reponse2.style.backgroundColor= "#9a0003";
+                }
+
+                if (reponse3.textContent === reponseVraieLabel.innerHTML) {
+                    reponse3.style.backgroundColor= "#017d00";
+                } else {
+                    reponse3.style.backgroundColor= "#9a0003";
+                }
+            }
+
         </script>
 
         <?php
