@@ -90,6 +90,8 @@ try {
             case 'accueil':
                 (new accueilController())->execute();
                 break;
+            case '/':
+                header('Location: /accueil');
             case 'scores':
                 switch ($route[1]){
                     case "":
