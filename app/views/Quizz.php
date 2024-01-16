@@ -51,7 +51,7 @@ class Quizz
                     .then(json => {
                         touteLesQuestions = shuffleArray(json.value);
                         console.log('Questions récupérées (mélangées) :', touteLesQuestions);
-                        displayQuestion();
+                        displayQuestion(0);
                     })
                     .catch(error => {
                         console.error('Erreur dans l\'exécution de la requête:', error);
@@ -60,7 +60,8 @@ class Quizz
 
 
 
-            async function displayQuestion() {
+            async function displayQuestion(score) {
+                var newScore = score;
                 console.log('Affichage de la question.');
                 const questionContainer = document.getElementById('question-container');
                 const currentQuestion = touteLesQuestions[questionIndex];
@@ -78,7 +79,7 @@ class Quizz
                     // language=HTML
                     const questionMarkup = `
             <div class="question">
-                <h1 id="score"><?php echo BaseDeDonnee::getScore()?></h1>
+                <h1 id="score">${newScore}</h1>
                 <h2>Question <label class="numeroQuestion">${questionIndex + 1}</label></h2>
                 <p>${currentQuestion.question}</p>
                 <ul>
@@ -106,11 +107,15 @@ class Quizz
                                     },
                                     body: data
                                 })
-                                    .then(response => {
-                                        if (!response.ok) {
-                                            throw new Error(`HTTP error! status: ${response.status}`);
+                                    .then(reponse => {
+                                        if (!reponse.ok) {
+                                            throw new Error(`HTTP error! status: ${reponse.status}`);
                                         }
-                                        return response.json();
+                                        return reponse.json();
+                                    })
+                                    .then(json => {
+                                        console.log(json.value);
+                                        newScore += 100;
                                     })
                                     .catch(error => {
                                         console.error('Error in execution of the request:', error);
@@ -120,7 +125,7 @@ class Quizz
                             var time = 1000;
                             await sleepNow(time);
                             questionIndex++;
-                            displayQuestion();
+                            displayQuestion(newScore);
                         });
                     });
                 } else {

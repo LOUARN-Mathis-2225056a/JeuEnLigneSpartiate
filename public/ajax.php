@@ -146,8 +146,11 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) { //si c'est une méthode POST
 
 
 
+        BaseDeDonnee::updateScore();
+
         $reponse = array(
             'message' => 'Mise à jour du score',
+            'value' => $_SESSION['joueurPseudo'],
             'status'  => true,
         );
         echo json_encode( $reponse );
