@@ -103,7 +103,7 @@ class BaseDeDonnee
     {
         if(TableauDeBord::jeuLance()){
             self::getConnection();
-            $requete = 'UPDATE joueurs SET score = score + 1 WHERE pseudo = ?';
+            $requete = 'UPDATE joueurs SET score = score + 100 WHERE pseudo = ?';
             $declaration = self::$connection->prepare($requete);
             if (!$declaration) {
                 error_log('Impossible d\'effectuer l\'update de score');
@@ -335,6 +335,19 @@ class BaseDeDonnee
         $listeScore = $declaration->fetchAll(PDO::FETCH_COLUMN, 1);
         $listeEmail = $declaration->fetchAll(PDO::FETCH_COLUMN,2);
         return [$listePseudo, $listeScore, $listeEmail];
+    }
+
+    public static function getScore()
+    {
+        $requete = 'SELECT score FROM joueurs WHERE pseudo = ?';
+        $declaration = self::$connection->prepare($requete);
+        if (!$declaration) {
+            error_log('Impossible d\'effectuer l\'update de score');
+            return null;
+        }
+        $declaration->execute([$_SESSION['pseudoJoueur']]);
+        $score = $declaration->fetch(PDO::FETCH_ASSOC);
+        return $score;
     }
 
 }

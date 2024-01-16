@@ -78,7 +78,7 @@ class Quizz
                     // language=HTML
                     const questionMarkup = `
             <div class="question">
-                <h1 id="score"><?php  ?></h1>
+                <h1 id="score"><?php echo BaseDeDonnee::getScore()?></h1>
                 <h2>Question <label class="numeroQuestion">${questionIndex + 1}</label></h2>
                 <p>${currentQuestion.question}</p>
                 <ul>
