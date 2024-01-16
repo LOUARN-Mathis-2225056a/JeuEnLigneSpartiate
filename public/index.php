@@ -92,6 +92,7 @@ try {
                 break;
             case '/':
                 header('Location: /accueil');
+                break;
             case 'scores':
                 switch ($route[1]){
                     case "":
