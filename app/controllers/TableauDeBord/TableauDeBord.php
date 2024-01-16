@@ -66,7 +66,7 @@ class TableauDeBord
 
     public static function supprimerQuestion($donneePost):void
     {
-        BDD::supprimerQuestion($donneePost['supprimerQuestion']);
+        BDD::supprimerQuestion(intval($donneePost['supprimerQuestion']));
     }
 
     public static function modifierQuestion($donneePost):void

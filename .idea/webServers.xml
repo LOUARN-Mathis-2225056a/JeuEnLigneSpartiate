@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="6006fbef-cb14-4ed4-80e1-a8558dda4efa" name="alwaysdata" url="http://ftp-spartiatejeu.alwaysdata.net">
+        <fileTransfer host="ftp-spartiatejeu.alwaysdata.net" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

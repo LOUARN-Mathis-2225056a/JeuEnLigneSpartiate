@@ -29,7 +29,7 @@ class ListeDesQuestions
                 <div class="ligne">
                     <label class="motFaux">FAUX 2</label> <label class="contenuQuestion"> <?php echo wordwrap($question[$id]['faux2'], 20, '<br>', true) ?></label>
                 </div>
-                <button class="supprimerQuestion" id="<?php echo $question[0][$id] ?>" onclick="doAjaxRequest(this)">supprimer la question</button>
+                <button class="supprimerQuestion" id="<?= $question[$id]['id'] ?>" onclick="doAjaxRequest(this)">supprimer la question</button>
             </div> <?php
         } ?>
         </div>
