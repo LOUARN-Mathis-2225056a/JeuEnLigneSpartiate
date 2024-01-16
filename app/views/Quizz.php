@@ -95,7 +95,27 @@ class Quizz
                         button.addEventListener('change', async () => {
                             verifieReponse(currentQuestion.vrai);
                             if (button.id === currentQuestion.vrai) {
-                                <?php BaseDeDonnee::updateScore() ?>
+                                const data = new URLSearchParams();
+                                data.append("updateScore", 'true');
+
+
+                                fetch("/ajax.php", {
+                                    method: "POST",
+                                    headers: {
+                                        "Content-Type": "application/x-www-form-urlencoded",
+                                    },
+                                    body: data
+                                })
+                                    .then(response => {
+                                        if (!response.ok) {
+                                            throw new Error(`HTTP error! status: ${response.status}`);
+                                        }
+                                        return response.json();
+                                    })
+                                    .catch(error => {
+                                        console.error('Error in execution of the request:', error);
+
+                                    });
                             }
                             var time = 1000;
                             await sleepNow(time);
