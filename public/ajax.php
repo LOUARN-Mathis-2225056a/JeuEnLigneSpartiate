@@ -146,7 +146,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) { //si c'est une méthode POST
 
 
 
-        BaseDeDonnee::updateScore();
+        BaseDeDonnee::updateScore($_POST['updateScore']);
 
         $reponse = array(
             'message' => 'Mise à jour du score',

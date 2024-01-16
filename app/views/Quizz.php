@@ -10,6 +10,7 @@ class Quizz
     public function show(): void
     {
         ob_start();
+        echo '<p id="nomJoueur">' . $_SESSION['joueurPseudo'] . ' </p>'
         ?>
         <form id="quiz-form">
             <div id="question-container">
@@ -97,7 +98,7 @@ class Quizz
                             verifieReponse(currentQuestion.vrai);
                             if (button.id === currentQuestion.vrai) {
                                 const data = new URLSearchParams();
-                                data.append("updateScore", 'true');
+                                data.append("updateScore", document.getElementById('nomJoueur').innerText);
 
 
                                 fetch("/ajax.php", {

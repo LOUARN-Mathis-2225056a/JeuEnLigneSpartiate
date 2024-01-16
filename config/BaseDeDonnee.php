@@ -99,17 +99,18 @@ class BaseDeDonnee
      * <p>met à jour le score en rajoutant 1 au score actuel. Le pseudo du joueur est obtenue via la virable de session $_SESSION['pseudoJoueur']</p>
      * @return void|null
      */
-    public static function updateScore()
+    public static function updateScore($pseudo)
     {
         if(TableauDeBord::jeuLance()){
             self::getConnection();
+
             $requete = 'UPDATE joueurs SET score = score + 100 WHERE pseudo = ?';
             $declaration = self::$connection->prepare($requete);
             if (!$declaration) {
                 error_log('Impossible d\'effectuer l\'update de score');
                 return null;
             }
-            $declaration->execute([$_SESSION['pseudoJoueur']]);
+            $declaration->execute([$pseudo]);
         }
 
     }
