@@ -48,3 +48,13 @@ button {
     color: white;
     border-radius: 50px/50px;
 }
+
+.erreur {
+    margin-top: 10vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    text-align: center;
+    color: red;
+    font-size: 6vw;
+    font-family: "Roboto Condensed", sans-serif;
+}

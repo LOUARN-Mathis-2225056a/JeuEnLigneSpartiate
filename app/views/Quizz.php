@@ -110,13 +110,20 @@ class Quizz
                             spriteShootingAnimation();
                             await sleepNow(910);
 
-                            if (button.id === shuffledReponses[0]) {
+                            const reponseLabel1 = document.createElement('label');
+                            reponseLabel1.innerHTML = shuffledReponses[0];
+                            const reponseLabel2 = document.createElement('label');
+                            reponseLabel2.innerHTML = shuffledReponses[1];
+                            const reponseLabel3 = document.createElement('label');
+                            reponseLabel3.innerHTML = shuffledReponses[2];
+
+                            if (button.id === reponseLabel1.innerHTML) {
                                 palet.style.animation = "paletCas1 0.7s";
                             }
-                            else if (button.id === shuffledReponses[1]) {
+                            else if (button.id === reponseLabel2.innerHTML) {
                                 palet.style.animation = "paletCas2 0.7s";
                             }
-                            else if (button.id === shuffledReponses[2]) {
+                            else if (button.id === reponseLabel3.innerHTML) {
                                 palet.style.animation = "paletCas3 0.7s";
                             }
                             await sleepNow(1000);

@@ -15,7 +15,7 @@ class RejoindreRoom
             <button type="submit" name="validationCode" value="validationCode">Rejoindre</button>
         </form>
         <?php if(isset($_SESSION['erreurCode'])){
-            echo $_SESSION['erreurCode'];
+            echo '<label class="erreur">' . $_SESSION['erreurCode'] . '</label>';
             unset($_SESSION['erreurCode']);
         }?>
 

@@ -46,3 +46,9 @@ button {
     color: white;
     border-radius: 50px/50px;
 }
+
+.erreur {
+    margin-top: 10vw;
+    color: red;
+    font-size: 6vw;
+}
