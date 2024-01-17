@@ -24,7 +24,7 @@ class Inscription
             $_SESSION['erreurInscription'] = 'Pseudo déjà utilisé, veuillez en choisir un autre';
             header('Location: /inscription');
             exit();
-        } elseif (sizeof($pseudo) < 4 ){
+        } elseif (strlen($pseudo) < 4 ){
             $_SESSION['erreurInscription'] = 'Le pseudo doit être de 4 caractères minimum';
             header('Location: /inscription');
             exit();
