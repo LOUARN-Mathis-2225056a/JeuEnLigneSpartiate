@@ -123,7 +123,6 @@ class TableauDeBord {
                         console.error('Error in execution of the request:', error);
 
                     });
-                <?php EnvoyerEmails::envoyerEmails(); ?>
             }
 
             window.onload = () => {

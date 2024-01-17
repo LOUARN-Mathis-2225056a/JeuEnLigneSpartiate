@@ -17,7 +17,6 @@ class Joueur
         $this->nom = $nom;
     }
 
-
     public static function comparateur(Joueur $a, Joueur $b)
     {
         if ($a->score == $b->score) {
@@ -51,7 +50,7 @@ class Joueur
         return $this->nom;
     }
 
-    public function toString():string //utilisé pour le debuggage
+    public function toString():string //utilisée pour le debuggage
     {
         return $this->getNom() . ' a pour score ' . $this->getScore();
     }

@@ -5,6 +5,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use app\controllers\TableauDeBord\TableauDeBord;
 use config\BaseDeDonnee;
 use app\controllers\TableauDesScores\TableauDesScores as tableauDesScoresController;
+use app\models\EnvoyerEmails;
 
 header( 'Content-Type: application/json' );
 
@@ -133,9 +134,10 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) { //si c'est une méthode POST
 
     if (isset($_POST['arreterJeu'])){
         TableauDeBord::arreterJeu();
+        EnvoyerEmails::envoyerEmails();
 
         $reponse = array(
-            'message' => 'Les scores ne seront plus mis a jour',
+            'message' => 'Les scores ne seront plus mis a jour, les mails ont été envoyés',
             'status'  => true,
         );
         echo json_encode( $reponse );

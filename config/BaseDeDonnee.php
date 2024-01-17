@@ -329,10 +329,8 @@ class BaseDeDonnee
             return null;
         }
         $declaration->execute();
-        $listePseudo = $declaration->fetchAll(PDO::FETCH_COLUMN, 0);
-        $listeScore = $declaration->fetchAll(PDO::FETCH_COLUMN, 1);
-        $listeEmail = $declaration->fetchAll(PDO::FETCH_COLUMN,2);
-        return [$listePseudo, $listeScore, $listeEmail];
+        $reponseServeur = $declaration->fetchAll(PDO::FETCH_ASSOC);
+        return $reponseServeur;
     }
 
     public static function getScore()

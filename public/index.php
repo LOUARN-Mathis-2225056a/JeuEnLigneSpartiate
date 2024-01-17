@@ -32,7 +32,6 @@ use app\controllers\reglesDuJeu\ReglesDuJeuController as reglesDuJeuController;
 use app\controllers\rejoindreRoom\RejoindreRoomController as rejoindreRoomController;
 
 session_start();
-const APP_PATH = __DIR__ . '/../app';
 
 \config\BaseDeDonnee::getCodeJeuActuel();
 
