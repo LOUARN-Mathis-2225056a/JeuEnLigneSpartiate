@@ -167,7 +167,7 @@ try {
                 break;
             case $_SESSION['codeJeu'] . '-qr-code':
                 $_SESSION['codeValide'] = 'vrai';
-                header('Location /inscription');
+                header('Location: /inscription');
                 break;
         }
 

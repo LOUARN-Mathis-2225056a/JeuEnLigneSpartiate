@@ -15,7 +15,7 @@ class RejoindreRoomController
             $_SESSION['codeValide'] = 'vrai';
             header('Location: /inscription');
         } else{
-            $_SESSION['erreurCode'] = 'Le code entré n\'est pas le bon';
+            $_SESSION['erreurCode'] = 'CODE INEXISTANT';
             header('Location: /rejoindre-room');
             exit();
         }

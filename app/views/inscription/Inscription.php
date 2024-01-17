@@ -20,7 +20,7 @@ class Inscription
                 <input type="email" id="email" name="email" placeholder="Email">
             </div>
             <?php if(isset($_SESSION['erreurInscription'])){
-                echo '<p>' . $_SESSION['erreurInscription'] . '</p>';
+                echo '<p class="erreur">' . $_SESSION['erreurInscription'] . '</p>';
                 unset($_SESSION['erreurInscription']);
             }
             ?>
