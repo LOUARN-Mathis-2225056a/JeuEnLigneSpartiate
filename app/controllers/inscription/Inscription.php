@@ -23,7 +23,13 @@ class Inscription
         if(in_array($pseudo,$joueursActuels)){
             $_SESSION['erreurInscription'] = 'Pseudo déjà utilisé, veuillez en choisir un autre';
             header('Location: /inscription');
-        } else{
+            exit();
+        } elseif (sizeof($pseudo) < 4 ){
+            $_SESSION['erreurInscription'] = 'Le pseudo doit être de 4 caractères minimum';
+            header('Location: /inscription');
+            exit();
+        }
+        else{
             $requete = 'INSERT INTO joueurs (pseudo, score, email) VALUES (?, ?, ?)';
             $declaration = $connection->prepare($requete);
             if (!$declaration) {
