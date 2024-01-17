@@ -63,6 +63,7 @@ class Quizz
             async function displayQuestion(score) {
                 var newScore = score;
                 console.log('Affichage de la question.');
+                questionIndex = questionIndex % touteLesQuestions.length;
                 const questionContainer = document.getElementById('question-container');
                 const currentQuestion = touteLesQuestions[questionIndex];
 
