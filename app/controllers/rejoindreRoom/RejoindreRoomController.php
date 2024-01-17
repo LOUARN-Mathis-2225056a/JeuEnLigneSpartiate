@@ -9,15 +9,17 @@ class RejoindreRoomController
         (new rejoindreRoomView())->show();
     }
 
-    public function validationCode(string $code):void
+    public function validationCode(string $code)
     {
-        if($code == $_SESSION['codeJeu']){
+        if( isset($_SESSION['codeJeu']) and $code == $_SESSION['codeJeu']){
             $_SESSION['codeValide'] = 'vrai';
             header('Location: /inscription');
         } else{
             $_SESSION['erreurCode'] = 'Le code entré n\'est pas le bon';
-            header('Location :/rejoindre-room');
+            header('Location: /rejoindre-room');
+            exit();
         }
+
 
     }
 
