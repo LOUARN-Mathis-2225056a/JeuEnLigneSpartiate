@@ -9,7 +9,7 @@ body{
     text-align: center;
     font-size: 5.5vw;
     font-family: "Legend M54";
-    background-color: #0048C0;
+    background: linear-gradient(to right, rgb(0, 51, 140), rgba(8, 97, 255, 0.9));
     color: white;
     border: solid white 0.5vw;
     margin: 5vw;

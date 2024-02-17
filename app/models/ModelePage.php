@@ -25,9 +25,9 @@ class ModelePage
         <?php if ($this->title == 'Règles du Hockey sur Glace') { ?>
             <header>
                 <button onclick="window.location.href='../../accueil'" class="headerButton">Accueil</button>
-                <button onclick="window.location.href='../regles/generales'" class="headerButton">Regles generales</button>
+                <button onclick="window.location.href='../regles/generales'" class="headerButton headerButtonVariant">Regles generales</button>
                 <button onclick="window.location.href='../regles/materielles'" class="headerButton">Regles materielles</button>
-                <button onclick="window.location.href='../regles/jeu'" class="headerButton">Regles de jeu</button>
+                <button onclick="window.location.href='../regles/jeu'" class="headerButton headerButtonVariant">Regles de jeu</button>
                 <button onclick="window.location.href='../regles/penalites'" class="headerButton">Penalites</button>
             </header>
         <?php }?>

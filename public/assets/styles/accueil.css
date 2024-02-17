@@ -34,7 +34,7 @@ button
     font-size: 7.5vw;
     margin-bottom: 3vw;
     font-family: 'Legend M54';
-    background-color: #014bc6;
+    background: linear-gradient(to right, rgba(1, 75, 198, 0.9), rgba(54, 130, 255, 1));
     border: none;
     color: white;
     border-radius: 100px;

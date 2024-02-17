@@ -30,7 +30,7 @@ body {
     font-size: 6.5vw;
     margin: 5vw;
     font-family: 'Legend M54';
-    background-color: #00CCFF;
+    background: linear-gradient(to right, rgba(15, 170, 255, 0.9), rgb(22, 109, 255));
     border: none;
     color: white;
     border-radius: 50px/50px;
