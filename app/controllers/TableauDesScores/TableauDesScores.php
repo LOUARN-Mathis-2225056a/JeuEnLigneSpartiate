@@ -3,9 +3,9 @@
 namespace app\controllers\TableauDesScores;
 require_once __DIR__ . '/../../../vendor/autoload.php';
 
-use app\models\BaseDeDonnee as BDD;
 use app\models\Joueur;
 use app\views\TableauDesScores\TableauDesScores as tableauDesScoresView;
+use config\BaseDeDonnee as BDD;
 
 class TableauDesScores
 {

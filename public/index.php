@@ -2,10 +2,18 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+use app\controllers\accueil\Accueil as accueilController;
 use app\controllers\inscription\Inscription as inscriptionController;
 use app\controllers\Login\Login as loginController;
+use app\controllers\pageIntrouvable\PageIntrouvable as pageIntrouvableController;
 use app\controllers\QRCode\QRCode as qrcodeController;
 use app\controllers\Quizz\Quizz as quizzController;
+use app\controllers\regles\ReglesGenerales as regleGeneralesController;
+use app\controllers\regles\ReglesJeu as regleJeuController;
+use app\controllers\regles\ReglesJeu as reglesJeuController;
+use app\controllers\regles\ReglesPenalites as reglePenalitesController;
+use app\controllers\reglesDuJeu\ReglesDuJeu as regleDuJeuController;
+use app\controllers\rejoindreRoom\RejoindreRoom as rejoindreRoomController;
 use app\controllers\TableauDeBord\AjoutQuestions as ajoutQuestionsController;
 use app\controllers\TableauDeBord\ListeDesQuestions as listeDesQuestionsController;
 use app\controllers\TableauDeBord\ModifierQuestions as modifierQuestionsController;
@@ -17,19 +25,11 @@ use app\controllers\TableauDesScores\top150 as top150Controller;
 use app\controllers\TableauDesScores\top20 as top20Controller;
 use app\controllers\TableauDesScores\top200 as top200Controller;
 use app\controllers\TableauDesScores\top50 as top50Controller;
-use app\controllers\pageIntrouvable\PageIntrouvable as pageIntrouvableController;
-use app\controllers\rejoindreRoom\RejoindreRoom as rejoindreRoomController;
-use app\controllers\accueil\Accueil as accueilController;
-use app\controllers\regles\ReglesGenerales as regleGeneralesController;
-use app\controllers\regles\ReglesJeu as reglesJeuController;
-use app\controllers\regles\ReglesJeu as regleJeuController;
-use app\controllers\regles\ReglesPenalites as reglePenalitesController;
-use app\controllers\reglesDuJeu\ReglesDuJeu as regleDuJeuController;
 
 
 session_start();
 
-\app\models\BaseDeDonnee::getCodeJeuActuel();
+config\BaseDeDonnee::getCodeJeuActuel();
 
 try {
     if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') {

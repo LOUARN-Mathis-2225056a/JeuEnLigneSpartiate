@@ -1,8 +1,8 @@
 <?php
 
 namespace app\controllers\TableauDeBord;
-use app\models\BaseDeDonnee as BDD;
 use app\views\TableauDeBord\TableauDeBord as tableauDeBordView;
+use config\BaseDeDonnee as BDD;
 
 require_once __DIR__ . '/../../../vendor/autoload.php';
 class TableauDeBord

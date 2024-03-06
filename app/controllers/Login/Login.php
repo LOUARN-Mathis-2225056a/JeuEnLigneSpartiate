@@ -3,8 +3,8 @@
 namespace app\controllers\Login;
 
 use app\models\Administrateur;
-use app\models\BaseDeDonnee as BDD;
 use app\views\Login as loginView;
+use config\BaseDeDonnee as BDD;
 use PDO;
 
 class Login
