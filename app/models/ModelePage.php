@@ -19,7 +19,7 @@ class ModelePage
                 <link rel="stylesheet" href="/assets/styles/<?= $this->stylesheet ?>.css">
             <?php } ?>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<!--                <link rel="shortcut icon" type="image/jpg" href="ICI"/> faut remplacer ICI par le chemin vers le logo et aussi enlever ce texte-->
+                <link rel="shortcut icon" type="image/png" href="/assets/ressources/logospartiates.png"/>
         </head>
         <body>
         <?php if ($this->title == 'Règles du Hockey sur Glace') { ?>
