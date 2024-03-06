@@ -1,6 +1,6 @@
 <?php
 
-namespace app\controllers\404 app\controllers\404 app\controllers\404 app\controllers\404 app\controllers\404;
+namespace app\controllers\pageIntrouvable;
 use app\views\PageIntrouvable as PageIntrouvableView;
 class PageIntrouvable
 {

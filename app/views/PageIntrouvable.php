@@ -16,6 +16,6 @@ class PageIntrouvable
         <button onclick="window.location.href='../accueil'" class="retour">ACCUEIL</button>
 
         <?php
-        (new ModelePage('Error 404', ob_get_clean(), 'pageIntrouvable'))->show();
+        (new ModelePage('Error pageIntrouvable', ob_get_clean(), 'pageIntrouvable'))->show();
     }
 }

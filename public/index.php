@@ -17,7 +17,14 @@ use app\controllers\TableauDesScores\top150 as top150Controller;
 use app\controllers\TableauDesScores\top20 as top20Controller;
 use app\controllers\TableauDesScores\top200 as top200Controller;
 use app\controllers\TableauDesScores\top50 as top50Controller;
-use PageIntrouvable as pageIntrouvableController;
+use app\controllers\pageIntrouvable\PageIntrouvable as pageIntrouvableController;
+use app\controllers\rejoindreRoom\RejoindreRoom as rejoindreRoomController;
+use app\controllers\accueil\Accueil as accueilController;
+use app\controllers\regles\ReglesGenerales as regleGeneralesController;
+use app\controllers\regles\ReglesJeu as reglesJeuController;
+use app\controllers\regles\ReglesJeu as regleJeuController;
+use app\controllers\regles\ReglesPenalites as reglePenalitesController;
+use app\controllers\reglesDuJeu\ReglesDuJeu as regleDuJeuController;
 
 
 session_start();
@@ -39,7 +46,7 @@ try {
 
     if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_POST['validationCode'])) {
-            (new RejoindreRoom())->validationCode($_POST['roomCode']);
+            (new rejoindreRoomController())->validationCode($_POST['roomCode']);
         }
     }
 
@@ -76,7 +83,7 @@ try {
 
                 break;
             case 'accueil':
-                (new Accueil())->execute();
+                (new accueilController())->execute();
                 break;
             case '/':
                 header('Location: /accueil');
@@ -112,16 +119,16 @@ try {
             case 'regles': //premier "/"
                 switch ($route[1]){ // deuxième "/"
                     case 'generales': // url = [addresse-site.com]/regles/generales
-                        (new ReglesGenerales())->execute();
+                        (new regleGeneralesController())->execute();
                         break;
                     case 'jeu': // regles/jeu
-                        (new ReglesJeu())->execute();
+                        (new reglesJeuController())->execute();
                         break;
                     case 'materielles': // etc...
-                        (new ReglesMaterielles())->execute();
+                        (new regleJeuController())->execute();
                         break;
                     case 'penalites':
-                        (new ReglesPenalites())->execute();
+                        (new reglePenalitesController())->execute();
                         break;
                     case '':
                         header('Location: /regles/generales');
@@ -140,14 +147,14 @@ try {
                 }
                 break;
             case 'regles-du-jeu':
-                (new ReglesDuJeu())->execute();
+                (new regleDuJeuController())->execute();
                 break;
             case 'rejoindre-room':
                 if(isset($_SESSION['codeValide']) and  $_SESSION['codeValide'] == 'vrai'){
                     header('Location: /inscription');
                 }
                 else{
-                    (new RejoindreRoom())->execute();
+                    (new rejoindreRoomController())->execute();
                 }
                 break;
             case 'qr-code':
