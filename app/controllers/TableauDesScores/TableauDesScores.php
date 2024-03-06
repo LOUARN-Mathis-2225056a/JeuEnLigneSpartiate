@@ -15,7 +15,7 @@ class TableauDesScores
     }
 
     /**
-     * <p>Appelle la fonction <i><b>getTableauDesScores</b></i> de la class BaseDeDonnee</p>
+     * <p>Appelle la fonction <i><b>getTableauDesScores</b></i> de la classe BaseDeDonnee</p>
      * @return array|null
      */
     public static function getToutLeTableauDesScores():?array
@@ -23,6 +23,13 @@ class TableauDesScores
         $tableauRaw = BDD::getTableauDesScores();
         return Joueur::trierTableauDeJoueurs(Joueur::creerTableauDeJoueurs($tableauRaw[0],$tableauRaw[1]));
     }
+
+
+    /**
+     * <p>renvois le tableau des scores avec les $taille premier joueurs</p>
+     * @param $taille
+     * @return array|null
+     */
     public static function getTableauDesScores($taille):?array
     {
         $tableauRaw = BDD::getTableauDesScores();
@@ -36,6 +43,11 @@ class TableauDesScores
         return array_slice($tableauDeJoueur,0,$taille);
     }
 
+    /**
+     * <p>transforme un tableau d'objet Joueur en 1 tableau composé de deux tableau, le premier étant les pseudos et l'autre les scores associés</p>
+     * @param array $tableauDeJoueur
+     * @return array
+     */
     public static function desObectifierLeTableau(array $tableauDeJoueur):array
     {
         $tableauARendre = [];

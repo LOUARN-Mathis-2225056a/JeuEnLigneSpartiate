@@ -9,6 +9,12 @@ class RejoindreRoom
         (new rejoindreRoomView())->show();
     }
 
+
+    /**
+     * Valide le code de jeu permettant l'accès au jeu
+     * @param string $code
+     * @return void
+     */
     public function validationCode(string $code)
     {
         if( isset($_SESSION['codeJeu']) and $code == $_SESSION['codeJeu']){

@@ -13,6 +13,13 @@ class TableauDeBord
 
         ( new tableauDeBordView() )->show();
     }
+
+    /**
+     * <p>génère une chaîne de caractère aléatoire permettant de créer un code de jeu</p>
+     * @param int $longueur
+     * @return string
+     * @throws \Random\RandomException
+     */
     public static function generateurNomAleatoire(int $longueur):string
     {
         $alphabet = '123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -23,17 +30,32 @@ class TableauDeBord
         return $nom;
     }
 
+    /**
+     * <p>vérifie la taille d'une string</p>
+     * @param $text
+     * @return bool
+     */
     public static function strDeBonneTaille($text):bool
     {
         return strlen($text)<=500;
     }
 
+    /**
+     * <p>éxécute les commandes pour réinitialiser la BDD et met a jour le code jeu avec un nouveau</p>
+     * @return void
+     * @throws \Random\RandomException
+     */
     public function creerSalle():void
     {
         BDD::resetScore();
         BDD::miseAJourDuCodeJeu(self::generateurNomAleatoire(4));
     }
 
+    /**
+     * <p>Cette fonction fait toute les vérifications nécessaire pour savoir si un question est conforme (taille par exemple) et fait la requête pour l'inscrire dans la BDD</p>
+     * @param $donneePOST
+     * @return void
+     */
     public static function ajoutQuestion($donneePOST):void
     {
         if( $donneePOST['question'] != '' and
@@ -60,16 +82,30 @@ class TableauDeBord
         }
     }
 
+    /**
+     * <p>permet d'obtenir toute les question présente dans la BDD</p>
+     * @return array|null
+     */
     public static function getTouteLesQuestions():?array
     {
         return BDD::getTouteLesQuestions();
     }
 
+    /**
+     * <p>supprime une question selon l'ID donné</p>
+     * @param $donneePost
+     * @return void
+     */
     public static function supprimerQuestion($donneePost):void
     {
         BDD::supprimerQuestion(intval($donneePost['supprimerQuestion']));
     }
 
+    /**
+     * <p>cette fonction modifie une question, aussi, si rien n'est donnée dans un champ, le champ ne sera pas modifier</p>
+     * @param $donneePost
+     * @return void
+     */
     public static function modifierQuestion($donneePost):void
     {
         if(is_numeric($donneePost['id'])){
@@ -110,6 +146,11 @@ class TableauDeBord
         }
 
     }
+
+    /**
+     * <p>renvois vrai si le jeu est lancé, fau sinon</p>
+     * @return bool
+     */
     public static function jeuLance():bool
     {
         $_SESSION['accepterScore'] = BDD::getAccepterScore();
@@ -119,11 +160,19 @@ class TableauDeBord
         return false;
     }
 
+    /**
+     * <p>permet l'acceptation des scores pour "lancer le jeu"</p>
+     * @return void
+     */
     public static function lancerJeu():void
     {
         BDD::lancerJeu();
     }
 
+    /**
+     * <p>"arrête le jeu" en refusant l'augmentation des scores des joueurs</p>
+     * @return void
+     */
     public static function arreterJeu():void
     {
         BDD::pauseJeu();

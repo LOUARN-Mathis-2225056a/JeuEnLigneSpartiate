@@ -21,6 +21,12 @@ class Login
         $this->PDO = BDD::getConnection();
     }
 
+
+    /**
+     * <p>Cette fonction vérifie si les données sur formulaire d'inscriptions sont bonne et permet la connexion d'un administrateur</p>
+     * @param array $postData
+     * @return void
+     */
     public function login(array $postData): void
     {
         if (isset($_SESSION['password'])) {
