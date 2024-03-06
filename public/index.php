@@ -2,38 +2,27 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use app\controllers\Login as loginController;
-use app\controllers\PageIntrouvable as pageIntrouvableController;
-use app\controllers\TableauDeBord\TableauDeBord as tableauDeBordController;
+use app\controllers\inscription\Inscription as inscriptionController;
+use app\controllers\Login\Login as loginController;
+use app\controllers\QRCode\QRCode as qrcodeController;
+use app\controllers\Quizz\Quizz as quizzController;
 use app\controllers\TableauDeBord\AjoutQuestions as ajoutQuestionsController;
 use app\controllers\TableauDeBord\ListeDesQuestions as listeDesQuestionsController;
 use app\controllers\TableauDeBord\ModifierQuestions as modifierQuestionsController;
-use app\controllers\accueil\AccueilController as accueilController;
-use app\controllers\Quizz as quizzController;
+use app\controllers\TableauDeBord\TableauDeBord as tableauDeBordController;
 use app\controllers\TableauDesScores\TableauDesScores as tableauDesScoresController;
 use app\controllers\TableauDesScores\top10 as top10Controller;
-use app\controllers\TableauDesScores\top20 as top20Controller;
-use app\controllers\TableauDesScores\top50 as top50Controller;
 use app\controllers\TableauDesScores\top100 as top100Controller;
 use app\controllers\TableauDesScores\top150 as top150Controller;
+use app\controllers\TableauDesScores\top20 as top20Controller;
 use app\controllers\TableauDesScores\top200 as top200Controller;
+use app\controllers\TableauDesScores\top50 as top50Controller;
+use PageIntrouvable as pageIntrouvableController;
 
-
-use app\controllers\QRCode as qrcodeController;
-use app\controllers\regles\ReglesGeneralesController as reglesGeneralesController;
-use app\controllers\regles\ReglesJeuController as reglesJeuController;
-use app\controllers\regles\ReglesMateriellesController as reglesMateriellesController;
-use app\controllers\regles\ReglesPenalitesController as reglesPenalitesController;
-
-use app\controllers\inscription\Inscription as inscriptionController;
-
-use app\controllers\reglesDuJeu\ReglesDuJeuController as reglesDuJeuController;
-
-use app\controllers\rejoindreRoom\RejoindreRoomController as rejoindreRoomController;
 
 session_start();
 
-\config\BaseDeDonnee::getCodeJeuActuel();
+\app\models\BaseDeDonnee::getCodeJeuActuel();
 
 try {
     if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -50,7 +39,7 @@ try {
 
     if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_POST['validationCode'])) {
-            (new rejoindreRoomController())->validationCode($_POST['roomCode']);
+            (new RejoindreRoom())->validationCode($_POST['roomCode']);
         }
     }
 
@@ -87,7 +76,7 @@ try {
 
                 break;
             case 'accueil':
-                (new accueilController())->execute();
+                (new Accueil())->execute();
                 break;
             case '/':
                 header('Location: /accueil');
@@ -123,16 +112,16 @@ try {
             case 'regles': //premier "/"
                 switch ($route[1]){ // deuxième "/"
                     case 'generales': // url = [addresse-site.com]/regles/generales
-                        (new reglesGeneralesController())->execute();
+                        (new ReglesGenerales())->execute();
                         break;
                     case 'jeu': // regles/jeu
-                        (new reglesJeuController())->execute();
+                        (new ReglesJeu())->execute();
                         break;
                     case 'materielles': // etc...
-                        (new reglesMateriellesController())->execute();
+                        (new ReglesMaterielles())->execute();
                         break;
                     case 'penalites':
-                        (new reglesPenalitesController())->execute();
+                        (new ReglesPenalites())->execute();
                         break;
                     case '':
                         header('Location: /regles/generales');
@@ -151,14 +140,14 @@ try {
                 }
                 break;
             case 'regles-du-jeu':
-                (new reglesDuJeuController())->execute();
+                (new ReglesDuJeu())->execute();
                 break;
             case 'rejoindre-room':
                 if(isset($_SESSION['codeValide']) and  $_SESSION['codeValide'] == 'vrai'){
                     header('Location: /inscription');
                 }
                 else{
-                    (new rejoindreRoomController())->execute();
+                    (new RejoindreRoom())->execute();
                 }
                 break;
             case 'qr-code':

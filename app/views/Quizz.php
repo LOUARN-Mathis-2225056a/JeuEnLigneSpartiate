@@ -3,7 +3,6 @@
 namespace app\views;
 
 use app\models\ModelePage;
-use config\BaseDeDonnee;
 
 class Quizz
 {

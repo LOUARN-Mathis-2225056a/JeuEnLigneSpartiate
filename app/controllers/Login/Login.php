@@ -1,11 +1,12 @@
 <?php
 
-namespace app\controllers;
+namespace app\controllers\Login;
 
 use app\models\Administrateur;
-use PDO;
-use config\BaseDeDonnee as BDD;
+use app\models\BaseDeDonnee as BDD;
 use app\views\Login as loginView;
+use PDO;
+
 class Login
 {
     public function execute():void

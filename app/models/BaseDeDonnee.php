@@ -1,6 +1,6 @@
 <?php
 
-namespace config;
+namespace app\models;
 
 error_reporting(E_ERROR | E_PARSE);
 

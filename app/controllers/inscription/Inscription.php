@@ -2,8 +2,8 @@
 
 namespace app\controllers\inscription;
 
+use app\models\BaseDeDonnee as BDD;
 use app\views\inscription\Inscription as inscriptionView;
-use config\BaseDeDonnee as BDD;
 
 class Inscription
 {

@@ -1,7 +1,8 @@
 <?php
 
-namespace app\controllers;
+namespace app\controllers\Quizz;
 use app\views\Quizz as quizzView;
+
 class Quizz
 {
     public function execute()

@@ -1,7 +1,8 @@
 <?php
 
-namespace app\controllers;
+namespace app\controllers\QRCode;
 use app\views\QRCode as qrcodeView;
+
 class QRCode
 {
     public function execute()

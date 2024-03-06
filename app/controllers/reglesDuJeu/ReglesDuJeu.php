@@ -4,7 +4,7 @@ namespace app\controllers\reglesDuJeu;
 
 use app\views\reglesDuJeu\ReglesDuJeu as reglesDuJeuView;
 
-class ReglesDuJeuController
+class ReglesDuJeu
 {
     public function execute():void {
         (new reglesDuJeuView())->show();

@@ -3,8 +3,8 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use app\controllers\TableauDeBord\TableauDeBord;
-use config\BaseDeDonnee;
 use app\controllers\TableauDesScores\TableauDesScores as tableauDesScoresController;
+use app\models\BaseDeDonnee;
 use app\models\EnvoyerEmails;
 
 header( 'Content-Type: application/json' );

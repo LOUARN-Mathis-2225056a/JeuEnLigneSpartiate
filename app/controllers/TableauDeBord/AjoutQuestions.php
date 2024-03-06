@@ -2,7 +2,6 @@
 
 namespace app\controllers\TableauDeBord;
 use app\views\TableauDeBord\AjoutQuestions as ajoutQuestionsView;
-use config\BaseDeDonnee;
 
 class AjoutQuestions
 {

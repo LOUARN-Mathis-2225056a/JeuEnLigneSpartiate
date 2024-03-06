@@ -2,7 +2,6 @@
 
 namespace app\models;
 require_once __DIR__ . '/../../vendor/autoload.php';
-use config\BaseDeDonnee;
 
 class EnvoyerEmails
 {
