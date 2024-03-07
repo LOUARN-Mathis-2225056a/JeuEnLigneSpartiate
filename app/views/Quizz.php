@@ -13,7 +13,6 @@ class Quizz
         <form id="quiz-form">
             <div id="question-container">
             </div>
-            <div id="centre"></div>
         </form>
         <script>
             let touteLesQuestions = [];
@@ -91,6 +90,7 @@ class Quizz
                     <label id="caseReponse3" class="caseReponse">C</label>
                 </div>
                 <img id="spriteTireur" src="/assets/ressources/sprites/AttaquantHockey1.png">
+                <div id="centre"></div>
                 <img id="palet" src="/assets/ressources/sprites/palet.png" draggable="true">
                 <ul>
                     <li><label class="lettreReponse">A</label><input id="${shuffledReponses[0]}" type="radio" name="reponse" value="${shuffledReponses[0]}"><label class="reponse" id="reponse1" value="${shuffledReponses[0]}" for="${shuffledReponses[0]}">${shuffledReponses[0]}</label></li>
@@ -235,12 +235,12 @@ class Quizz
 
             let initialPosition = { x: 0, y: 0 };
 
-            paletElement.addEventListener("dragstart", (e) => {
+            function handleDragStart(e) {
                 e.dataTransfer.setData("text/plain", "palet");
                 initialPosition = { x: e.clientX, y: e.clientY };
-            });
+            }
 
-            paletElement.addEventListener("dragend", (e) => {
+            function handleDragEnd(e) {
                 const distanceX = e.clientX - initialPosition.x;
                 const distanceY = e.clientY - initialPosition.y;
 
@@ -257,7 +257,10 @@ class Quizz
                 centreElement.style.transform = `rotate(${angle}rad)`;
 
                 spriteShootingAnimation(distanceX, distanceY);
-            });
+            }
+
+            paletElement.addEventListener("dragstart", handleDragStart);
+            paletElement.addEventListener("dragend", handleDragEnd);
 
 
         </script>
