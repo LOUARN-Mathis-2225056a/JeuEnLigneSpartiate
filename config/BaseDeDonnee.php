@@ -335,6 +335,7 @@ class BaseDeDonnee
 
     public static function getScore()
     {
+        self::getConnection();
         $requete = 'SELECT score FROM joueurs WHERE pseudo = ?';
         $declaration = self::$connection->prepare($requete);
         if (!$declaration) {
@@ -344,6 +345,62 @@ class BaseDeDonnee
         $declaration->execute([$_SESSION['pseudoJoueur']]);
         $score = $declaration->fetch(PDO::FETCH_ASSOC);
         return $score;
+    }
+
+    /**
+     * <p>renvois toutes les adresse mails enregistré dans le partie courrante</p>
+     * @return array|null
+     */
+    public static function getMail():?array
+    {
+        self::getConnection();
+        $requete = 'SELECT email FROM joueurs';
+        $declaration = self::$connection->prepare($requete);
+        if (!$declaration) {
+            error_log('Impossible de récupérer les emails');
+            return null;
+        }
+        $declaration->execute();
+        $email = $declaration->fetchAll();
+        return $email;
+    }
+
+    /**
+     * <p>met dans la table arcgiveMail toute les adresse mail données en paramètre</p>
+     * @param $mail
+     * @return void|null
+     */
+    public static function enregistrerMail($mail)
+    {
+        self::getConnection();
+        for ($i = 0; $i < sizeof($mail); $i++) {
+            $requete = 'INSERT INTO archiveMail (email,date) VALUES (?, ?)';
+            $declaration = self::$connection->prepare($requete);
+            if (!$declaration) {
+                error_log('Impossible de récupérer les emails');
+                return null;
+            }
+            $declaration->execute([$mail[$i][0],date('Y-m-d')]);
+        }
+
+    }
+
+    /**
+     * <p>renvois toutes les adresse mails déjà archivées</p>
+     * @return array|false|null
+     */
+    public static function getMailEnregistres()
+    {
+        self::getConnection();
+        $requete = 'SELECT email FROM archiveMail';
+        $declaration = self::$connection->prepare($requete);
+        if (!$declaration) {
+            error_log('Impossible de récupérer les emails');
+            return null;
+        }
+        $declaration->execute();
+        return $declaration->fetchAll();
+
     }
 
 }

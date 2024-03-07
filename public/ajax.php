@@ -146,8 +146,6 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) { //si c'est une méthode POST
 
     if (isset($_POST['updateScore'])){
 
-
-
         BaseDeDonnee::updateScore($_POST['updateScore']);
 
         $reponse = array(
@@ -158,6 +156,19 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) { //si c'est une méthode POST
         echo json_encode( $reponse );
         exit;
 
+    }
+
+    if(isset($_POST['enregistrerMail'])){
+
+        TableauDeBord::enregistrerMail();
+
+        $reponse = array(
+            'message' => 'Mail enregistrés',
+            'status' => true
+        );
+
+        echo json_encode($reponse);
+        exit;
     }
 
 }

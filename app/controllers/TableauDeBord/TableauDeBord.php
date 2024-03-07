@@ -7,6 +7,7 @@ use config\BaseDeDonnee as BDD;
 require_once __DIR__ . '/../../../vendor/autoload.php';
 class TableauDeBord
 {
+
     public function execute(): void {
 
         unset($_SESSION['creerSalleReponse']);
@@ -176,6 +177,34 @@ class TableauDeBord
     public static function arreterJeu():void
     {
         BDD::pauseJeu();
+    }
+
+    /**
+     * <p>renvoi un array de mail nouveau qui ne sont pas déjà présent dans la BDD archive</p>
+     * @param $mailDejaPresent
+     * @param array|null $nouveauMail
+     * @return array|null
+     */
+    private static function trierMail($mailDejaPresent, ?array $nouveauMail):?array
+    {
+        $mailAAjouter = [];
+        for ($i = 0; $i < sizeof($nouveauMail); $i++) {
+            if (!in_array($nouveauMail[$i],$mailDejaPresent)){
+                array_push($mailAAjouter,$nouveauMail[$i]);
+            }
+        }
+        return array_unique($mailAAjouter);
+    }
+
+    /**
+     * <p>enregistre toutes les nouvelles adresse mail dans la BDD</p>
+     * @return void
+     */
+    public static function enregistrerMail()
+    {
+        $mailDejaPresent = BDD::getMailEnregistres();
+        $mailAAjouter = TableauDeBord::trierMail($mailDejaPresent,BDD::getMail());
+        BDD::enregistrerMail($mailAAjouter);
     }
 
 }
