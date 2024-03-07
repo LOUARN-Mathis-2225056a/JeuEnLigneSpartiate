@@ -137,6 +137,13 @@ ul {
     left: 70%;
 }
 
+#centre {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    background-color: transparent;
+}
+
 @keyframes paletCas1 {
     0% {
         top: 70%;

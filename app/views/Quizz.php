@@ -13,6 +13,7 @@ class Quizz
         <form id="quiz-form">
             <div id="question-container">
             </div>
+            <div id="centre"></div>
         </form>
         <script>
             let touteLesQuestions = [];
@@ -229,7 +230,9 @@ class Quizz
                 await sleepNow(50);
             }
 
+            const centreElement = document.getElementById("centre");
             const paletElement = document.getElementById("palet");
+
             let initialPosition = { x: 0, y: 0 };
 
             paletElement.addEventListener("dragstart", (e) => {
@@ -241,11 +244,20 @@ class Quizz
                 const distanceX = e.clientX - initialPosition.x;
                 const distanceY = e.clientY - initialPosition.y;
 
-                paletElement.style.transform = `translate(${distanceX}px, ${distanceY}px)`;
+                const centreX = 100;
+                const centreY = 100;
+
+                centreElement.style.left = `${centreX}px`;
+                centreElement.style.top = `${centreY}px`;
+
+                const angle = Math.atan2(distanceY, distanceX);
+                const distance = Math.sqrt(distanceX ** 2 + distanceY ** 2);
+
+                centreElement.style.width = `${distance}px`;
+                centreElement.style.transform = `rotate(${angle}rad)`;
 
                 spriteShootingAnimation(distanceX, distanceY);
             });
-
 
 
         </script>
